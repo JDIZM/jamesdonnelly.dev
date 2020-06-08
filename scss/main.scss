@@ -1,0 +1,20 @@
+// main.scss is imported in nuxt config
+// theme and globals
+@import '@/scss/_theme.scss';
+@import '@/scss/_global.scss';
+@import '@/scss/_utils.scss';
+@import '@/scss/_mixins.scss';
+
+// bem styles
+// component styles are imported here so they have access to global vars.
+@import '@/scss/_nav.scss';
+@import '@/scss/_buttons.scss';
+@import '@/scss/_lists.scss';
+@import '@/scss/_forms.scss';
+@import '@/scss/_cards.scss';
+@import '@/scss/_modal.scss';
+@import '@/scss/_toast.scss';
+@import '@/scss/_footer.scss';
+// vuetify
+// @import '~vuetify/src/styles/styles.sass';
+// $material-light: map-merge($material-light, ( cards: purple ));

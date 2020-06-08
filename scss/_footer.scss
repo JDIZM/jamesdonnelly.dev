@@ -1,0 +1,26 @@
+// footer
+footer {
+ width: 90%; 
+ margin: 0 auto;
+ @media screen and (min-width: $breakpoint-md){
+  width: 80%;
+};
+}
+.footer__grid {
+  // padding: $two;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: $breakpoint-md){
+    flex-direction: row;
+  }
+}
+
+.footer__item {
+  flex: 1 1 auto;
+  padding: map-get($spacing, 1);
+  width: 100%;
+}
+
+.copy {
+  padding: map-get($spacing, 2);
+}

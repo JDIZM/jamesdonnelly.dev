@@ -1,0 +1,22 @@
+// card styles
+
+// Blocks
+// Encapsulates a standalone entity that is meaningful on its own. While blocks can be nested and interact with each other, 
+// semantically they remain equal; there is no precedence or hierarchy. Holistic entities without DOM representation 
+// (such as controllers or models) can be blocks as well.
+.card {
+  //
+  // background: $off-white;
+  margin-top: 1rem;
+  // width: 100%;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+// Elements
+// Parts of a block and have no standalone meaning. Any element is semantically tied to its block.
+
+// Modifers 
+// Flags on blocks or elements. Use them to change appearance, behavior or state.
+

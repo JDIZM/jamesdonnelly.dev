@@ -1,0 +1,59 @@
+// global sass 
+
+html {
+    background: $gray-nurse;
+    margin: 0;
+    // overflow: hidden;
+}
+::selection {
+  background-color: $charcoal;
+  color: $off-white;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  overflow: auto;
+  // flex display
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.container {
+    // min-height: 100vh;
+    // height: 100vh;
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    // flex display
+    // display: flex;
+    // // justify-content: center;
+    // align-items: center;
+    // text-align: center;
+    // flex-direction: column;
+    min-height: 45vh;
+    @media screen and (min-width: $breakpoint-md) {
+      width: 80%;
+    };
+    @media screen and (min-width: $breakpoint-lg) {
+      width: 60%;
+    };
+}
+
+
+// vertical rhythm
+
+// fonts
+
+// colours
+
+// spacing
+
+// utils

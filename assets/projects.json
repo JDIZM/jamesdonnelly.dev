@@ -1,0 +1,29 @@
+{
+  "projects":
+  [
+    {
+      "name": "WEATHER APP",
+      "overview": "A vanilla JS weather app using Async/Await & Fetch API",
+      "live": "https://weather-app-jdizm.netlify.com/",
+      "git": "https://github.com/JDIZM/weather-app/",
+      "img": "@/assets/img.jpeg",
+      "skills": ["JS"]
+    },
+    {
+      "name": "E-COMMERCE WEBSITE",
+      "overview": "A vanilla JS E-commerce website built with custom UI components, no frameworks using firebase for backend and stripe payments",
+      "live": "https://vanilla-js-cart.netlify.app",
+      "git": "https://github.com/JDIZM/vanilla-shopping-cart/",
+      "img": "assets/img.jpeg", 
+      "skills": ["JS", "FIREBASE", "STRIPE", "API"]
+    },
+    {
+      "name": "QUOTE LEAD GEN",
+      "overview": "Nuxt based PWA with quote/lead gen booking system built with firebase backend",
+      "live": "https://nuxt-removals.netlify.app/",
+      "git": "https://github.com/JDIZM/nuxt-removals/",
+      "img": "assets/img.jpeg", 
+      "skills": ["VUE", "NUXT", "FIREBASE"]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+.modal {
+  background: $gray-nurse;
+  position: fixed;
+  margin: auto;
+  top: 10%;
+  left: 0;
+  right: 0;
+  padding: 0;
+  z-index: 1000;
+  opacity: 1;
+  display: block; // change this with state
+  max-width: 400px;
+  // width: 55%;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+.modal-content {
+  // 
+  padding: $one;
+  // background: white;
+  // max-width: 400px;
+  // margin: auto;
+  h4 {
+    margin: 0;
+  }
+}
+
+.modal-footer {
+  padding: $one;
+}
+
+// TODO display the modal overlay when the trigger is clicked
+.modal-overlay {
+  position: fixed;
+  z-index: 999;
+  top: -25%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 125%;
+  width: 100%;
+  background: #000;
+  display: none; // change to display: block when trigger is clicked
+  will-change: opacity;
+  opacity: 0.5; 
+}
+
+.modal-close {
+  position: absolute;
+  right: $one;
+  top: $one;
+}
+
+// animation
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 10%;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "James Donnelly",
+  "overview": "an overview...",
+  "pdf": "link to pdf download",
+  "experience": [
+    { "name": "baked digital",
+      "duration": "9 years",
+      "start": "2011",
+      "position": "Freelance Web Developer",
+      "desc": "a description..."
+    }
+  ],
+  "skills": ["html", "css", "js", "vue", "nuxt", "firebase"],
+  "education": [],
+  "social": [
+    { "name": "github",
+      "url": "https://github.com/JDIZM"
+    },
+    {"name": "twitter",
+    "url": "https://twitter.com/JDIZM"
+    }
+  ]
+}

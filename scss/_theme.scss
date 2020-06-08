@@ -1,0 +1,139 @@
+// theme colours http://getbem.com/naming/
+//
+$white: rgb(255, 255, 255);
+$yellow: rgb(255, 200, 50);
+$red: rgb(167, 33, 69);
+$black: rgb(0, 0, 0);
+// $charcoal: rgba(0, 0, 0, 0.53);
+$charcoal: #241e12;
+// $pastel-red: #e85b46; // FIXME contrast
+$pastel-red: #f54d34;// #f54d34
+$off-white: #f5f4f2;
+$deep-blue: rgb(46,8,127);
+$astra: rgb(249,236,184);
+$gray-nurse: rgb(247,248,247);
+$tawny-port: rgb(88,29,80);
+
+// theme colours
+// map the variables with key:value pairs
+$colours: (
+  deep-blue: rgb(46,8,127),
+  astra: rgb(249,236,184),
+  white: rgb(255, 255, 255),
+  black: rgb(0, 0, 0),
+  red: rgb(167, 33, 69),
+  yellow: rgb(255, 200, 50)
+);
+// create spacing units for mixin
+$spacing: (
+  1: 0.5rem,
+  2: 1rem,
+  3: 1.5rem,
+  4: 2rem,
+);
+// margin and paddings will be created with mixin
+
+// TODO delete these
+// spacing
+// 8 px grid // 0.5 rem
+// 1 rem = 16px
+$one: 0.5rem;
+$two: 1rem;
+$three: 1.5rem;
+$four: 2rem;
+
+// breakpoints
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+// typography
+
+// @import url('https://fonts.googleapis.com/css?family=Fira+Sans:700|Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+// https://dev.to/lampewebdev/css-line-height-jjp
+
+// base styles
+// normalize is also loaded in nuxt config
+:root {
+  // @ 16px you can use 0.5 rem for an even 8px spacing grid
+  font-size: 16px; // set root font-size
+  line-height: 1.4; // unitless vertical rhythm
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+p, button, span, ul, li {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem; // rem is relative to the font-size of the root element
+  margin-top: 1.4rem; // rem is relative to the font-size of the root element
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  margin-top: 1.4em; // em is relative to the current elements font-size.
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+a {
+  text-decoration: none;
+}
+// TODO clean up below styles
+
+// typography elements
+
+.font-display {
+  //
+}
+
+// type modifiers
+.text--sm {
+  font-size: 1rem;
+}
+.text--md {
+  font-size: 1.5rem;
+}
+.text--lg {
+  font-size: 2rem;
+}
+.text--charcoal {
+  color: $charcoal;
+}
+.text--pastel-red {
+  color: $pastel-red;
+}
+.text--off-white {
+  color: $off-white;
+}
+// @mixin colors($colors...) {
+//   .bg-#{$colors} {
+//     background-color: #{$colors};
+//   }
+// }
+// // .bg-#{$colors} {
+// //   background-color: #{$colors};
+// // }
+// @include colors($deep-blue, $astra);
