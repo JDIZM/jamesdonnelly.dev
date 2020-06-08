@@ -5,7 +5,8 @@
     <div v-for="(project, a) in projects" :key="a" class="project">
       <!-- <div :style="{ backgroundImage: 'url(' + project.img + ')' }" class="project__img" /> -->
       <div class="project__img">
-        <img src="@/assets/weather_app.svg" alt="">
+        <!-- <img src="@/assets/weather_app.svg" alt=""> -->
+        <img :src="project.img" alt="">
       </div>
       <header>
         <h4 class="project__title">

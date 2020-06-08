@@ -54,6 +54,11 @@ $breakpoint-lg: 1024px;
 
 // base styles
 // normalize is also loaded in nuxt config
+
+html, body {
+    // overflow-y:hidden;
+    height:100%;
+}
 :root {
   // @ 16px you can use 0.5 rem for an even 8px spacing grid
   font-size: 16px; // set root font-size

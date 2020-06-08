@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="copy">
-      <p>&copy; {{ new Date().getFullYear() }} <a href="https://twitter.com/JDIZM">@JDIZM</a> | made with ❤️ using nuxt.js</p>
+      <p>&copy; {{ new Date().getFullYear() }} <a href="https://twitter.com/JDIZM">@JDIZM</a> | made with ❤️ using nuxt.js | Illustrations from <a href="https://undraw.co/">Undraw</a></p>
     </div>
   </footer>
 </template>
