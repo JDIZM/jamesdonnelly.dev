@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import projects from '~/assets/projects.json'
+import json from '~/assets/projects.json'
 
 export default {
   components: {
@@ -53,7 +53,7 @@ export default {
       // projects: [
       //   { name: 'project name', slug: '/project-url', img: '/assets/img.jpg', skills: ['html', 'css', 'js', 'vue', 'nuxt', 'firebase'] }
       // ]
-      projects: projects.projects // imported json
+      projects: json.projects // imported json
     }
   },
   head () {

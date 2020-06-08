@@ -13,7 +13,7 @@
       "name": "E-COMMERCE WEBSITE",
       "overview": "A set of vanilla JS E-commerce components using custom SASS mixins built with no frameworks. Handlebars templating with a Firebase backend and stripe payments. This is still a work in progress but it has a functional shopping cart and checkout system. Initially I was going to make a custom router, but I created a JAMstack static site with webpack chunks that lazy load on each route.",
       "live": "https://vanilla-js-cart.netlify.app",
-      "git": "https://github.com/JDIZM/vanilla-shopping-cart/",
+      "git": "https://github.com/JDIZM/vanilla-js-ecommerce",
       "img": "/web_shopping.svg", 
       "skills": ["JS", "FIREBASE", "STRIPE", "API"]
     },
