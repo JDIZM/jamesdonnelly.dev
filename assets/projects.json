@@ -22,7 +22,7 @@
       "overview": "A vanilla JS weather app using Async/Await & Fetch API",
       "live": "https://weather-app-jdizm.netlify.com/",
       "git": "https://github.com/JDIZM/weather-app/",
-      "img": "weather_app.svg",
+      "img": "/weather_app.svg",
       "skills": ["JS"]
     },
     {

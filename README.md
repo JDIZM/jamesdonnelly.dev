@@ -42,27 +42,16 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 `import '~/node_modules/normalize.css/normalize.css'`
 
-
-## Notes
-
-NuxtStack It comes with normalize.css - https://nuxtstack.org/guide/features.html
-
 ## FUNCTIONS
 
-* firebase nodemailer sendMail() cloud function
+* firebase nodemailer sendMail() cloud function with Mailgun API.
 
 ## STACK
 
 * nuxt
-* tailwind or custom css theme
+* custom scss theme
 * custom components
-* custom theme (type, colours, spacing)
-* json cv
-* learn jest testing
-* rebuild this repo once done
-* sass / node-sass
-* sitemap https://www.npmjs.com/package/@nuxtjs/sitemap
-
+* dynamic markdown blog
 
 ### BLOG
 
