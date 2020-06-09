@@ -1,10 +1,10 @@
 <template>
   <section class="skills">
-    <h2>SKILLS SECTION</h2>
+    <Title title="TECH STACK" />
     <div class="skills__grid">
       <div v-for="(skill, i) in skills" :key="i" class="skills__item">
         <img :src="skill.img" alt="" style="height:75px;width:75px;">
-        <p> {{ skill.name }}</p>
+        <p> {{ skill.name.toUpperCase() }}</p>
       </div>
       <!-- <img src="~/assets/logos/webpack.svg" alt="" style="height:50px;width:50px"> -->
     </div>
@@ -12,8 +12,12 @@
 </template>
 
 <script>
+import Title from '@/components/ui/Title'
 export default {
   name: 'Skills',
+  components: {
+    Title
+  },
   data () {
     return {
       skills: [
@@ -22,7 +26,7 @@ export default {
         { name: 'Nuxt', img: '/logos/nuxt.svg' },
         { name: 'SASS', img: '/logos/sass.svg' },
         { name: 'Node', img: '/logos/node.svg' },
-        { name: 'webpack', img: '/logos/webpack.svg' }
+        { name: 'Webpack', img: '/logos/webpack.svg' }
       ]
     }
   }
@@ -31,10 +35,13 @@ export default {
 
 <style lang="scss" scoped>
 .skills__grid {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   @media screen and (min-width:768px) {
-    flex-direction: row;
+    // flex-direction: row;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   margin: 1rem 0;
 }
