@@ -129,6 +129,9 @@ a {
 .text--off-white {
   color: $off-white;
 }
+.text--left {
+  text-align: left;
+}
 // @mixin colors($colors...) {
 //   .bg-#{$colors} {
 //     background-color: #{$colors};

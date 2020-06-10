@@ -1,11 +1,12 @@
 <template>
   <div class="container">
     <!-- <Hero title="FRONTEND WEB DEVELOPER" sub="With a site that's still not finished. SMH." /> -->
-    <Title title="FRONTEND WEB DEVELOPER" sub="With a site that's still not finished. SMH." />
+    <Title title="FRONTEND WEB DEVELOPER" sub="With a background in digital, I've pivoted towards frontend." />
     <Title
       title="MANCHESTER"
-      sub="With a site that's still not finished. SMH."
     />
+    <p class="m--2 text--left">Since ~March 2019 I've focused 100% on JS, Vue & Nuxt.js while developing my frontend skills.</p>
+    <p class="m--2 text--left"> I am skilled in all areas from setting up and configuring servers (linux, digitalocean, aws, gcp) to building my own sales funnels and creating landing pages.</p>
     <Skills />
     <!-- <div>
       <ul>

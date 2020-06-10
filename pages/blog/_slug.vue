@@ -6,10 +6,10 @@
       {{ title }}
     </h1>
     <div v-for="(tag, i) in tags" :key="i" class="post__tags">
-      <li>{{ tag }}</li>
+      <li> - {{ tag.toUpperCase() }}</li>
     </div>
     <div class="post__date mt--2">
-      {{ date }}
+      - {{ date }}
     </div>
     <!-- <p> this is the blog post page </p>
     <img src="@/assets/carbon-2.png" alt="">
@@ -57,6 +57,15 @@ export default {
 // .post__title {
 
 // }
+.post__tags {
+  text-align: left;
+  width: 100%;
+  list-style: none
+}
+.post__date {
+  text-align: left;
+   width: 100%;
+}
 .container {
   text-align: left;
 }

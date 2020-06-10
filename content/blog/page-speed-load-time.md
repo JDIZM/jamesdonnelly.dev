@@ -3,8 +3,7 @@ title: Page speed, Load Time & Conversions
 date: "2020-06-06"
 excerpt: Page speed, Load Time & Conversions
 tags:
-  - tag1
-  - tag2
+  - web development
 thumbnail: /mobile-page-speed-new-industry-benchmarks-01-21.png
 ---
 
