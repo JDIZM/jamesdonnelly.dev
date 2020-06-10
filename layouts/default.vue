@@ -86,7 +86,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 } */
-
+html {
+width: 100%;
+}
 /* *,
 *:before,
 *:after {

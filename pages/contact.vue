@@ -1,18 +1,27 @@
 <template>
   <div class="container">
     <h2 class="center">
-      Contact form
+      GET IN TOUCH?
     </h2>
+    <p class="pb--2">If you need to reach me, then feel free to pop me a message.</p>
     <div class="form">
       <form @submit.prevent="sendMessage" @keydown.enter.prevent>
-        <label for="name">name</label>
-        <input id="name" v-model="name" type="text" name="name">
-        <label for="phone">phone</label>
-        <input id="phone" v-model="phone" type="number" name="phone">
-        <label for="email">email</label>
-        <input id="email" v-model="email" type="email" name="email">
-        <label for="message">message</label>
-        <textarea id="message" v-model="message" name="message" rows="4" cols="50"> Hello </textarea>
+        <div class="form__field">
+          <label for="name">name</label>
+          <input id="name" v-model="name" type="text" name="name">
+        </div>
+        <div class="form__field">
+          <label for="phone">phone</label>
+          <input id="phone" v-model="phone" type="number" name="phone">
+        </div>
+        <div class="form__field">
+          <label for="email">email</label>
+          <input id="email" v-model="email" type="email" name="email">
+        </div>
+        <div class="form__field">
+          <label for="message">message</label>
+          <textarea id="message" v-model="message" name="message" rows="4" cols="50"> Hello </textarea>
+        </div>
         <p v-if="feedback" class="help err">
           {{ feedback }}
         </p>
@@ -111,9 +120,9 @@ export default {
 } */
 
 .form {
-  width: 80%;
-  max-width: 500px;
-  margin: auto;
+  /* width: 80%;
+  max-width: 400px; */
+  /* margin: auto; */
 }
 form {
     display: flex;
@@ -123,11 +132,11 @@ form {
     flex-direction: column;
 }
 label {
-    margin: 4px;
+    /* margin: 4px; */
 }
 input {
-    margin: 4px;
-    height: 40px;
+    /* margin: 4px; */
+    /* height: 40px; */
 }
 button {
     margin-top: 16px;

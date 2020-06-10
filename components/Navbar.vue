@@ -1,12 +1,24 @@
 <template>
   <nav class="nav">
     <div class="nav__logo" />
+    <div class="nav__menu__desktop">
+      <ul class="">
+        <li v-for="(link, i) in links" :key="i" class="">
+          <router-link :to="link.path" exact-active-class="">
+            <div class="">
+              {{ link.name.toUpperCase() }}
+            </div>
+          </router-link>
+        </li>
+      </ul>
+    </div>
     <!-- <h2 class="nav__title">NAV</h2> -->
     <div @click="drawer = !drawer, toggleBodyClass()" class="nav__menu">
       <i class="material-icons">
         menu
       </i>
     </div>
+    <!-- desktop only -->
     <aside v-if="drawer" class="nav__drawer nav__drawer --full">
       <div class="nav__menu" @click="drawer = !drawer, toggleBodyClass()">
         <i class="material-icons">
@@ -39,7 +51,7 @@ export default {
       drawer: false,
       links: [
         { name: 'home', path: '/' },
-        { name: 'about', path: '/about' },
+        // { name: 'about', path: '/about' },
         { name: 'contact', path: '/contact' },
         { name: 'projects', path: '/projects' },
         { name: 'blog', path: '/blog' }

@@ -1,4 +1,9 @@
 // global sass 
+html, body {
+  // overflow-y:hidden;
+  height:100%;
+  width: 100%;
+}
 
 html {
     background: $gray-nurse;
@@ -16,29 +21,28 @@ html {
   margin: 0;
 }
 
-body {
-  overflow: auto;
-  // flex display
-  display: flex;
-  // justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
-}
+// body {
+//   overflow: auto;
+//   // flex display
+//   display: flex;
+//   // justify-content: center;
+//   align-items: center;
+//   text-align: center;
+//   flex-direction: column;
+// }
 
 .container {
     // min-height: 100vh;
-    // height: 100vh;
+    min-height: 60vh;
     width: 90%;
     margin: 0 auto;
     display: block;
     // flex display
-    // display: flex;
-    // // justify-content: center;
-    // align-items: center;
-    // text-align: center;
-    // flex-direction: column;
-    min-height: 45vh;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
     @media screen and (min-width: $breakpoint-md) {
       width: 80%;
     };

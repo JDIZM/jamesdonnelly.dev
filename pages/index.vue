@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <Hero title="FRONTEND WEB DEVELOPER" sub="With a site that's still not finished. SMH." />
+    <!-- <Hero title="FRONTEND WEB DEVELOPER" sub="With a site that's still not finished. SMH." /> -->
+    <Title title="FRONTEND WEB DEVELOPER" sub="With a site that's still not finished. SMH." />
+    <Title
+      title="MANCHESTER"
+      sub="With a site that's still not finished. SMH."
+    />
     <Skills />
     <!-- <div>
       <ul>
@@ -53,6 +58,7 @@ import Modal from '@/components/ui/Modal'
 import Toast from '@/components/ui/Toast'
 import Hero from '@/components/Hero'
 import Skills from '@/components/Skills'
+import Title from '@/components/ui/Title'
 /* eslint-disable */ 
 // eslint-disable-next-line
 console.log('***************')
@@ -65,7 +71,8 @@ export default {
     Modal,
     Toast,
     Hero,
-    Skills
+    Skills,
+    Title
   },
   data () {
     return {

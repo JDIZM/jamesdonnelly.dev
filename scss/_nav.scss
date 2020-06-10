@@ -20,6 +20,7 @@
   text-align: center;
   padding: 8px;
   z-index: 1000;
+  // display: flex;
   
   // h2 {
   //   margin-top: 0 !important; // override theme style
@@ -42,17 +43,54 @@
   height: 80px;
   width: 80px;
   margin: auto;
+  // @media screen and (min-width: $breakpoint-md){
+  //   margin: 0 2rem;
+  // }
 }
+// mobile nav menu
 .nav__menu {
   //
   position: absolute;
   top: 2.5rem;
   right: 1rem;
   // background: $off-white;
+  @media screen and (min-width: $breakpoint-md) {
+    //
+    display:none;
+  }
+}
+// dekstop nav menu
+.nav__menu__desktop {
+  display: none;
+  @media screen and (min-width: $breakpoint-md) {
+    position: absolute;
+    top: 2.5rem;
+    right: 1rem;
+    display: block;
+    // flex-direction: row;
+    //  display flexed list
+    ul  {
+      margin-top: 0;
+      display: flex;
+      flex-direction: row;
+    }
+    li {
+      padding: 0 0.5rem;
+      margin-top: 0;
+    }
+    a {
+      color: $white;
+    }
+  }
 }
 .nav__menu__list {
 //  
 padding-top:35px;
+// @media screen and (min-width: $breakpoint-md) {
+//   //
+//   display:flex;
+//   flex-direction: row;
+// }
 }
 .nav__menu__list_item {
   min-height: 100px;

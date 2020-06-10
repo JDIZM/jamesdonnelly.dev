@@ -1,15 +1,25 @@
 // footer
 footer {
- width: 90%; 
+ width: 100%; 
  margin: 0 auto;
- @media screen and (min-width: $breakpoint-md){
-  width: 80%;
-};
+//  @media screen and (min-width: $breakpoint-md){
+//   width: 80%;
+// };
+display: flex;
+// justify-content: center;
+align-items: center;
+text-align: center;
+flex-direction: column;
 }
 .footer__grid {
-  // padding: $two;
+  // padding-left: map-get($spacing, 2);
+  width: 90%;
+  margin: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // text-align: left;
   @media screen and (min-width: $breakpoint-md){
     flex-direction: row;
   }
@@ -22,5 +32,7 @@ footer {
 }
 
 .copy {
-  padding: map-get($spacing, 2);
+  width: 90%;
+  margin: auto;
+  padding: map-get($spacing, 1);
 }

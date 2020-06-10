@@ -34,6 +34,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.skills {
+  width: 100%;
+}
 .skills__grid {
   // display: flex;
   // flex-direction: column;
