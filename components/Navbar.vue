@@ -52,8 +52,8 @@ export default {
       links: [
         { name: 'home', path: '/' },
         // { name: 'about', path: '/about' },
-        { name: 'contact', path: '/contact' },
         { name: 'projects', path: '/projects' },
+        { name: 'contact', path: '/contact' },
         { name: 'blog', path: '/blog' }
       ]
     }
