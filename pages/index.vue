@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <!-- <Hero title="FRONTEND WEB DEVELOPER" sub="With a site that's still not finished. SMH." /> -->
-    <Title title="FRONTEND WEB DEVELOPER" sub="With a background in digital, I've pivoted towards frontend." />
-    <Title
-      title="MANCHESTER"
-    />
-    <p class="m--2 text--left">Since ~March 2019 I've focused 100% on JS, Vue & Nuxt.js while developing my frontend skills.</p>
-    <p class="m--2 text--left"> I am skilled in all areas from setting up and configuring servers (linux, digitalocean, aws, gcp) to building my own sales funnels and creating landing pages.</p>
+    <Title title="FREELANCE WEB DEVELOPER" />
+    <div>
+      <p class="m--2 text--left">Hey, I'm <span class="text--highlight">James Donnelly.</span> A freelance web developer based in Manchester.</p>
+      <p class="m--2 text--left">I build bespoke user interfaces, websites and web applications with JavaScript.</p>
+      <p class="m--2 text--left">I have a passion for building systems and processes that add value to my clients businesses. Most business owners are too busy putting out fires on a daily basis. I'm here to help.</p>
+    </div>
     <Skills />
     <!-- <div>
       <ul>
@@ -79,7 +79,7 @@ export default {
     return {
       showModal: false, // show modal, listen for this event on child component,
       showToast: false, // use toast--active class to change the style instead
-      title: 'Hello World!',
+      title: 'Freelance Web Developer Manchester | James Donnelly',
       cv: json,
       services: [
         'frontend development',
@@ -104,7 +104,7 @@ export default {
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         //TODO create custom variables for this pages meta data
-        { hid: 'description', name: 'description', content: 'Home page description' },
+        { hid: 'description', name: 'description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user imnterfaces, websites and web applications.' },
         { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
         { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' }
       ]

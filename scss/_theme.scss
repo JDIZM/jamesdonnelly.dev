@@ -65,7 +65,7 @@ $breakpoint-lg: 1024px;
 
 p, button, span, ul, li {
   font-family: "Montserrat", sans-serif;
-  font-size: 1rem; // rem is relative to the font-size of the root element
+  font-size: 1.2rem; // rem is relative to the font-size of the root element
   margin-top: 1.4rem; // rem is relative to the font-size of the root element
 }
 
@@ -120,17 +120,23 @@ a {
 .text--lg {
   font-size: 2rem;
 }
-.text--charcoal {
-  color: $charcoal;
-}
-.text--pastel-red {
-  color: $pastel-red;
-}
-.text--off-white {
-  color: $off-white;
-}
+// using mixins
+// .text--charcoal {
+//   color: $charcoal;
+// }
+// .text--pastel-red {
+//   color: $pastel-red;
+// }
+// .text--off-white {
+//   color: $off-white;
+// }
 .text--left {
   text-align: left;
+}
+
+.text--highlight {
+  color: map-get($colours, deep-blue);
+  background: map-get($colours, astra);
 }
 // @mixin colors($colors...) {
 //   .bg-#{$colors} {
