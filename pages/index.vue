@@ -5,7 +5,18 @@
     <div>
       <p class="m--2 text--left">Hey, I'm <span class="text--highlight">James Donnelly.</span> A freelance web developer based in Manchester.</p>
       <p class="m--2 text--left">I build bespoke user interfaces, websites and web applications with JavaScript.</p>
-      <p class="m--2 text--left">I have a passion for building systems and processes that add value to my clients businesses. Most business owners are too busy putting out fires on a daily basis. I'm here to help.</p>
+      <p class="m--2 text--left">Building systems and processes that add value to my clients businesses is my passion. Most business owners are too busy putting out fires on a daily basis.</p>
+      <p class="m--2 text--left">
+        I'm here to help.
+      </p>
+      <div class="text--left">
+        <p class="m--2 text--left">If you've got a project you think i'd be a great fit for then why not...</p>
+        <nuxt-link to="/contact">
+          <button class="m--2 btn btn--primary">
+            GET IN TOUCH
+          </button>
+        </nuxt-link>
+      </div>
     </div>
     <Skills />
     <!-- <div>
@@ -50,6 +61,7 @@
       </div>
       <Toast :show="showToast" :class="{ active: showToast }" @toastTimeout="showToast = false" />
     </div> -->
+    <Experience />
   </div>
 </template>
 
@@ -59,6 +71,7 @@ import Modal from '@/components/ui/Modal'
 import Toast from '@/components/ui/Toast'
 import Hero from '@/components/Hero'
 import Skills from '@/components/Skills'
+import Experience from '@/components/Experience'
 import Title from '@/components/ui/Title'
 /* eslint-disable */ 
 // eslint-disable-next-line
@@ -73,7 +86,8 @@ export default {
     Toast,
     Hero,
     Skills,
-    Title
+    Title,
+    Experience
   },
   data () {
     return {

@@ -135,8 +135,8 @@ a {
 }
 
 .text--highlight {
-  color: map-get($colours, deep-blue);
-  background: map-get($colours, astra);
+  color: map-get($colours, black);
+  background: map-get($colours, yellow);
 }
 // @mixin colors($colors...) {
 //   .bg-#{$colors} {
