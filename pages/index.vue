@@ -61,12 +61,14 @@
       </div>
       <Toast :show="showToast" :class="{ active: showToast }" @toastTimeout="showToast = false" />
     </div> -->
-    <Experience />
+    <Experience
+      :experience="experience"
+    />
   </div>
 </template>
 
 <script>
-import json from '~/assets/cv.json'
+// import json from '~/assets/cv.json'
 import Modal from '@/components/ui/Modal'
 import Toast from '@/components/ui/Toast'
 import Hero from '@/components/Hero'
@@ -94,20 +96,28 @@ export default {
       showModal: false, // show modal, listen for this event on child component,
       showToast: false, // use toast--active class to change the style instead
       title: 'Freelance Web Developer Manchester | James Donnelly',
-      cv: json,
-      services: [
-        'frontend development',
-        'web development',
-        'digital marketing',
-        'conversion optimisation'
-      ],
-      skills: [
-        'html',
-        'css',
-        'javascript',
-        'vue.js',
-        'nuxt.js',
-        'd3.js'
+      // cv: json,
+      // services: [
+      //   'frontend development',
+      //   'web development',
+      //   'digital marketing',
+      //   'conversion optimisation'
+      // ],
+      // skills: [
+      //   'html',
+      //   'css',
+      //   'javascript',
+      //   'vue.js',
+      //   'nuxt.js',
+      //   'd3.js'
+      // ],
+      experience: [
+        {
+          date: "April 2019",
+          location: "Baked Digital",
+          position: "Frontend Web Developer",
+          info: "Building user interfaces, websites and web applications that humans love to use"
+        }
       ]
     }
   },

@@ -40,6 +40,7 @@ export default {
 .skills__grid {
   // display: flex;
   // flex-direction: column;
+  text-align: left;
   display: grid;
   grid-template-columns: 1fr 1fr;
   @media screen and (min-width:768px) {
