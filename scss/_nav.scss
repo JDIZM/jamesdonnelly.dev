@@ -51,8 +51,10 @@
 .nav__menu {
   //
   position: absolute;
-  top: 2.5rem;
+  top: 1.5rem;
   right: 1rem;
+  margin: 20px;
+  cursor: pointer;
   // background: $off-white;
   @media screen and (min-width: $breakpoint-md) {
     //
