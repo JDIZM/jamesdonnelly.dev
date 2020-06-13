@@ -1,19 +1,23 @@
 // footer
 footer {
- width: 100%; 
+ width: 90%; 
  margin: 0 auto;
-//  @media screen and (min-width: $breakpoint-md){
-//   width: 80%;
-// };
+@media screen and (min-width: $breakpoint-md) {
+  width: 80%;
+};
+@media screen and (min-width: $breakpoint-lg) {
+  width: 60%;
+};
 display: flex;
 // justify-content: center;
 align-items: center;
 text-align: center;
 flex-direction: column;
+text-align: left;
 }
 .footer__grid {
   // padding-left: map-get($spacing, 2);
-  width: 90%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -27,12 +31,12 @@ flex-direction: column;
 
 .footer__item {
   flex: 1 1 auto;
-  padding: map-get($spacing, 1);
+  // padding: map-get($spacing, 1);
   width: 100%;
 }
 
 .copy {
-  width: 90%;
+  width: 100%;
   margin: auto;
   padding: map-get($spacing, 1);
 }
