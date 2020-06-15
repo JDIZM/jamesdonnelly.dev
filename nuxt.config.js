@@ -136,5 +136,9 @@ export default {
   },
   sitemap: {
     hostname: 'https://jamesdonnelly.dev'
+  },
+  // https://nuxtjs.org/api/configuration-generate/
+  generate: {
+    fallback: true
   }
 }

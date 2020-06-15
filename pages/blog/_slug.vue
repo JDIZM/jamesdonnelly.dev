@@ -15,7 +15,7 @@
     <img src="@/assets/carbon-2.png" alt="">
     <p>this component loads markdown files from '@/content/blog/${this.slug}.md which is passed as props through route params</p> -->
     <!-- // FIXME https://github.com/nuxt/eslint-plugin-nuxt/issues/65 -->
-    <component :is="dynamicComponent" />
+    <component :is="dynamicComponent" v-if="dynamicComponent" />
   </article>
 </template>
 
