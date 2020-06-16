@@ -139,6 +139,11 @@ export default {
   },
   // https://nuxtjs.org/api/configuration-generate/
   generate: {
-    fallback: true
+    fallback: true,
+    // TODO add routes / create a function to generate
+    routes: [
+      '/blog/remote-working',
+      '/blog/page-speed-load-time'
+    ]
   }
 }
