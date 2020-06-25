@@ -17,7 +17,7 @@
 
 .modal-content {
   // 
-  padding: $one;
+  padding: 0.5rem;
   // background: white;
   // max-width: 400px;
   // margin: auto;
@@ -27,7 +27,7 @@
 }
 
 .modal-footer {
-  padding: $one;
+  padding: 0.5rem;
 }
 
 // TODO display the modal overlay when the trigger is clicked
@@ -48,8 +48,8 @@
 
 .modal-close {
   position: absolute;
-  right: $one;
-  top: $one;
+  right: 0.5rem;
+  top: 0.5rem;
 }
 
 // animation

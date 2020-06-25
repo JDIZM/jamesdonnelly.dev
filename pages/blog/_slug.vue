@@ -1,15 +1,22 @@
 <template>
   <article class="container">
-    <!-- <h1>BLOG</h1> -->
-    <!-- {{ this.$route.params.slug }} -->
-    <h1 class="post__title">
-      {{ title }}
-    </h1>
-    <div v-for="(tag, i) in tags" :key="i" class="post__tags">
+    <div v-for="(tag, i) in tags" :key="i" class="post__tags text--primary">
       <li> - {{ tag.toUpperCase() }}</li>
     </div>
-    <div class="post__date mt--2">
+    <h1 class="post__title mt--1 mb--1">
+      {{ title.toUpperCase() }}
+    </h1>
+    <div class="post__date mt--1">
       - {{ date }}
+    </div>
+    <div class="post__author">
+      <div class="post__author__img">
+        <img class="mt--1" alt="author image" srcset="https://placehold.it/150x150">
+      </div>
+      <div>
+        <p class="m--1 mt--2">James Donnelly</p>
+        <p class="m--1">Freelance Web Developer</p>
+      </div>
     </div>
     <!-- <p> this is the blog post page </p>
     <img src="@/assets/carbon-2.png" alt="">
@@ -60,11 +67,27 @@ export default {
 .post__tags {
   text-align: left;
   width: 100%;
-  list-style: none
+  list-style: none;
+  font-weight: 700;
 }
 .post__date {
   text-align: left;
    width: 100%;
+}
+.post__author {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 375px) {
+    flex-direction: row;
+  }
+}
+.post__author__img {
+  img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+  }
 }
 .container {
   text-align: left;

@@ -142,7 +142,7 @@ export default {
     fallback: true,
     // TODO add routes / create a function to generate
     routes: [
-      '/blog/remote-working',
+      '/blog/remote-working-productivity',
       '/blog/page-speed-load-time'
     ]
   }

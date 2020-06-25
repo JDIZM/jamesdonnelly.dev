@@ -22,7 +22,9 @@ $colours: (
   white: rgb(255, 255, 255),
   black: rgb(0, 0, 0),
   red: rgb(167, 33, 69),
-  yellow: rgb(255, 200, 50)
+  yellow: rgb(255, 200, 50),
+  primary: rgb(231, 91, 70),
+  secondary: rgb(36, 30, 18)
 );
 // create spacing units for mixin
 $spacing: (
@@ -32,15 +34,6 @@ $spacing: (
   4: 2rem,
 );
 // margin and paddings will be created with mixin
-
-// TODO delete these
-// spacing
-// 8 px grid // 0.5 rem
-// 1 rem = 16px
-$one: 0.5rem;
-$two: 1rem;
-$three: 1.5rem;
-$four: 2rem;
 
 // breakpoints
 $breakpoint-md: 768px;
@@ -101,14 +94,11 @@ h5 {
 
 a {
   text-decoration: none;
+  color: map-get($colours, secondary);
 }
-// TODO clean up below styles
 
 // typography elements
 
-.font-display {
-  //
-}
 
 // type modifiers
 .text--sm {
@@ -120,16 +110,7 @@ a {
 .text--lg {
   font-size: 2rem;
 }
-// using mixins
-// .text--charcoal {
-//   color: $charcoal;
-// }
-// .text--pastel-red {
-//   color: $pastel-red;
-// }
-// .text--off-white {
-//   color: $off-white;
-// }
+
 .text--left {
   text-align: left;
 }
@@ -138,12 +119,3 @@ a {
   color: map-get($colours, black);
   background: map-get($colours, yellow);
 }
-// @mixin colors($colors...) {
-//   .bg-#{$colors} {
-//     background-color: #{$colors};
-//   }
-// }
-// // .bg-#{$colors} {
-// //   background-color: #{$colors};
-// // }
-// @include colors($deep-blue, $astra);

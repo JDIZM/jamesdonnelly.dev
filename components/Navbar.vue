@@ -13,7 +13,7 @@
       </ul>
     </div>
     <!-- <h2 class="nav__title">NAV</h2> -->
-    <div @click="drawer = !drawer, toggleBodyClass()" class="nav__menu">
+    <div class="nav__menu" @click="drawer = !drawer, toggleBodyClass()">
       <i class="material-icons">
         menu
       </i>
@@ -36,8 +36,6 @@
           </li>
         </ul>
       </div>
-      <!-- <button class="btn btn--secondary"><i class="material-icons">menu</i></button>
-      <button class="btn btn--secondary"><i class="material-icons">close</i></button> -->
     </aside>
   </nav>
 </template>
@@ -51,7 +49,6 @@ export default {
       drawer: false,
       links: [
         { name: 'home', path: '/' },
-        // { name: 'about', path: '/about' },
         { name: 'projects', path: '/projects' },
         { name: 'contact', path: '/contact' },
         { name: 'blog', path: '/blog' }
@@ -70,19 +67,8 @@ export default {
       // TODO add transitions when route changes
       this.toggleBodyClass()
     },
-    // toggleBodyClass () {
-    //   const el = document.body;
-    //   this.class = class
     toggleBodyClass () {
-      //
-      // console.log(c)
       const el = document.body
-      // el.classList.toggle('hide-scroll')
-      // if (el.classList.contains(c)) {
-      //   //
-      //   console.log(c, el)
-      //   console.log('already contains')
-      // }
       // stop body having no class by giving default class
       el.classList.add('body')
       if (this.drawer) {
@@ -99,22 +85,6 @@ export default {
 <style lang="scss">
 // import component base styles
 // @import '@/assets/scss/_nav.scss';
-// .navbar {
-//   background: $charcoal;
-//   color: $off-white;
-//   position: fixed;
-//   top:0;
-//   left: 0;
-//   height: 50px;
-//   width: 100%;
-//   margin: auto;
-//   text-align: center;
-
-//   h2 {
-//     margin-top: 0;
-//   }
-// }
-// can also target a.nuxt-link-active class
 
 .hide-scroll {
   overflow: hidden;
