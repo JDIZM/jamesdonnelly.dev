@@ -84,14 +84,21 @@ export default {
 </script>
 
 <style lang="scss">
-// .post__title {
-
-// }
+.post__title {
+  font-size: 1.5rem;
+  @media screen and (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
 .post__tags {
   text-align: left;
   width: 100%;
   list-style: none;
   font-weight: 700;
+  font-size: 1rem;
+  @media screen and (min-width: 768px) {
+    font-size: 1.2rem;
+  }
 }
 .post__date {
   text-align: left;
