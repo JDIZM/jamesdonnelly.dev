@@ -41,6 +41,7 @@ export default {
       slug: this.$route.params.slug,
       tags: [],
       date: null,
+      excerpt: null,
       dynamicComponent: null
     }
   },
@@ -56,6 +57,28 @@ export default {
     // this.date = Date.parse(markdown.attributes.date) // convert the date to JS
     this.date = markdown.attributes.date // use computed value
     this.dynamicComponent = markdown.vue.component
+    this.excerpt = markdown.attributes.excerpt
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'title', name: 'og:title', property: 'og:title', content: this.title },
+        { hid: 'description', name: 'description', content: this.excerpt },
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.excerpt },
+        { hid: 'og:url', name: 'og:url', property: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
+        { hid: 'og:image', name: 'og:image', property: 'og:image', content: process.env.NUXT_HOST + this.thumbnail },
+        { hid: 'og:type', name: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'twitter:card', name: 'twitter:card', property: 'twitter:card', content: process.env.NUXT_HOST + this.thumbnail }
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: process.env.NUXT_HOST + this.$route.path
+        }
+      ]
+    }
   }
 }
 </script>
