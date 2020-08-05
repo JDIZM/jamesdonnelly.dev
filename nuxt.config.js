@@ -142,8 +142,12 @@ export default {
     fallback: true,
     // TODO add routes / create a function to generate
     routes: [
-      '/blog/remote-working-productivity',
-      '/blog/page-speed-load-time'
+      '/blog/remote-working-productivity/',
+      '/blog/page-speed-load-time/'
     ]
+  },
+  // https://nuxtjs.org/api/configuration-router/
+  router: {
+    trailingSlash: true
   }
 }

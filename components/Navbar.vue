@@ -49,9 +49,9 @@ export default {
       drawer: false,
       links: [
         { name: 'home', path: '/' },
-        { name: 'projects', path: '/projects' },
-        { name: 'contact', path: '/contact' },
-        { name: 'blog', path: '/blog' }
+        { name: 'projects', path: '/projects/' },
+        { name: 'contact', path: '/contact/' },
+        { name: 'blog', path: '/blog/' }
       ]
     }
   },
