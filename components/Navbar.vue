@@ -89,4 +89,16 @@ export default {
 .hide-scroll {
   overflow: hidden;
 }
+
+.nav__logo {
+  background: url('~assets/logo-wht.png');
+  // background-origin: ce;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  height: 80px;
+  width: 80px;
+  margin: 0.5rem auto;
+}
 </style>
