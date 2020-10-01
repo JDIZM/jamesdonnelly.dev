@@ -1,7 +1,7 @@
 ---
 title: Page speed, Load Time & Conversions
 date: "2020-06-06"
-excerpt: Page speed, Load Time & Conversions
+excerpt: Page speed, Load Time &amp; Conversions
 tags:
   - web development
 thumbnail: /fast_loading.svg

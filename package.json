@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-portfolio",
+  "name": "jamesdonnelly.dev",
   "version": "1.0.0",
   "description": "My perfect Nuxt.js project",
   "author": "JDIZM",
@@ -33,6 +33,6 @@
     "jest": "^24.1.0",
     "node-sass": "4.14.1",
     "sass-loader": "8.0.2",
-    "vue-jest": "^4.0.0-0"
+    "vue-jest": "4.0.0-beta.5"
   }
 }

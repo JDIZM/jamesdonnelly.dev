@@ -23,6 +23,7 @@ export default {
   },
   data () {
     return {
+      title: 'Frontend Development | Web Developer Blog | James Donnelly',
       // add some sample blog posts data
       // posts: [
       //   { title: 'first post title', slug: 'first-post', thumbnail: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', excerpt: 'this is the first post' },
@@ -43,7 +44,7 @@ export default {
         title: markdown.attributes.title,
         thumbnail: markdown.attributes.thumbnail,
         tags: markdown.attributes.tags,
-        slug: blog, // blogPosts.js
+        slug: blog + '/', // blogPosts.js
         excerpt: markdown.attributes.excerpt,
         date: markdown.attributes.date // convert to JS date object
       })
@@ -61,6 +62,17 @@ export default {
       })
       // sort posts by date
       this.posts.sort((a, b) => b.timestamp - a.timestamp)
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.' },
+        { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
+        { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' }
+      ]
     }
   }
 }
