@@ -35,7 +35,7 @@ export default {
   css: [
     // 'normalize.css/normalize.css',
     // '@/scss/main.scss'
-    // TODO import storybook theme
+    // import storybook theme
     './storybook/theme/main.scss'
   ],
   /*

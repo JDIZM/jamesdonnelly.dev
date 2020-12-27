@@ -13,6 +13,7 @@ import Footer from '@/components/Footer.vue'
 import firebase from '@/plugins/firebase'
 
 export default {
+  name: 'BlogPost',
   components: {
     // Logo
     Navbar,

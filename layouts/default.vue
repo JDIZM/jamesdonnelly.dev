@@ -11,6 +11,7 @@ import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import firebase from '@/plugins/firebase'
 export default {
+  name: 'Default',
   components: {
     // Logo
     Navbar,
