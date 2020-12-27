@@ -97,7 +97,10 @@ export default {
     // '/api/': 'https://us-central1-baked-digital.cloudfunctions.net/sendMail'
     // Note: In the proxy module, /api/ will be added to all requests to the API end point.
     // If you need to remove it use the pathRewrite option
-    '/verify': { target: 'http://localhost:4000/verify', pathRewrite: { '^/verify': '' } }
+    // '/verify': { target: 'http://localhost:4000/verify', pathRewrite: { '^/verify': '' } }
+    //
+    '/verify': { target: 'https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/verify', pathRewrite: { '^/verify': '' } },
+    '/send-mail': { target: 'https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/send-mail', pathRewrite: { '^/send-mail': '' } }
   },
   /*
   ** Build configuration

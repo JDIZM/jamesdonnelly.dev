@@ -5,7 +5,7 @@ const dotenv = require('dotenv')
 const cors = require('cors')({ origin: true })
 admin.initializeApp()
 dotenv.config()
-
+const axios = require('axios')
 //
 // middleware with express
 //
@@ -21,12 +21,12 @@ app.use(basicAuth({
 // Using App as the argument for onRequest(), you can pass a full Express app to an HTTP function
 // https://firebase.google.com/docs/functions/http-events#using_existing_express_apps
 
-// create an api to use express
+// create an api to use express with cloud functions
 exports.api = functions.https.onRequest(app)
 
 //
 // NODEMAILER
-// sendMail
+// 
 
 // use express for nodemailer
 app.post('/send-mail', (req, res) => {
@@ -86,6 +86,42 @@ app.post('/send-mail', (req, res) => {
 // VERIFY RECAPTCHA
 //
 
-// app.post('/verify', (req, res) => {
-//   // TODO recaptcha verify
-// })
+// receives json data, posts x-www-form-urlencoded
+
+app.post('/verify', async (req, res, next) => {
+  // can receive json no problem
+  // use req.query for query data, not body.
+  // http://expressjs.com/en/api.html#req.query
+  // handle json data
+  const { secret, response } = req.body
+  // console.log(secret, response)
+  // create a query to send form-urlencoded data
+  const api = 'https://www.google.com/recaptcha/api/siteverify'
+  const query = `?secret=${secret}&response=${response}`
+  console.log(query)
+  try {
+    // post to api with axios 
+    axios.post(api + query, {
+      headers: {
+        // 'Content-Type': 'application/json'
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    })
+      //
+      .then((response) => {
+        // response.data
+        // console.log(response.data)
+        res.send({
+          recaptcha: response.data
+          // handle success and score client side
+        })
+      })
+      .catch((err) => {
+        //
+        next(err)
+      })
+  } catch(err) {
+    //
+    next(err)
+  }
+})

@@ -123,7 +123,7 @@ export default {
         // form should already be validated, this should be a success
         try {
           const response = await this.$recaptcha.execute('submit')
-          console.log('ReCaptcha token:', response)
+          // console.log('ReCaptcha token:', response)
           // TODO verify the recaptcha token
           // use a node function?
           const secret = '6Lc8AhYaAAAAAI-ZqYXB0fQGBYECdg0EaXxQ3BZg'
@@ -153,9 +153,14 @@ export default {
       // TODO clear form
       // TODO show loading state.
       // make a post request to the cloud mail function
-      const api = process.env.FIREBASE_FUNCTION_API
+      // const api = process.env.FIREBASE_FUNCTION_API
       // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
-      await this.$axios.post(api, data) // without proxy
+      await this.$axios.post('/send-mail', data, {
+        auth: {
+          username: 'admin',
+          password: 'supersecret'
+        }
+      }) // without proxy
         .then((response) => {
           // we can do other things with the response and the data
           // what about slack, sms, other firebase functions
@@ -163,6 +168,8 @@ export default {
           this.toast.show = true
           this.toast.msg = 'Your message has been sent!'
           this.toast.icon = 'check_circle'
+          this.sent = true
+          // TODO redirect to a thank you page.
         })
         .catch((err) => {
           // eslint-disable-next-line
@@ -170,7 +177,7 @@ export default {
         })
     },
     async verifyRecaptcha (secret, response) {
-      console.log(secret, response)
+      // console.log(secret, response)
       // const api = 'http://localhost:4000/verify'
       // use proxy '/verify' to avoid cors issue
       // const query = `?secret=${secret}&response=${response}`
@@ -178,7 +185,7 @@ export default {
       const res = await this.$axios.post('/verify', { secret, response }, {
         auth: {
           username: 'admin',
-          password: 'password'
+          password: 'supersecret'
         },
         headers: {
           'Content-Type': 'application/json'
@@ -186,17 +193,16 @@ export default {
         }
       })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           if (res.data.recaptcha.success === true && res.data.recaptcha.score <= 0.4) {
-            console.log('low score')
+            // low score
           }
           if (res.data.recaptcha.success === true && res.data.recaptcha.score >= 0.5) {
             // successful captcha
-            console.log('winner winner chicken dinner')
-            this.sent = true
+            // console.log('winner winner chicken dinner')
             // TODO send message
             // TODO create a function to post the request to.
-            // await this.sendMessage()
+            this.sendMessage()
           } else {
             // handle failed captcha
           }
