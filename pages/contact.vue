@@ -12,7 +12,7 @@
       :inputs="inputs"
       @onSubmit="onSubmit"
       @onUpdate="onUpdate"
-      @error="onError"
+      @error="onError('Make sure you fill in the form!')"
     />
     <Toast
       :show="toast.show"
@@ -99,8 +99,11 @@ export default {
     }
   },
   async mounted () {
-    // TODO implement recaptcha
-    await this.$recaptcha.init()
+    try {
+      await this.$recaptcha.init()
+    } catch (e) {
+      console.log(e)
+    }
   },
   // computed: {
   //   validateEmail () {
@@ -111,52 +114,52 @@ export default {
   //   }
   // },
   methods: {
-    method () {
-      // eslint-disable-next-line
-      console.log('this is a method in nuxt.js')
-    },
     async onSubmit (value) {
-      if (!this.sent) {
-        // send form once
+      this.submission = value
+      // send form once
+      if (this.sent) {
+        this.onError('Form already sent')
+      } else {
         // form should already be validated, this should be a success
-        // console.log('submit form', value)
-        this.submission = value
-        // TODO send message
-        await this.sendMessage()
+        try {
+          const response = await this.$recaptcha.execute('submit')
+          console.log('ReCaptcha token:', response)
+          // TODO verify the recaptcha token
+          // use a node function?
+          const secret = '6Lc8AhYaAAAAAI-ZqYXB0fQGBYECdg0EaXxQ3BZg'
+          this.verifyRecaptcha(secret, response)
+          // https://developers.google.com/recaptcha/docs/verify
+        } catch (e) {
+          console.log(e)
+        }
       }
     },
-    onError () {
+    onError (msg) {
       this.toast.show = true
-      this.toast.msg = 'There was an error!'
+      this.toast.msg = msg
       this.toast.icon = 'alarm'
     },
     onUpdate (value) {
       // console.log('update', value)
     },
     async sendMessage () {
-      // TODO build form request to post data with cloud functions
-      // get the form data with v-model
+      // form request to post data with cloud functions
       const data = {
         name: this.submission[0],
         phone: this.submission[1],
         email: this.submission[2],
         message: this.submission[3]
       }
-      // console.log(data)
       // TODO clear form
       // TODO show loading state.
       // make a post request to the cloud mail function
       const api = process.env.FIREBASE_FUNCTION_API
-      // eslint-disable-next-line
-      console.log(api)
       // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
       await this.$axios.post(api, data) // without proxy
         .then((response) => {
           // we can do other things with the response and the data
-          // eslint-disable-next-line
-          console.log(response)
           // what about slack, sms, other firebase functions
-          // TODO show success feedback
+          // show success feedback
           this.toast.show = true
           this.toast.msg = 'Your message has been sent!'
           this.toast.icon = 'check_circle'
@@ -165,36 +168,44 @@ export default {
           // eslint-disable-next-line
           console.log(err)
         })
-      // need a better if clause..
-      // if (this.name) {
-      //   // if name exists then check the rest of the form data
-      //   //
-      //   this.feedback = null
-      //   // do something with the form data
-      //   // eslint-disable-next-line
-      //   console.log(data)
-      //   // make a post request to the cloud mail function
-      //   const api = process.env.FIREBASE_FUNCTION_API
-      //   // eslint-disable-next-line
-      //   console.log(api)
-      //   // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
-      //   this.$axios.post(api, data) // without proxy
-      //     .then((response) => {
-      //       // we can do other things with the response and the data
-      //       // eslint-disable-next-line
-      //       console.log(response)
-      //       // what about slack, sms, other firebase functions
-      //       // TODO show success feedback
-      //     })
-      //     .catch((err) => {
-      //       // eslint-disable-next-line
-      //       console.log(err)
-      //     })
-      // } else {
-      //   // do something else
-      //   // handle UI feedback classes
-      //   this.feedback = 'you need to enter something'
-      // }
+    },
+    async verifyRecaptcha (secret, response) {
+      console.log(secret, response)
+      // const api = 'http://localhost:4000/verify'
+      // use proxy '/verify' to avoid cors issue
+      // const query = `?secret=${secret}&response=${response}`
+      // const res = await this.$axios.post('/verify' + query, {
+      const res = await this.$axios.post('/verify', { secret, response }, {
+        auth: {
+          username: 'admin',
+          password: 'password'
+        },
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
+        .then((res) => {
+          console.log(res)
+          if (res.data.recaptcha.success === true && res.data.recaptcha.score <= 0.4) {
+            console.log('low score')
+          }
+          if (res.data.recaptcha.success === true && res.data.recaptcha.score >= 0.5) {
+            // successful captcha
+            console.log('winner winner chicken dinner')
+            this.sent = true
+            // TODO send message
+            // TODO create a function to post the request to.
+            // await this.sendMessage()
+          } else {
+            // handle failed captcha
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      //
+      return res
     }
   }
 }

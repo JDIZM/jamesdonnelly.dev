@@ -91,11 +91,14 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    // proxy: true // Can be also an object with default options
+    proxy: true // Can be also an object with default options
   },
-  // proxy: {
-  //   '/api/': 'https://us-central1-baked-digital.cloudfunctions.net/sendMail'
-  // },
+  proxy: {
+    // '/api/': 'https://us-central1-baked-digital.cloudfunctions.net/sendMail'
+    // Note: In the proxy module, /api/ will be added to all requests to the API end point.
+    // If you need to remove it use the pathRewrite option
+    '/verify': { target: 'http://localhost:4000/verify', pathRewrite: { '^/verify': '' } }
+  },
   /*
   ** Build configuration
   */
@@ -120,7 +123,8 @@ export default {
   },
   server: {
     port: 8000, // default: 3000
-    host: '0.0.0.0' // default: localhost
+    host: 'localhost'
+    // host: '0.0.0.0' // default: localhost
   },
   sitemap: {
     hostname: 'https://jamesdonnelly.dev'

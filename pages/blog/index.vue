@@ -61,8 +61,6 @@ export default {
     // import a list of blog posts from '@/content/blog/blogPosts.js'
     // TODO import blog posts from store instead
     blogPosts.forEach((blog) => {
-      // eslint-disable-next-line
-      console.log(blog);
       // get the markdown post with blog post slug
       const markdown = require(`@/content/blog/${blog}.md`) //
       this.posts.push({
