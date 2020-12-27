@@ -6,51 +6,28 @@ const cors = require('cors')({ origin: true })
 admin.initializeApp()
 dotenv.config()
 
-//
-// middleware with express
-//
-const app = require('express')()
-const basicAuth = require('express-basic-auth')
-// Automatically allow cross-origin requests
-app.use(cors)
+// create smtp transporter to send email
 
-app.use(basicAuth({
-  users: { admin: 'supersecret' }
-}))
+const transporter = nodemailer.createTransport({
+  // https://community.nodemailer.com/2-0-0-beta/setup-smtp/
+  // options.sevice
+  // service: 'gmail',
+  host: process.env.MAILGUN_SMTP,
+  port: '465',
 
-// Using App as the argument for onRequest(), you can pass a full Express app to an HTTP function
-// https://firebase.google.com/docs/functions/http-events#using_existing_express_apps
+  auth: {
+    user: process.env.MAILGUN_SMTP_USER,
+    pass: process.env.MAILGUN_SMTP_PASS
+  }
+})
 
-// create an api to use express
-exports.api = functions.https.onRequest(app)
-
-//
-// NODEMAILER
-// sendMail
-
-// use express for nodemailer
-app.post('/send-mail', (req, res) => {
-  // create smtp transporter to send email
-  const transporter = nodemailer.createTransport({
-    // https://community.nodemailer.com/2-0-0-beta/setup-smtp/
-    // options.sevice
-    // service: 'gmail',
-    host: process.env.MAILGUN_SMTP,
-    port: '465',
-
-    auth: {
-      user: process.env.MAILGUN_SMTP_USER,
-      pass: process.env.MAILGUN_SMTP_PASS
-    }
-  })
+exports.sendMail = functions.https.onRequest((req, res) => {
   // destructure the req.body object and extract form contents
   const { name, email, phone, message } = req.body
   // use cors
   cors(req, res, () => {
     // getting dest email by query string
-    // ?dest=hello@jamesdonnelly.dev
-    // const dest = req.query.dest
-    const dest = 'hello@jamesdonnelly.dev'
+    const dest = req.query.dest
 
     // mail template
     const template = `
@@ -81,11 +58,3 @@ app.post('/send-mail', (req, res) => {
     })
   })
 })
-
-//
-// VERIFY RECAPTCHA
-//
-
-// app.post('/verify', (req, res) => {
-//   // TODO recaptcha verify
-// })
