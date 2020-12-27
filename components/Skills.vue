@@ -1,6 +1,6 @@
 <template>
   <section class="skills">
-    <Title title="TECH STACK" />
+    <h2>TECH STACK</h2>
     <div class="skills__grid">
       <div v-for="(skill, i) in skills" :key="i" class="skills__item">
         <img :src="skill.img" alt="" style="height:75px;width:75px;">
@@ -12,12 +12,8 @@
 </template>
 
 <script>
-import Title from '@/components/ui/Title'
 export default {
   name: 'Skills',
-  components: {
-    Title
-  },
   data () {
     return {
       skills: [

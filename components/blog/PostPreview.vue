@@ -5,7 +5,7 @@
         <!-- using the JS CSS syntax to dynamically set background image / thumbnail -->
         <!-- <div :style="{ backgroundImage: 'url(' + thumbnail + ')' }" class="post__thumb" /> -->
         <div class="img-wrapper">
-          <img :src="thumbnail">
+          <img :src="imgSrc" :alt="title" draggable="false">
         </div>
         <div class="post__content">
           <h2 class="post__title">
@@ -20,12 +20,9 @@
 </template>
 
 <script>
-// this component is on the blog index only
 export default {
   name: 'PostPreview',
   props: {
-    // props received from the parent
-    // display post data with props
     slug: {
       type: String,
       required: true
@@ -46,14 +43,16 @@ export default {
       type: String,
       required: true
     }
+  },
+  data () {
+    return {
+      imgSrc: require('~/assets/blog/' + this.thumbnail)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-// .post {
-//   padding: 1rem;
-// }
 .post__thumb {
   width: 100%;
   height: 300px;

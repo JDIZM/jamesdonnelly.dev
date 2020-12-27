@@ -16,25 +16,14 @@ export default {
     Navbar,
     Footer
   },
-  created () {
-    // https://nuxtjs.org/faq/window-document-undefined/
-    // load firebase analytics
-    if (process.client) {
-      firebase.analytics()
-    }
-  },
   head () {
     return {
-      // title: this.title,
-      // meta: [
-      //   // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-      //   { hid: 'description', name: 'description', content: 'this is a default description' },
-      //   { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
-      //   { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' },
-      //   { hid: 'og:description', name: 'og:description', content: 'this is a default description' },
-      //   { hid: 'og:type', name: 'og:type', content: 'website' },
-      //   { hid: 'twitter:card', name: 'twitter:card', content: process.env.NUXT_HOST + this.thumbnail }
-      // ],
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.' },
+        { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
+        { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.png' }
+      ],
       link: [
         {
           rel: 'canonical',
@@ -71,6 +60,13 @@ export default {
     //       ]
     //     }
     //   }]
+    }
+  },
+  created () {
+    // https://nuxtjs.org/faq/window-document-undefined/
+    // load firebase analytics
+    if (process.client) {
+      firebase.analytics()
     }
   }
 }

@@ -3,19 +3,25 @@
     <div v-for="(tag, i) in tags" :key="i" class="post__tags text--primary">
       <li> - {{ tag.toUpperCase() }}</li>
     </div>
-    <h1 class="post__title mt--1 mb--1">
-      {{ title.toUpperCase() }}
-    </h1>
+    <div>
+      <h1 class="post__title mt--1 mb--1">
+        {{ title.toUpperCase() }}
+      </h1>
+    </div>
     <div class="post__date mt--1">
       - {{ date }}
     </div>
     <div class="post__author">
       <div class="post__author__img">
-        <img class="mt--1" alt="author image" srcset="https://placehold.it/150x150">
+        <img class="mt--1" alt="author image" srcset="http://placehold.it/150x150">
       </div>
       <div>
-        <p class="m--1 mt--2">James Donnelly</p>
-        <p class="m--1">Freelance Web Developer</p>
+        <p class="m--1 pt--1">
+          James Donnelly
+        </p>
+        <p class="m--1 pt--1">
+          Freelance Web Developer
+        </p>
       </div>
     </div>
     <!-- <p> this is the blog post page </p>
@@ -45,20 +51,6 @@ export default {
       dynamicComponent: null
     }
   },
-  computed: {
-    //
-  },
-  created () {
-    // get the post data from markdown files based on the slug which matches the filename
-    const markdown = require(`@/content/blog/${this.slug}.md`) //
-    this.title = markdown.attributes.title
-    this.thumbnail = markdown.attributes.thumbnail
-    this.tags = markdown.attributes.tags
-    // this.date = Date.parse(markdown.attributes.date) // convert the date to JS
-    this.date = markdown.attributes.date // use computed value
-    this.dynamicComponent = markdown.vue.component
-    this.excerpt = markdown.attributes.excerpt
-  },
   head () {
     return {
       title: this.title,
@@ -79,6 +71,20 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    //
+  },
+  created () {
+    // get the post data from markdown files based on the slug which matches the filename
+    const markdown = require(`@/content/blog/${this.slug}.md`) //
+    this.title = markdown.attributes.title
+    this.thumbnail = markdown.attributes.thumbnail
+    this.tags = markdown.attributes.tags
+    // this.date = Date.parse(markdown.attributes.date) // convert the date to JS
+    this.date = markdown.attributes.date // use computed value
+    this.dynamicComponent = markdown.vue.component
+    this.excerpt = markdown.attributes.excerpt
   }
 }
 </script>
@@ -113,6 +119,7 @@ export default {
   }
 }
 .post__author__img {
+  width: 100px;
   img {
     border-radius: 50%;
     height: 80px;

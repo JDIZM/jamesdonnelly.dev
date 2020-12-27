@@ -6,7 +6,7 @@ tags:
   - SASS
   - CSS
   - FRONTEND
-thumbnail: /logos/sass.svg
+thumbnail: sass.svg
 ---
 ## This post needs finishing! Sorry
 
@@ -21,7 +21,7 @@ thumbnail: /logos/sass.svg
 * margin
 * width
 
-![alt text](@/assets/carbon-2.png "image")
+![alt text](@/assets/blog/sass-mixins.png "image")
 
 
 ```scss

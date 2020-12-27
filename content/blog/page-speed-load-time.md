@@ -4,13 +4,13 @@ date: "2020-06-06"
 excerpt: Page speed, Load Time &amp; Conversions
 tags:
   - web development
-thumbnail: /fast_loading.svg
+thumbnail: fast_loading.svg
 ---
 
 With over 50% of all traffic on the internet coming from mobile devices, there’s no question that load time is important for people on the move. Time is valuable and modern life is fast, so your site should be too. Users care more about the load time than your fancy animations, ads or your 187 scripts loading in the background.
 
-![mobile page speed](/mobile-page-speed-new-industry-benchmarks-01-21.png "image")
-
+<!-- ![mobile page speed](/mobile-page-speed-new-industry-benchmarks-01-21.png "image") -->
+![mobile page speed](@/assets/blog/mobile-page-speed-new-industry-benchmarks-01-21.png "image")
 
 From a site owner’s perspective. You’re focused on generating revenue, adding functionality, tracking and improving conversions. I can understand that you need to keep the lights on and the bills paid.
 

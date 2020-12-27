@@ -12,15 +12,14 @@
         </li>
       </ul>
     </div>
-    <!-- <h2 class="nav__title">NAV</h2> -->
-    <div class="nav__menu" @click="drawer = !drawer, toggleBodyClass()">
+    <div class="nav__menu" @click="drawer = !drawer">
       <i class="material-icons">
         menu
       </i>
     </div>
     <!-- desktop only -->
     <aside v-if="drawer" class="nav__drawer nav__drawer --full">
-      <div class="nav__menu" @click="drawer = !drawer, toggleBodyClass()">
+      <div class="nav__menu" @click="drawer = !drawer">
         <i class="material-icons">
           close
         </i>
@@ -57,41 +56,39 @@ export default {
   },
   watch: {
     // watch the route and call method
-    '$route.fullPath': 'routeChange'
+    // '$route.fullPath': 'routeChange'
   },
   methods: {
-    routeChange () {
-      // react to route changes...
-      // close nav drawer
-      this.drawer = false
-      // TODO add transitions when route changes
-      this.toggleBodyClass()
-    },
-    toggleBodyClass () {
-      const el = document.body
-      // stop body having no class by giving default class
-      el.classList.add('body')
-      if (this.drawer) {
-        // if drawer is open toggle body scrolling class
-        el.classList.add('hide-scroll')
-      } else {
-        el.classList.remove('hide-scroll')
-      }
-    }
+    // TODO add transitions when route changes
+    // routeChange () {
+    //   // react to route changes...
+    //   // close nav drawer
+    //   this.drawer = false
+    //
+    //   this.toggleBodyClass()
+    // },
+    // toggleBodyClass () {
+    //   const el = document.body
+    //   // stop body having no class by giving default class
+    //   el.classList.add('body')
+    //   if (this.drawer) {
+    //     // if drawer is open toggle body scrolling class
+    //     el.classList.add('hide-scroll')
+    //   } else {
+    //     el.classList.remove('hide-scroll')
+    //   }
+    // }
   }
 }
 </script>
 
 <style lang="scss">
-// import component base styles
-// @import '@/assets/scss/_nav.scss';
-
-.hide-scroll {
-  overflow: hidden;
-}
+// .hide-scroll {
+//   overflow: hidden;
+// }
 
 .nav__logo {
-  background: url('~assets/logo-wht.png');
+  background: url('~assets/logo.png');
   // background-origin: ce;
   background-origin: content-box;
   background-repeat: no-repeat;

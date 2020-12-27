@@ -33,8 +33,10 @@ export default {
   ** Global CSS
   */
   css: [
-    'normalize.css/normalize.css',
-    '@/scss/main.scss'
+    // 'normalize.css/normalize.css',
+    // '@/scss/main.scss'
+    // TODO import storybook theme
+    './storybook/theme/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -47,45 +49,23 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
-    // '@nuxtjs/vuetify'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources'
   ],
-  // vuetify: {
-  //   /* module options */
-  //   // customVariables: ['~/assets/variables.scss'],
-  //   theme: {
-  //     primary: '#ff9800',
-  //     secondary: '#ff5722',
-  //     accent: '#00bcd4',
-  //     error: '#e91e63',
-  //     warning: '#f44336',
-  //     info: '#ffeb3b',
-  //     success: '#4caf50'
-  //   }
-  // },
+  styleResources: {
+    // your settings here
+    scss: [
+      // '@/assets/scss/main.scss',
+      '@/storybook/theme/_vars.scss',
+      '@/storybook/theme/_mixins.scss'
+    ]
+  },
   // build: {
   //   loaders: {
   //     scss: {
   //       prependData: '@import "~@/assets/variables.scss";'
   //     }
   //   }
-  // },
-  // buildModules: [
-  //   // Doc: https://github.com/nuxt-community/eslint-module
-  //   '@nuxtjs/eslint-module',
-  //   ['@nuxtjs/vuetify', { /* module options */
-  //     customVariables: ['~/assets/variables.scss'],
-  //     theme: { light: { primary: '#FF5733' } } }]
-  // ],
-  // https://github.com/nuxt-community/vuetify-module
-  // https://vuetifyjs.com/en/getting-started/quick-start#nuxt-install
-  // TODO the options arent working!
-  // vuetify: {
-  //   optionsPath: './vuetify.options.js'
-  // },
-  // vuetify: {
-  //   /* module options */
-  //   customVariables: ['~/assets/variables.scss']
   // },
   /*
   ** Nuxt.js modules
@@ -96,8 +76,17 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/recaptcha'
   ],
+  recaptcha: {
+    /* reCAPTCHA options */
+    hideBadge: true,
+    language: 'v3',
+    siteKey: '6Lc8AhYaAAAAAInNucuPnFDKLP3rhFHZ0Jg5O0fq',
+    version: 3,
+    size: 'normal'
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

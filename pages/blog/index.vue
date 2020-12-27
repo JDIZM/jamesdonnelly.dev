@@ -1,6 +1,5 @@
 <template>
   <div class="blog container">
-    <!-- <p>this is the blog index page /blog/</p> -->
     <div v-for="(post, i) in posts" :key="i">
       <PostPreview
         :slug="post.slug"
@@ -24,20 +23,46 @@ export default {
   data () {
     return {
       title: 'Frontend Development | Web Developer Blog | James Donnelly',
-      // add some sample blog posts data
-      // posts: [
-      //   { title: 'first post title', slug: 'first-post', thumbnail: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', excerpt: 'this is the first post' },
-      //   { title: 'second post title', slug: 'second-post', thumbnail: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', excerpt: 'this is the second post' }
-      // ]
-      posts: [] // pass the post data as props to the child component PostPreview
+      posts: []
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.'
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: process.env.NUXT_HOST + this.$route.path
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: process.env.NUXT_HOST + '/logo.jpg'
+        }
+      ]
+    }
+  },
+  computed: {
+    // TODO get posts from vuex store
+    getPosts () {
+      return this.$store.state.posts.posts
     }
   },
   created () {
     // get a list of blogs from markdown content
     // import a list of blog posts from '@/content/blog/blogPosts.js'
+    // TODO import blog posts from store instead
     blogPosts.forEach((blog) => {
       // eslint-disable-next-line
-      console.log(blog)
+      console.log(blog);
       // get the markdown post with blog post slug
       const markdown = require(`@/content/blog/${blog}.md`) //
       this.posts.push({
@@ -52,6 +77,7 @@ export default {
     this.sortDates()
   },
   methods: {
+    // TODO sort posts with store, only has to check for data once with persistence
     sortDates () {
       // get blog posts
       this.posts.forEach((post) => {
@@ -62,17 +88,6 @@ export default {
       })
       // sort posts by date
       this.posts.sort((a, b) => b.timestamp - a.timestamp)
-    }
-  },
-  head () {
-    return {
-      title: this.title,
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.' },
-        { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
-        { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' }
-      ]
     }
   }
 }

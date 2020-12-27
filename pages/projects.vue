@@ -18,7 +18,7 @@
         {{ project.overview }}
       </p>
       <ul class="skill__list">
-        <li class="skill__list__item" v-for="(skill) in project.skills" :key="skill">
+        <li v-for="(skill) in project.skills" :key="skill" class="skill__list__item">
           {{ skill }}
         </li>
       </ul>
