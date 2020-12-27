@@ -88,7 +88,7 @@ app.post('/send-mail', (req, res) => {
 
 // receives json data, posts x-www-form-urlencoded
 
-app.post('/verify', async (req, res, next) => {
+app.post('/verify', async (req, res) => {
   // can receive json no problem
   // use req.query for query data, not body.
   // http://expressjs.com/en/api.html#req.query
@@ -107,21 +107,22 @@ app.post('/verify', async (req, res, next) => {
         "Content-Type": "application/x-www-form-urlencoded"
       }
     })
+    .then((response) => {
+      return res.send({
+        recaptcha: response.data
+        // handle success and score client side
+      })
+    })
+    .catch((err) => {
       //
-      .then((response) => {
-        // response.data
-        // console.log(response.data)
-        res.send({
-          recaptcha: response.data
-          // handle success and score client side
-        })
+      // next(err)
+      res.send({
+        err
       })
-      .catch((err) => {
-        //
-        next(err)
-      })
+    })
   } catch(err) {
-    //
-    next(err)
+    res.send({
+      err
+    })
   }
 })
