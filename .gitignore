@@ -88,5 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
-plugins/firebase.js
+
+# custom
 storybook

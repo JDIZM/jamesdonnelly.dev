@@ -2,6 +2,9 @@
 
 > My nuxt.js portfolio site.
 
+1. storybook > https://github.com/JDIZM/vue-storybook-library
+2. functions > https://github.com/JDIZM/firebase-functions-jd
+
 ## Build Setup
 
 ``` bash
