@@ -97,5 +97,14 @@ export default {
   /* background: url('~assets/bg-img.jpeg') */
   /* padding: 1rem; */
   margin-top: 1rem;
+  text-align: left;
+}
+/* stop FOUT on post title */
+.post__title {
+  text-align: left;
+  font-size: 1.5rem;
+  @media screen and (min-width: 768px) {
+    font-size: 2.5rem;
+  }
 }
 </style>

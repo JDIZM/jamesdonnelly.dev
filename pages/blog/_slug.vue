@@ -1,5 +1,5 @@
 <template>
-  <article class="container">
+  <article class="post container">
     <div v-for="(tag, i) in tags" :key="i" class="post__tags text--primary">
       <li> - {{ tag.toUpperCase() }}</li>
     </div>
@@ -87,7 +87,12 @@ export default {
 </script>
 
 <style lang="scss">
+// do not scope so the styles can target markdown post
+.post {
+  text-align: left;
+}
 .post__title {
+  text-align: left;
   font-size: 1.5rem;
   @media screen and (min-width: 768px) {
     font-size: 2.5rem;
@@ -123,11 +128,8 @@ export default {
     width: 80px;
   }
 }
-.container {
-  text-align: left;
-}
 .frontmatter-markdown  {
-    text-align: left;
+    // text-align: left;
     img {
       height: 100%;
       width: 100%;
