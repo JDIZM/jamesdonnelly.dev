@@ -4,11 +4,11 @@
     <div class="nav__menu__desktop">
       <ul class="">
         <li v-for="(link, i) in links" :key="i" class="">
-          <router-link :to="link.path" exact-active-class="">
+          <NuxtLink :to="link.path" exact-active-class="">
             <div class="">
               {{ link.name.toUpperCase() }}
             </div>
-          </router-link>
+          </NuxtLink>
         </li>
       </ul>
     </div>
@@ -27,11 +27,11 @@
       <div>
         <ul class="nav__menu__list">
           <li v-for="(link, i) in links" :key="i" class="nav__menu__list_item">
-            <router-link :to="link.path" exact-active-class="--active">
+            <NuxtLink :to="link.path" exact-active-class="--active">
               <div class="nav__menu__wrapper">
                 {{ link.name }}
               </div>
-            </router-link>
+            </NuxtLink>
           </li>
         </ul>
       </div>

@@ -1,4 +1,6 @@
 module.exports = {
+  // TODO jest setup
+  // globalSetup: '<rootDir>/jest.setup.js',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
@@ -9,9 +11,11 @@ module.exports = {
     '^.+\\.js$': 'babel-jest',
     '.*\\.(vue)$': 'vue-jest'
   },
-  'collectCoverage': true,
-  'collectCoverageFrom': [
+  collectCoverage: true,
+  collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue'
-  ]
+  ],
+  // ignore storybook
+  modulePathIgnorePatterns: ['storybook']
 }
