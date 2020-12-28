@@ -10,7 +10,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
-import firebase from '@/plugins/firebase'
+// import firebase from '@/plugins/firebase'
 
 export default {
   name: 'BlogPost',
@@ -39,9 +39,9 @@ export default {
   created () {
     // https://nuxtjs.org/faq/window-document-undefined/
     // load firebase analytics
-    if (process.client) {
-      firebase.analytics()
-    }
+    // if (process.client) {
+    //   firebase.analytics()
+    // }
   }
 }
 </script>

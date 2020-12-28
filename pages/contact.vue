@@ -193,15 +193,12 @@ export default {
         }
       })
         .then((res) => {
-          // console.log(res)
           if (res.data.recaptcha.success === true && res.data.recaptcha.score <= 0.4) {
             // low score
           }
           if (res.data.recaptcha.success === true && res.data.recaptcha.score >= 0.5) {
             // successful captcha
             // console.log('winner winner chicken dinner')
-            // TODO send message
-            // TODO create a function to post the request to.
             this.sendMessage()
           } else {
             // handle failed captcha

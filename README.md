@@ -24,7 +24,7 @@ $ yarn generate
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
-## SASS
+<!-- ## SASS
 
 1. install loaders to use sass
 `npm install --save-dev node-sass sass-loader`
@@ -43,18 +43,20 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 // import normalize.css for default html styles
 
-`import '~/node_modules/normalize.css/normalize.css'`
+`import '~/node_modules/normalize.css/normalize.css'` -->
 
 ## FUNCTIONS
 
-* firebase nodemailer sendMail() cloud function with Mailgun API.
+* functions are imported in their own repo to avoid linting issues
 
 ## STACK
 
 * nuxt
-* custom scss theme
-* custom components
-* dynamic markdown blog
+* storybook ui
+* sass theme, utils, mixins
+* firebase cloud functions
+* netlify hosting
+* markdown blog
 
 ### BLOG
 
@@ -63,3 +65,9 @@ content will be stored in the /contents folder and markdown will be loaded based
 https://www.npmjs.com/package/frontmatter-markdown-loader 
 
 import dynamically https://hmsk.github.io/frontmatter-markdown-loader/vue.html
+
+
+## NETLIFY
+
+* add the proxy urls and external redirects to the `_redirects` file
+* `_redirects` is add to the /static folder so it is built every time.

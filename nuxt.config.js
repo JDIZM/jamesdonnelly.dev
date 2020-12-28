@@ -2,6 +2,8 @@
 import FMMode from 'frontmatter-markdown-loader/mode'
 
 export default {
+  // https://nuxtjs.org/blog/going-full-static
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -14,13 +16,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons&display=swap' }
     ]
   },
   // custom dot env variables client side
   // https://nuxtjs.org/api/configuration-env/
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    // WARNING baseURL and proxy cannot be used at the same time, so when the proxy option is in use, you need to define prefix instead of baseURL.
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    prefix: process.env.API_URL
   },
   /*
   ** Customize the progress-bar color
@@ -71,7 +75,9 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
+    '@nuxtjs/axios', // https://axios.nuxtjs.org/options
+    // FIXME is @nuxtjs/proxy needed vs axios?
+    '@nuxtjs/proxy', // // https://nuxtjs.org/faq/http-proxy/
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
@@ -91,16 +97,27 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    proxy: true // Can be also an object with default options
+    // use proxy
+    proxy: true,
+    // proxy will not work with your baseUrl, must have a prefix
+    // see https://axios.nuxtjs.org/options/
+    prefix: process.env.API_URL // eg api url before the proxy target
+    // https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api + /verify
+    // https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api + /send-mail
+    // FIXME can you only have ONE api url as a prefix?
+    // then how do we call external api's if there will be cors issues.
   },
   proxy: {
-    // '/api/': 'https://us-central1-baked-digital.cloudfunctions.net/sendMail'
     // Note: In the proxy module, /api/ will be added to all requests to the API end point.
     // If you need to remove it use the pathRewrite option
-    // '/verify': { target: 'http://localhost:4000/verify', pathRewrite: { '^/verify': '' } }
-    //
-    '/verify': { target: 'https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/verify', pathRewrite: { '^/verify': '' } },
-    '/send-mail': { target: 'https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/send-mail', pathRewrite: { '^/send-mail': '' } }
+    '/verify': {
+      target: 'https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/verify',
+      pathRewrite: { '^/verify': '' }
+    },
+    '/send-mail': {
+      target: 'https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/send-mail',
+      pathRewrite: { '^/send-mail': '' }
+    }
   },
   /*
   ** Build configuration
@@ -130,7 +147,16 @@ export default {
     // host: '0.0.0.0' // default: localhost
   },
   sitemap: {
-    hostname: 'https://jamesdonnelly.dev'
+    hostname: 'https://nuxt-portfolio-8d1bf.web.app/',
+    trailingSlash: true
+  },
+  pwa: {
+    meta: {
+      // https://pwa.nuxtjs.org/modules/meta.html#options
+      /* meta options */
+      theme_color: '#32543b'
+      // TODO meta
+    }
   },
   // https://nuxtjs.org/api/configuration-generate/
   generate: {
