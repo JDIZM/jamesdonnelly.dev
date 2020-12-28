@@ -4,7 +4,7 @@
     <div class="nav__menu__desktop">
       <ul class="">
         <li v-for="(link, i) in links" :key="i" class="">
-          <NuxtLink :to="link.path" exact-active-class="">
+          <NuxtLink :to="link.path" exact-active-class="--active" class="btn">
             <div class="">
               {{ link.name.toUpperCase() }}
             </div>
@@ -27,7 +27,7 @@
       <div>
         <ul class="nav__menu__list">
           <li v-for="(link, i) in links" :key="i" class="nav__menu__list_item">
-            <NuxtLink :to="link.path" exact-active-class="--active">
+            <NuxtLink :to="link.path" exact-active-class="--active" class="btn">
               <div class="nav__menu__wrapper">
                 {{ link.name }}
               </div>
@@ -86,6 +86,7 @@ export default {
 // .hide-scroll {
 //   overflow: hidden;
 // }
+// TODO active class --active
 
 .nav__logo {
   background: url('~assets/logo.png');

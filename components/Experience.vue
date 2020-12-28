@@ -1,8 +1,9 @@
 <template>
   <div class="experience m--2">
+    <h3>EXPERIENCE</h3>
     <div v-for="(job, i) in experience" :key="i" class="experience__item mt--4">
       <div class="exp__date">
-        <h5>{{ job.location }}</h5>
+        <h4>{{ job.location }}</h4>
         <p>{{ job.date }}</p>
       </div>
       <div class="exp__time__wrapper">

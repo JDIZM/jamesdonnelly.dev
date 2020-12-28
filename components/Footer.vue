@@ -10,15 +10,15 @@
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum sequi quos pariatur nulla atque placeat fuga quam officia, veniam maxime. Repellat similique explicabo inventore iusto necessitatibus obcaecati fugiat suscipit ad!</p>
       </div> -->
       <div class="footer__item">
-        <h5>SOCIAL</h5>
+        <h3>SOCIAL</h3>
         <ul>
           <li class="mt--1">
             <div class="m--1 social-icons">
-              <img src="/logos/twitter.svg">
+              <img height="25px" width="25px" alt="twitter" src="/logos/twitter.svg">
               <a href="https://twitter.com/JDIZM"> Twitter</a>
             </div>
             <div class="m--1 social-icons">
-              <img src="/logos/github.svg">
+              <img height="25px" width="25px" alt="github" src="/logos/github.svg">
               <a href="https://github.com/JDIZM"> Github</a>
             </div>
           </li>

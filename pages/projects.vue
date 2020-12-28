@@ -6,7 +6,7 @@
       <!-- <div :style="{ backgroundImage: 'url(' + project.img + ')' }" class="project__img" /> -->
       <div class="project__img">
         <!-- <img src="@/assets/weather_app.svg" alt=""> -->
-        <img :src="project.img" alt="">
+        <img :src="project.img" :alt="project.name">
       </div>
       <header>
         <h4 class="project__title">

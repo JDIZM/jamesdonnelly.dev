@@ -16,7 +16,11 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons&display=swap' }
+      // TODO preload fonts
+      // TODO display default system font
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap' }
     ]
   },
   // custom dot env variables client side
@@ -160,15 +164,30 @@ export default {
   },
   // https://nuxtjs.org/api/configuration-generate/
   generate: {
-    fallback: true,
-    // TODO add routes / create a function to generate
-    routes: [
-      '/blog/remote-working-productivity/',
-      '/blog/page-speed-load-time/'
-    ]
+    fallback: true
+    // crawler in v2.13 now generates routes for dynamic links
+    // routes: [
+    //   '/blog/remote-working-productivity/',
+    //   '/blog/page-speed-load-time/'
+    // ]
   },
   // https://nuxtjs.org/api/configuration-router/
   router: {
     trailingSlash: true
+  },
+  // TODO static assets cache policy
+  // https://stackoverflow.com/questions/61662857/serve-static-assets-with-an-efficient-cache-policy-nuxt-js-gae
+  // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-render#static
+  render: {
+    // Setting up cache for 'static' directory - a year in milliseconds
+    // https://web.dev/uses-long-cache-ttl
+    static: {
+      maxAge: 1000 * 60 * 60 * 24 * 30
+      // maxAge: '1y'
+    },
+    dist: {
+      // maxAge: '1y'
+      maxAge: 1000 * 60 * 60 * 24 * 30
+    }
   }
 }

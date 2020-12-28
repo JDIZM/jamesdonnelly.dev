@@ -1,9 +1,9 @@
 <template>
   <section class="skills">
-    <h2>TECH STACK</h2>
+    <h3>TECH STACK</h3>
     <div class="skills__grid">
       <div v-for="(skill, i) in skills" :key="i" class="skills__item">
-        <img :src="skill.img" alt="" style="height:75px;width:75px;">
+        <img :src="skill.img" :alt="skill.name" width="75px" height="75px">
         <p> {{ skill.name.toUpperCase() }}</p>
       </div>
       <!-- <img src="~/assets/logos/webpack.svg" alt="" style="height:50px;width:50px"> -->
