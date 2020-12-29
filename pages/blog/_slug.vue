@@ -13,7 +13,7 @@
     </div>
     <div class="post__author">
       <div class="post__author__img">
-        <img class="mt--1" alt="author image" srcset="http://placehold.it/150x150">
+        <img class="mt--1" alt="author image" height="60px" width="60px" :srcset="profile">
       </div>
       <div>
         <p class="m--1 pt--1">
@@ -41,6 +41,7 @@ export default {
     return {
       title: null,
       thumbnail: null,
+      profile: process.env.PROFILE_URL,
       slug: this.$route.params.slug,
       tags: [],
       date: null,
@@ -121,11 +122,12 @@ export default {
   }
 }
 .post__author__img {
-  width: 100px;
+  width: 88px;
   img {
     border-radius: 50%;
-    height: 80px;
-    width: 80px;
+    // set image height explicitly on the element
+    // height: 100%;
+    // width: 100%;
   }
 }
 .frontmatter-markdown  {
