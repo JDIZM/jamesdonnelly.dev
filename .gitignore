@@ -57,7 +57,9 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-# .env
+.env
+.env.production
+.env.staging
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -89,5 +91,5 @@ sw.*
 # Vim swap files
 *.swp
 
-# custom
+# storybook ui
 storybook

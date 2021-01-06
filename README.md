@@ -3,7 +3,7 @@
 > My nuxt.js portfolio site.
 
 1. storybook > https://github.com/JDIZM/vue-storybook-library
-2. functions > https://github.com/JDIZM/firebase-functions-jd
+2. functions > https://github.com/JDIZM/firebase-functions-express-api
 
 ## Build Setup
 
