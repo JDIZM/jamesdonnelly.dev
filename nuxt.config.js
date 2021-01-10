@@ -40,7 +40,6 @@ export default {
   ** Global CSS
   */
   css: [
-    // 'normalize.css/normalize.css',
     // '@/scss/main.scss'
     // import storybook theme
     './storybook/theme/main.scss'

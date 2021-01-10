@@ -35,6 +35,7 @@ export default {
   data () {
     return {
       title: 'contact!',
+      description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       submission: null, // submitted form values
       sent: false, // only send once
       toast: {
@@ -93,6 +94,7 @@ export default {
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'description', name: 'description', content: 'Get in touch with a freelance web developer.' },
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: 'Get in touch with a freelance web developer.' },
         { hid: 'og:url', name: 'og:url', content: this.$route.path },
         { hid: 'og:image', name: 'og:image', content: '/logo.png' }
       ]
@@ -123,13 +125,12 @@ export default {
         // form should already be validated, this should be a success
         try {
           const response = await this.$recaptcha.execute('submit')
-          // console.log('ReCaptcha token:', response)
-          // TODO verify the recaptcha token
-          // use a node function?
-          const secret = '6Lc8AhYaAAAAAI-ZqYXB0fQGBYECdg0EaXxQ3BZg'
-          this.verifyRecaptcha(secret, response)
+          // verify the recaptcha token
+          this.verifyRecaptcha(response)
           // https://developers.google.com/recaptcha/docs/verify
         } catch (e) {
+          // eslint-dsiable-next-line
+          // TODO error
           console.log(e)
         }
       }
@@ -143,6 +144,7 @@ export default {
       // console.log('update', value)
     },
     async sendMessage () {
+      // TODO show loading state.
       // form request to post data with cloud functions
       const data = {
         name: this.submission[0],
@@ -150,15 +152,13 @@ export default {
         email: this.submission[2],
         message: this.submission[3]
       }
-      // TODO clear form
-      // TODO show loading state.
       // make a post request to the cloud mail function
       // const api = process.env.FIREBASE_FUNCTION_API
       // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
       await this.$axios.post('/send-mail', data, {
         auth: {
           username: 'admin',
-          password: 'supersecret'
+          password: process.env.PASS
         }
       }) // without proxy
         .then((response) => {
@@ -170,22 +170,23 @@ export default {
           this.toast.icon = 'check_circle'
           this.sent = true
           // TODO redirect to a thank you page.
+          // TODO clear form
         })
         .catch((err) => {
-          // eslint-disable-next-line
+          // TODO err
           console.log(err)
         })
     },
-    async verifyRecaptcha (secret, response) {
-      // console.log(secret, response)
+    async verifyRecaptcha (response) {
       // const api = 'http://localhost:4000/verify'
+      const api = '/verify'
       // use proxy '/verify' to avoid cors issue
       // const query = `?secret=${secret}&response=${response}`
       // const res = await this.$axios.post('/verify' + query, {
-      const res = await this.$axios.post('/verify', { secret, response }, {
+      const res = await this.$axios.post(api, { response }, {
         auth: {
           username: 'admin',
-          password: 'supersecret'
+          password: process.env.PASS
         },
         headers: {
           'Content-Type': 'application/json'
@@ -198,13 +199,13 @@ export default {
           }
           if (res.data.recaptcha.success === true && res.data.recaptcha.score >= 0.5) {
             // successful captcha
-            // console.log('winner winner chicken dinner')
             this.sendMessage()
           } else {
             // handle failed captcha
           }
         })
         .catch((err) => {
+          // TODO err
           console.log(err)
         })
       //

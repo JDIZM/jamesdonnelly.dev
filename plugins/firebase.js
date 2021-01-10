@@ -5,16 +5,16 @@ import 'firebase/analytics'
 // if (process.client) {
 //   require('firebase/app')
 // }
-const config = {
-  apiKey: 'AIzaSyCBhb4ql4-LdU9RPAEZ9Yl1ALdY_URznd8',
-  authDomain: 'nuxt-portfolio-8d1bf.firebaseapp.com',
-  databaseURL: 'https://nuxt-portfolio-8d1bf.firebaseio.com',
-  projectId: 'nuxt-portfolio-8d1bf',
-  storageBucket: 'nuxt-portfolio-8d1bf.appspot.com',
-  messagingSenderId: '329674313162',
-  appId: '1:329674313162:web:9008fb58c9b2f9ceb9d333',
-  measurementId: 'G-KZWB6GKFPJ'
+// TODO env vars for firebase
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: process.env.FB_API_KEY,
+  authDomain: process.env.FB_AUTH_DOMAIN,
+  projectId: process.env.FB_P_ID,
+  storageBucket: process.env.FB_S_BU,
+  messagingSenderId: process.env.FB_MESS_ID,
+  appId: process.env.FB_APP_ID
 }
 // config fixes this issue https://github.com/vercel/next.js/issues/1999
 // export default app
-export default !firebase.apps.length ? firebase.initializeApp(config) : firebase.app()
+export default !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app()

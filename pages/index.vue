@@ -36,14 +36,13 @@
 </template>
 
 <script>
-// import json from '~/assets/cv.json'
 import Skills from '@/components/Skills'
 import Experience from '@/components/Experience'
 /* eslint-disable */ 
 // eslint-disable-next-line
-console.log('***************')
-console.log('built by @JDIZM')
-console.log('***************')
+// console.log('***************')
+// console.log('built by @JDIZM')
+// console.log('***************')
 export default {
   components: {
     Skills,
@@ -52,6 +51,7 @@ export default {
   data () {
     return {
       title: 'Freelance Web Developer Manchester | James Donnelly',
+      description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       experience: [
         {
           date: "April 2019",
@@ -68,58 +68,13 @@ export default {
       title: this.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.' },
+        { hid: 'description', name: 'description', content: this.description },
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.description },
         { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
         { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' }
       ]
     }
   // TODO LOCAL SCHEMA 
-  //     script: [{
-  //       type: 'application/ld+json',
-  //       json: {
-  //         '@context': 'http://schema.org',
-  //         '@type': 'LocalBusiness',
-  //         'name': 'Baked Digital',
-  //         'image': 'https://baked.digital/logo.jpg',
-  //         '@id': '',
-  //         'url': 'https://baked.digital',
-  //         'telephone': '+441615190814',
-  //         'address': {
-  //           '@type': 'PostalAddress',
-  //           'streetAddress': 'Ziferblat, 23 Edge St',
-  //           'addressLocality': 'Manchester',
-  //           'postalCode': 'M4 1HW',
-  //           'addressCountry': 'GB'
-  //         },
-  //         'geo': {
-  //           '@type': 'GeoCoordinates',
-  //           'latitude': 53.48448,
-  //           'longitude': -2.2364689999999428
-  //         },
-  //         'sameAs': [
-  //           'https://www.facebook.com/baked.digital/',
-  //           'https://twitter.com/bakeddigital',
-  //           'https://www.instagram.com/baked.digital/',
-  //           'https://www.linkedin.com/company/baked-digital/'
-  //         ]
-  //       }
-  //     }]
-  //   }
-  // }
-  // metaInfo: {
-  //   title: 'INDEX',
-  //   meta: [
-  //     { charset: 'utf-8' },
-  //     {
-  //       property: 'og:title',
-  //       content: 'Test title',
-  //       // following template options are identical
-  //       // template: '%s - My page',
-  //       template: chunk => `${chunk} - My page`,
-  //       vmid: 'og:title'
-  //     }
-  //   ]
-  // }
   }
 }
 </script>

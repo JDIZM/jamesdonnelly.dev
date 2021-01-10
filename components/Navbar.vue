@@ -83,11 +83,6 @@ export default {
 </script>
 
 <style lang="scss">
-// .hide-scroll {
-//   overflow: hidden;
-// }
-// TODO active class --active
-
 .nav__logo {
   background: url('~assets/logo.png');
   // background-origin: ce;

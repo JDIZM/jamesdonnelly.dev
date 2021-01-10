@@ -23,6 +23,7 @@ export default {
   data () {
     return {
       title: 'Frontend Development | Web Developer Blog | James Donnelly',
+      description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       posts: []
     }
   },
@@ -31,24 +32,13 @@ export default {
       title: this.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.'
-        },
-        {
-          hid: 'og:url',
-          name: 'og:url',
-          content: process.env.NUXT_HOST + this.$route.path
-        },
-        {
-          hid: 'og:image',
-          name: 'og:image',
-          content: process.env.NUXT_HOST + '/logo.jpg'
-        }
+        { hid: 'description', name: 'description', content: this.description },
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.description },
+        { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
+        { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' }
       ]
     }
+    // TODO LOCAL SCHEMA
   },
   computed: {
     // TODO get posts from vuex store

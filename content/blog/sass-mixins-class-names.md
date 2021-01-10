@@ -21,6 +21,20 @@ thumbnail: sass.svg
 * margin
 * width
 
+SASS Maps
+Maps in Sass hold pairs of keys and values, and make it easy to look up a value by its corresponding key. 
+
+* using map-get to retrieve colours from the key:value pairs
+
+eg
+
+```css
+.text--highlight {
+  color: map-get($colours, black);
+  background: map-get($colours, yellow);
+}
+```
+
 ![alt text](@/assets/blog/sass-mixins.png "image")
 
 
@@ -35,10 +49,10 @@ $colors: (
   yellow: rgb(255, 200, 50)
 );
 
-// create a mixin to create class names
+// create a mixin to append class names for each name, colour
 @mixin background {
   @each $name, $colour in $colours {
-    //
+    // append  the name
     &-#{$name} {
       background: $colour;
     }
@@ -53,12 +67,47 @@ $colors: (
   }
 }
 
+// https://tailwindcss.com/docs/theme/#app
+// inherit spacing values
+@mixin spacing {
+  @each $size, $rem in $spacing {
+    // margin
+    .m--#{$size} {
+      margin: $rem;
+    }
+    .mt--#{$size} {
+      margin-top: $rem;
+    }
+    .mb--#{$size} {
+      margin-bottom: $rem;
+    }
+    // padding
+    .p--#{$size} {
+      padding: $rem;
+    }
+    .pt--#{$size} {
+      padding-top: $rem;
+    }
+    .pb--#{$size} {
+      padding-bottom: $rem;
+    }
+  }
+}
+
+// create bg classes with mixin
+// appends --colour eg bg--yellow
 .bg {
   @include background;
 };
 
+// create text classes with mixin
+// appends --colour eg text--yellow
 .text {
   @include text;
 };
+
+// create spacing classes for margin and padding
+// m--1, p--1 etc
+@include spacing;
 
 ```
