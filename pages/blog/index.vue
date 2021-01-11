@@ -1,6 +1,6 @@
 <template>
   <div class="blog container">
-    <div v-for="(post, i) in posts" :key="i">
+    <div v-for="(post, i) in sortPostsBydate" :key="i">
       <PostPreview
         :slug="post.slug"
         :thumbnail="post.thumbnail"
@@ -14,7 +14,7 @@
 
 <script>
 import PostPreview from '@/components/blog/PostPreview'
-import blogPosts from '@/content/blog/blogPosts.js'
+import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Blog',
   components: {
@@ -41,42 +41,40 @@ export default {
     // TODO LOCAL SCHEMA
   },
   computed: {
-    // TODO get posts from vuex store
-    getPosts () {
-      return this.$store.state.posts.posts
-    }
+    // get post slugs from vuex store
+    // getPostSlugs () {
+    //   return this.$store.state.posts.posts
+    // },
+    ...mapState({
+      getPostSlugs: state => state.posts.posts,
+      postData: state => state.posts.postData
+    }),
+    ...mapGetters({
+      sortPostsBydate: 'posts/sortPostsBydate'
+    })
   },
   created () {
-    // get a list of blogs from markdown content
-    // import a list of blog posts from '@/content/blog/blogPosts.js'
-    // TODO import blog posts from store instead
-    blogPosts.forEach((blog) => {
-      // get the markdown post with blog post slug
+    // get the blog urls
+    this.getPostSlugs.forEach((blog) => {
+      // get the markdown post content using blog post slug
       const markdown = require(`@/content/blog/${blog}.md`) //
       this.posts.push({
         title: markdown.attributes.title,
         thumbnail: markdown.attributes.thumbnail,
         tags: markdown.attributes.tags,
-        slug: blog + '/', // blogPosts.js
+        slug: blog + '/',
         excerpt: markdown.attributes.excerpt,
-        date: markdown.attributes.date // convert to JS date object
+        date: markdown.attributes.date // convert to JS date object in store
       })
     })
-    this.sortDates()
+    // sort posts by date and save new store state
+    this.sortDates(this.posts)
   },
   methods: {
-    // TODO sort posts with store, only has to check for data once with persistence
-    sortDates () {
-      // get blog posts
-      this.posts.forEach((post) => {
-        // convert blog post date to date object
-        const date = new Date(post.date)
-        // update the post date with js date
-        post.timestamp = date
-      })
-      // sort posts by date
-      this.posts.sort((a, b) => b.timestamp - a.timestamp)
-    }
+    ...mapActions({
+      sortDates: 'posts/sortDates'
+      // ...
+    })
   }
 }
 </script>

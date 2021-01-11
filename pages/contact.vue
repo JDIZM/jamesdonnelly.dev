@@ -104,6 +104,7 @@ export default {
     try {
       await this.$recaptcha.init()
     } catch (e) {
+      // TODO err
       console.log(e)
     }
   },

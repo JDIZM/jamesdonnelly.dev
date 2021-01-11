@@ -9,7 +9,7 @@
       <div class="exp__time__wrapper">
         <div class="exp__time">
           <div class="exp__time__inner">
-            <!--  -->
+            <!-- TODO .. experience -->
             <div>1</div>
           </div>
         </div>
@@ -36,24 +36,12 @@ export default {
 
 <style lang="scss" scoped>
 .experience {
-  // without grid
-  // position: relative;
-  // top: 0;
-  // left: 0;
-  // with grid
-  text-align: left;
+  text-align: center;
   width: 100%;
   height: 100%;
-  // width ignore on flexbox
-  // display: flex;
-  // flex-direction: row;
 }
 .experience__item {
-  // without grid
-  // min-height: 320px;
-  // with grid
   display: grid;
-  // grid-template-columns: 1fr 1fr 2fr;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr 2fr;
   text-align: center;
@@ -61,42 +49,18 @@ export default {
   @media screen and (min-width: 600px) {
     grid-template-columns: 1fr 1fr 2fr;
     grid-template-rows: 1fr;
-    text-align: left;
+    text-align: center;
   }
 }
 
 .exp__date {
-  // without grid
-  // @media screen and (min-width: 600px) {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 20%;
-  // }
-  // left: 0;
-  // width: 50%;
-  // position: absolute;
-  // text-align: left;
-  // height: 100%;
-  // with grid
   h5 {
     margin: 0;
   }
 }
 .exp__time__wrapper {
-  // without grid
-  //  @media screen and (min-width: 600px) {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 22%;
-  //   width: 20%;
-  // }
-  // left: 50%;
-  // width: 50%;
-  // position: absolute;
-  // height: 100%;
-  // with grid
-  margin: auto;
+  // margin: auto;
+  width: 100%;
 }
 .exp__time {
  border: 2px solid black;
@@ -107,9 +71,6 @@ export default {
  margin: auto;
 }
 .exp__time__inner {
-  // position: relative;
-  // top: 0;
-  // left: 0;
   border: 1px solid black;
   border-radius: 100%;
   background: black;
@@ -118,7 +79,6 @@ export default {
   max-height: 106px;
   height: 100%;
   margin: auto;
-//  text-align:center;
 }
 .exp__time__inner div{
   color: white;
@@ -140,20 +100,6 @@ export default {
 }
 
 .exp__info {
-  // without grid
-  // @media screen and (min-width: 600px) {
-  //   top: 0;
-  //   left: 50%;
-  //   width: 50%;
-  //   position: relative;
-  // }
-  //   text-align: left;
-  //   top: 100px;
-  //   left: 0;
-  //   width: 100%;
-  //   position: absolute;
-  //   height: 100%;
-  // with grid
   h5 {
     margin: 0;
   }

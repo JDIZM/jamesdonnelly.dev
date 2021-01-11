@@ -5,26 +5,23 @@
       <h2>JAMES DONNELLY</h2>
     </div>
     <div>
-      <p class="m--2 text--left">
+      <p>
         Hey, I'm <span class="text--highlight">James Donnelly.</span> A freelance web developer based in Manchester.
       </p>
-      <p class="m--2 text--left">
+      <p>
         I build bespoke user interfaces, websites and web applications with JavaScript.
       </p>
-      <p class="m--2 text--left">
-        Building systems and processes that add value to my clients businesses is my passion. Most business owners are too busy putting out fires on a daily basis.
+      <p>
+        Building systems and processes that add value to my clients businesses is my passion.
       </p>
-      <p class="m--2 text--left">
-        I'm here to help.
-      </p>
-      <div class="text--left">
-        <p class="m--2 text--left">
-          If you've got a project you think i'd be a great fit for then why not...
-        </p>
-        <nuxt-link to="/contact">
-          <button class="m--2 btn btn--primary">
-            GET IN TOUCH
-          </button>
+      <div>
+        <nuxt-link to="/contact/">
+          <Button
+            type="submit"
+            label="GET IN TOUCH"
+            outline
+            @onClick="onClick"
+          />
         </nuxt-link>
       </div>
     </div>
@@ -32,12 +29,14 @@
     <Experience
       :experience="experience"
     />
+    <!-- TODO services -->
   </div>
 </template>
 
 <script>
 import Skills from '@/components/Skills'
 import Experience from '@/components/Experience'
+import Button from '@/storybook/stories/atoms/Button.vue'
 /* eslint-disable */ 
 // eslint-disable-next-line
 // console.log('***************')
@@ -46,7 +45,8 @@ import Experience from '@/components/Experience'
 export default {
   components: {
     Skills,
-    Experience
+    Experience,
+    Button
   },
   data () {
     return {
@@ -54,10 +54,22 @@ export default {
       description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       experience: [
         {
-          date: "April 2019",
-          location: "Baked Digital",
-          position: "Frontend Web Developer",
+          date: "April 2019 - Now",
+          location: "Freelance",
+          position: "Web Developer",
           info: "Building user interfaces, websites and web applications that humans love to use"
+        },
+        {
+          date: "2014 - 2019",
+          location: "Baked Media",
+          position: "Web Developer",
+          info: "Design and build lead generation websites for SMB's mainly with WordPress. Setup and manage servers and hosting for clients websites. Provided digital marketing services for lead generation such as Paid Ads, Organic Search."
+        },
+        {
+          date: "2011 - 2014",
+          location: "Fluid IMS",
+          position: "Paid Ads",
+          info: "The management, setup and audit of Pay Per Click media strategies for clients with Google Ads, Facebook Ads. From initial research, campaign creation, website audit through to conversion tracking and optimisation using Google Analytics, Tag Manager, Optimise, Hotjar and more."
         }
       ]
     }
@@ -75,6 +87,12 @@ export default {
       ]
     }
   // TODO LOCAL SCHEMA 
+  },
+  methods: {
+    onClick() {
+      // 
+      console.log('click')
+    }
   }
 }
 </script>

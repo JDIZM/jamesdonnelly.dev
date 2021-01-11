@@ -60,24 +60,6 @@ export default {
   },
   methods: {
     // TODO add transitions when route changes
-    // routeChange () {
-    //   // react to route changes...
-    //   // close nav drawer
-    //   this.drawer = false
-    //
-    //   this.toggleBodyClass()
-    // },
-    // toggleBodyClass () {
-    //   const el = document.body
-    //   // stop body having no class by giving default class
-    //   el.classList.add('body')
-    //   if (this.drawer) {
-    //     // if drawer is open toggle body scrolling class
-    //     el.classList.add('hide-scroll')
-    //   } else {
-    //     el.classList.remove('hide-scroll')
-    //   }
-    // }
   }
 }
 </script>

@@ -70,9 +70,6 @@ export default {
       ]
     }
   },
-  computed: {
-    //
-  },
   created () {
     // get the post data from markdown files based on the slug which matches the filename
     const markdown = require(`@/content/blog/${this.slug}.md`) //

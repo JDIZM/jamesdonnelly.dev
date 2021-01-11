@@ -2,44 +2,52 @@
   "projects":
   [
     {
-      "name": "QUOTE LEAD GEN",
-      "overview": "Nuxt based PWA with quote/lead gen booking system built with firebase backend.",
-      "live": "https://nuxt-simpsons-removals.netlify.app/",
-      "git": "https://github.com/JDIZM/nuxt-removals/",
-      "img": "/stripe_payments.svg", 
-      "skills": ["VUE", "NUXT", "FIREBASE"]
-    },
-    {
-      "name": "E-COMMERCE UI",
-      "overview": "A set of vanilla JS E-commerce class based components using custom SASS mixins built with no frameworks. Handlebars templating with a Firebase backend and stripe payments.",
-      "live": "https://vanilla-js-cart.netlify.app",
-      "git": "https://github.com/JDIZM/vanilla-js-ecommerce",
-      "img": "/web_shopping.svg", 
-      "skills": ["JS", "FIREBASE", "STRIPE", "API"]
-    },
-    {
-      "name": "WEATHER APP",
-      "overview": "A vanilla JS weather app using Async/Await & Fetch API",
-      "live": "https://weather-app-jdizm.netlify.com/",
-      "git": "https://github.com/JDIZM/weather-app/",
-      "img": "/weather_app.svg",
-      "skills": ["JS"]
-    },
-    {
-      "name": "VUE SMOOTHIES",
-      "overview": "A simple CRUD vue app with firebase using materialize css",
-      "live": "https://ninja-smoothies-1282c.firebaseapp.com/",
-      "git": "https://github.com/JDIZM/vue-smoothies",
+      "name": "VUE CLIENT ADMIN",
+      "overview": "Vue SPA to manage clients billing with Stripe, show leads generated via the contact form and calls generated from Twilio.",
+      "live": "https://github.com/JDIZM/vue-client-admin",
+      "git": "https://github.com/JDIZM/vue-client-admin",
       "img": "/laravel_and_vue.svg", 
-      "skills": ["VUE", "FIREBASE"]
+      "skills": ["VUE", "NUXT", "FIREBASE", "NODE", "EXPRESS", "API"]
     },
     {
-      "name": "VUE CHAT APP",
-      "overview": "A simple CRUD chat app with firebase using materialize css",
-      "live": "https://chat-app-a51b4.firebaseapp.com/",
-      "git": "https://github.com/JDIZM/vue-chat-app",
-      "img": "/js_frameworks.svg", 
-      "skills": ["VUE", "FIREBASE"]
+      "name": "VUE SPOTIFY NOW PLAYING",
+      "overview": "Now playing component built with vue and node/express on the backend",
+      "live": "https://github.com/JDIZM/vue-spotify",
+      "git": "https://github.com/JDIZM/vue-spotify",
+      "img": "/laravel_and_vue.svg", 
+      "skills": ["VUE", "NODE", "EXPRESS", "API"]
+    },
+    {
+      "name": "VUE STORYBOOK UI",
+      "overview": "Custom UI library built with storybook for Vue/Nuxt",
+      "live": "https://vue-storybook-library.netlify.app",
+      "git": "https://github.com/JDIZM/vue-storybook-library",
+      "img": "/laravel_and_vue.svg", 
+      "skills": ["VUE", "JS", "SASS", "CSS"]
+    },
+    {
+      "name": "VERTEX",
+      "overview": "Nuxt based PWA, Custom UI with Firebase cloud functions.",
+      "live": "https://vertexscaffolding.co.uk/",
+      "git": "https://github.com/JDIZM/vanilla-js-ecommerce",
+      "img": "/laravel_and_vue.svg", 
+      "skills": ["VUE", "NUXT", "FIREBASE", "NODE", "EXPRESS"]
+    },
+    {
+      "name": "NORTEC",
+      "overview": "Nuxt based PWA, Custom UI with Firebase cloud functions.",
+      "live": "https://nortecvisual.co.uk/",
+      "git": "https://nortecvisual.co.uk/",
+      "img": "/laravel_and_vue.svg",
+      "skills": ["VUE", "NUXT", "FIREBASE", "NODE", "EXPRESS"]
+    },
+    {
+      "name": "SIMPSONS",
+      "overview": "Nuxt based PWA, Custom UI with Firebase cloud functions.",
+      "live": "https://simpsonsremovalsmcr.co.uk/",
+      "git": "https://simpsonsremovalsmcr.co.uk/",
+      "img": "/laravel_and_vue.svg", 
+      "skills": ["VUE", "NUXT", "FIREBASE", "NODE", "EXPRESS"]
     }
   ]
 }

@@ -1,14 +1,6 @@
 <template>
   <footer role="contentinfo">
     <div class="footer__grid">
-      <!-- <div class="footer__item">
-        <h5>TITLE</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum sequi quos pariatur nulla atque placeat fuga quam officia, veniam maxime. Repellat similique explicabo inventore iusto necessitatibus obcaecati fugiat suscipit ad!</p>
-      </div>
-      <div class="footer__item">
-        <h5>TITLE</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum sequi quos pariatur nulla atque placeat fuga quam officia, veniam maxime. Repellat similique explicabo inventore iusto necessitatibus obcaecati fugiat suscipit ad!</p>
-      </div> -->
       <div class="footer__item">
         <h3>SOCIAL</h3>
         <ul>
@@ -26,7 +18,7 @@
       </div>
     </div>
     <div class="copy">
-      <p>&copy; {{ new Date().getFullYear() }} <a href="https://twitter.com/JDIZM">@JDIZM</a> | made with ❤️ using nuxt.js <br> Illustrations from <a href="https://undraw.co/">Undraw</a></p>
+      <p>&copy; {{ new Date().getFullYear() }} <a href="https://twitter.com/JDIZM">@JDIZM</a> | made with <span>❤️</span> using Nuxt.js</p>
     </div>
   </footer>
 </template>
