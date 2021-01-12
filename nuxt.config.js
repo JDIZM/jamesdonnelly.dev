@@ -20,7 +20,10 @@ export default {
       // TODO display default system font
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap' }
+    ],
+    script: [
+      { src: 'https://kit.fontawesome.com/3770b0f41c.js' }
     ]
   },
   // custom dot env variables client side
@@ -91,7 +94,7 @@ export default {
     /* reCAPTCHA options */
     hideBadge: true,
     language: 'v3',
-    siteKey: '6Lc8AhYaAAAAAInNucuPnFDKLP3rhFHZ0Jg5O0fq',
+    siteKey: process.env.SITEKEY,
     version: 3,
     size: 'normal'
   },
@@ -107,8 +110,7 @@ export default {
     prefix: process.env.API_URL // eg api url before the proxy target
     // https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api + /verify
     // https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api + /send-mail
-    // FIXME can you only have ONE api url as a prefix?
-    // then how do we call external api's if there will be cors issues.
+    // can only have ONE api url as a prefix?
   },
   proxy: {
     // Note: In the proxy module, /api/ will be added to all requests to the API end point.

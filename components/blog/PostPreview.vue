@@ -11,8 +11,8 @@
           <h2 class="post__title">
             {{ title }}
           </h2>
-          <p>{{ excerpt }}</p>
-          <p>{{ date }}</p>
+          <p class="mb--2">{{ excerpt }}</p>
+          <p class="mb--2">{{ date }}</p>
         </div>
       </article>
     </nuxt-link>
@@ -53,6 +53,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.post {
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  position: relative;
+  text-align: left;
+  z-index: 0;
+  max-width: 600px;
+  // margin: auto;
+}
+// .post__content {
+//   padding: 1rem;
+// }
 .post__thumb {
   width: 100%;
   height: 300px;
@@ -61,6 +74,10 @@ export default {
 .img-wrapper {
   width:100%;
   height: 300px;
+  filter: grayscale(0.9);
+}
+.img-wrapper:hover {
+  filter: grayscale(0);
 }
 img {
   width: 100%;

@@ -9,10 +9,7 @@
         Hey, I'm <span class="text--highlight">James Donnelly.</span> A freelance web developer based in Manchester.
       </p>
       <p>
-        I build bespoke user interfaces, websites and web applications with JavaScript.
-      </p>
-      <p>
-        Building systems and processes that add value to my clients businesses is my passion.
+        I build bespoke user interfaces, websites and web applications with JavaScript. Building systems and processes that add value to my clients businesses is my passion.
       </p>
       <div>
         <nuxt-link to="/contact/">
@@ -54,16 +51,18 @@ export default {
       description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       experience: [
         {
-          date: "April 2019 - Now",
-          location: "Baked Digital",
-          position: "Freelance Web Developer",
-          info: "Building user interfaces, websites and web applications that humans love to use"
+          date: "2019 - Now",
+          location: "Freelance",
+          position: "Web Developer",
+          info: "Building user interfaces, websites and web applications that humans love to use",
+          time: '2 years'
         },
         {
           date: "2014 - 2019",
-          location: "Baked Media",
+          location: "Baked Digital",
           position: "Digital Marketing",
-          info: "Design and build lead generation websites for SMB's mainly with WordPress. Setup and manage servers and hosting for clients websites. Provided digital marketing services for lead generation such as Paid Ads, Organic Search."
+          info: "Paid Ads, Organic Search. Lead generation with WordPress based websites for SMB's",
+          time: '5 years'
         }
       ]
     }

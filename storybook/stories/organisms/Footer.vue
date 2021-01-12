@@ -1,13 +1,11 @@
 <template>
-  <footer class="bg--primary text--white">
+  <footer>
     <div class="footer">
       <div class="footer__grid">
         <div class="footer__grid__item brand">
           <div class="brand__logo">
             <img :src="logoSrc" draggable="false" />
           </div>
-          <!-- <div class="brand__name">
-          </div> -->
         </div>
         <div class="footer__grid__item social">
           <h3>SOCIAL</h3>
@@ -21,20 +19,20 @@
             <!-- <li><a href="#" aria-label="Find us on Twitter"><i class="fab fa-twitter-square" /></a></li> -->
           </ul>
         </div>
-        <div class="footer__grid__item info">
-          <h3>COMPANY INFO</h3>
-          <p>{{ name }}</p>
-          <p>
+        <div class="footer__grid__item info mt--2">
+          <!-- <h3>COMPANY INFO</h3> -->
+          <p>made with ❤️ using nuxt.js</p>
+          <!-- <p>
             {{ address[0] }} <br />
             {{ address[1] }} <br />
             {{ address[2] }}
-          </p>
+          </p> -->
         </div>
       </div>
       <div class="copy">
         <p>
-          &copy; {{ name }} - Company number {{ companyNo }} -
-          <a :href="privacy">Privacy</a>
+          &copy; {{ name }} <span v-if="companyNo">  - Company number {{ companyNo }} - </span>
+          <a v-if="privacy" :href="privacy">Privacy</a>
         </p>
       </div>
     </div>
@@ -52,11 +50,11 @@ export default {
     },
     companyNo: {
       type: String,
-      required: true,
+      required: false,
     },
     privacy: {
       type: String,
-      required: true,
+      required: false,
     },
     logoSrc: {
       type: String,
@@ -64,7 +62,7 @@ export default {
     },
     address: {
       type: Array,
-      required: true,
+      required: false,
     },
     social: {
       type: Array,
@@ -77,7 +75,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // import the theme first for global variables
 // @import "../theme/theme.scss";
 @import "./Footer.scss";

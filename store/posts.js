@@ -3,7 +3,6 @@ export const state = () => ({
   // post slugs
   posts: [
     'remote-working-productivity',
-    'sass-mixins-class-names',
     'page-speed-load-time'
   ],
   // markdown post data

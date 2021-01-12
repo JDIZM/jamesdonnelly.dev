@@ -28,11 +28,11 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ## STACK
 
 * nuxt
+* markdown blog
 * storybook ui
 * sass theme, utils, mixins
 * firebase cloud functions
 * netlify hosting
-* markdown blog
 
 ## STORYBOOK UI
 

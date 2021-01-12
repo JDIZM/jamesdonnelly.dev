@@ -2,7 +2,9 @@
   <section class="skills">
     <h3>TECH STACK</h3>
     <p>
-      My current tech stack utilises Vue, Nuxt & Vuex. <br>
+      My current tech stack utilises Vue, Nuxt & Vuex.
+    </p>
+    <p>
       I’m a fan of JAMstack and take a serverless approach to development using
       Firebase as a backend with node based functions. My CSS is compiled with
       SASS and BEM using storybook to maintain my own UI library.
@@ -50,7 +52,7 @@ export default {
 }
 .skills__item {
   // flex: 1 1 auto;
-  margin: 1rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   flex-direction: column;

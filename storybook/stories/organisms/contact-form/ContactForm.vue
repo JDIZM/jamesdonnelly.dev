@@ -88,10 +88,13 @@ export default {
 
 <style lang="scss" scoped>
 @import './Form.scss';
-textarea {
-  margin-bottom: 8px;
-}
-span {
-  text-align: left;
-}
+// textarea {
+//   margin-bottom: 8px;
+// }
+// textarea {
+//     border-bottom: 2px solid transparent;
+// }
+// span {
+//   text-align: left;
+// }
 </style>

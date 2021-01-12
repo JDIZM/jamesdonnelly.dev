@@ -1,37 +1,38 @@
 <template>
   <div class="container">
     <h1>PROJECTS</h1>
-    <!-- TODO dynamic image loaded https://nuxtjs.org/guide/assets/ -->
-    <div v-for="(project, a) in projects" :key="a" class="project">
-      <!-- <div :style="{ backgroundImage: 'url(' + project.img + ')' }" class="project__img" /> -->
+    <div v-for="(project, a) in projects" :key="a" class="project mb--2">
       <div class="project__img">
-        <!-- <img src="@/assets/weather_app.svg" alt=""> -->
-        <img :src="project.img" :alt="project.name">
+        <img :src="imgSrc(project.img)" :alt="project.name">
       </div>
       <header>
         <h4 class="project__title">
           {{ project.name.toUpperCase() }}
         </h4>
-        <div class="project__title__highlight bg--yellow" />
+        <div class="project__title__highlight bg--yellow mb--2" />
       </header>
       <p v-if="project.overview">
         {{ project.overview }}
       </p>
       <ul class="skill__list">
         <li v-for="(skill) in project.skills" :key="skill" class="skill__list__item">
-          {{ skill }}
+          <span class="material-icons">check_circle</span><span>{{ skill }}</span>
         </li>
       </ul>
       <div class="mb--2">
         <a :href="project.live">
-          <button class="btn btn--primary">
-            LIVE
-          </button>
+          <Button
+            type="submit"
+            label="LIVE"
+            primary
+          />
         </a>
-        <a :href="project.git">
-          <button class="btn btn--secondary">
-            GITHUB
-          </button>
+        <a v-if="project.git" :href="project.git">
+          <Button
+            type="submit"
+            label="GIT"
+            outline
+          />
         </a>
       </div>
     </div>
@@ -39,21 +40,18 @@
 </template>
 
 <script>
+import Button from '@/storybook/stories/atoms/Button.vue'
 import json from '~/assets/projects.json'
-
 export default {
   components: {
     //
+    Button
   },
   data () {
     return {
       title: 'Projects!',
       description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       url: this.$route.fullPath,
-      // import the projects with json instead
-      // projects: [
-      //   { name: 'project name', slug: '/project-url', img: '/assets/img.jpg', skills: ['html', 'css', 'js', 'vue', 'nuxt', 'firebase'] }
-      // ]
       projects: json.projects // imported json
     }
   },
@@ -69,6 +67,11 @@ export default {
       ]
     }
     // TODO LOCAL SCHEMA
+  },
+  methods: {
+    imgSrc (img) {
+      return require('@/assets/projects/' + img)
+    }
   }
 }
 </script>
@@ -85,6 +88,10 @@ export default {
   position: relative;
   text-align: left;
   z-index: 0;
+  max-width: 600px;
+  p {
+    margin-bottom: 1rem;
+  }
 }
 
 .project__img {
@@ -109,19 +116,27 @@ export default {
   z-index: 2;
 }
 .project__title__highlight {
-  position: relative;
-  top: -1rem;
-  left: -0.5rem;
-  height: 1.5rem;
-  max-width: 60%;
-  // width: 60%;
-  // z-index: 1;
+    position: relative;
+    top: -0.5rem;
+    left: 0rem;
+    height: 0.5rem;
+    max-width: 250px;
 }
 
 .skill__list {
   display: flex;
-  padding-left: 1rem;
-  list-style: square;
+  flex-direction: column;
+  padding-left: 0;
+  list-style: none;
+  @media screen and (min-width: 500px ){
+    flex-direction: row;
+  }
+  li {
+    margin-bottom: 0.5rem;
+  }
+  span {
+    padding-right: 0.5rem;
+  }
 }
 
 .skill__list__item {

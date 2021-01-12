@@ -1,14 +1,17 @@
 <template>
   <div class="blog container">
-    <div v-for="(post, i) in sortPostsBydate" :key="i">
-      <PostPreview
-        :slug="post.slug"
-        :thumbnail="post.thumbnail"
-        :title="post.title.toUpperCase()"
-        :excerpt="post.excerpt"
-        :date="post.date"
-      />
-    </div>
+    <h1>DEVELOPER BLOG</h1>
+    <h2>The daily struggle is real..</h2>
+    <p>The daily struggle is real..</p>
+    <PostPreview
+      v-for="(post, i) in sortPostsBydate"
+      :key="i"
+      :slug="post.slug"
+      :thumbnail="post.thumbnail"
+      :title="post.title.toUpperCase()"
+      :excerpt="post.excerpt"
+      :date="post.date"
+    />
   </div>
 </template>
 
@@ -79,11 +82,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 /* applying an image in css with webpack */
 .blog {
   /* background: url('~assets/bg-img.jpeg') */
   /* padding: 1rem; */
+  /* display: flex;
+  align-items: center;
+  flex-direction: column; */
   margin-top: 1rem;
   text-align: left;
 }
@@ -92,7 +98,7 @@ export default {
   text-align: left;
   font-size: 1.5rem;
   @media screen and (min-width: 768px) {
-    font-size: 2.5rem;
+    // font-size: 2.5rem;
   }
 }
 </style>

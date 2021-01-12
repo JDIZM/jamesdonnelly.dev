@@ -17,6 +17,7 @@ footer {
 }
 .footer {
   width: 90%;
+  max-width: 1600px;
 }
 .footer__grid {
   @media screen and (min-width: 992px) {
@@ -27,7 +28,7 @@ footer {
 }
 .footer__grid__item  {
   flex: 1 1 auto;
-  margin: 1rem;
+  padding: 1rem;
   align-items: flex-start;
 }
 a, a:visited {

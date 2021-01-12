@@ -10,7 +10,10 @@
         <div class="exp__time">
           <div class="exp__time__inner">
             <!-- TODO .. experience -->
-            <div>1</div>
+            <div>
+              <!-- <img v-if="job.logo" :src="imgSrc(job.logo)" alt=""> -->
+              <span v-if="job.time">{{ job.time }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -30,6 +33,11 @@ export default {
       type: Array,
       required: true
     }
+  },
+  methods: {
+    imgSrc (img) {
+      return require('@/assets/' + img)
+    }
   }
 }
 </script>
@@ -39,25 +47,31 @@ export default {
   text-align: center;
   width: 100%;
   height: 100%;
+  @media screen and (min-width: 600px) {
+    text-align: left;
+  }
 }
 .experience__item {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr 2fr;
   text-align: center;
+  div {
+      margin-bottom: 0.5rem;
+  }
   // expand to large screen layout
   @media screen and (min-width: 600px) {
     grid-template-columns: 1fr 1fr 2fr;
     grid-template-rows: 1fr;
-    text-align: center;
+    text-align: left;
   }
 }
 
-.exp__date {
-  h5 {
-    margin: 0;
-  }
-}
+// .exp__date {
+//   h5 {
+//     margin: 0;
+//   }
+// }
 .exp__time__wrapper {
   // margin: auto;
   width: 100%;
@@ -99,9 +113,9 @@ export default {
   width: 100%;
 }
 
-.exp__info {
-  h5 {
-    margin: 0;
-  }
-}
+// .exp__info {
+//   h5 {
+//     margin: 0;
+//   }
+// }
 </style>

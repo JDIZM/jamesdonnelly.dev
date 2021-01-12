@@ -8,18 +8,18 @@
         {{ title.toUpperCase() }}
       </h1>
     </div>
-    <div class="post__date mt--1">
+    <div class="post__date mb--2">
       - {{ date }}
     </div>
-    <div class="post__author">
+    <div class="post__author mb--4">
       <div class="post__author__img">
         <img class="mt--1" alt="author image" height="60px" width="60px" :srcset="profile">
       </div>
-      <div>
-        <p class="m--1 pt--1">
+      <div class="post__author__bio">
+        <p class="m--1">
           James Donnelly
         </p>
-        <p class="m--1 pt--1">
+        <p class="m--1">
           Freelance Web Developer
         </p>
       </div>
@@ -93,7 +93,7 @@ export default {
   text-align: left;
   font-size: 1.5rem;
   @media screen and (min-width: 768px) {
-    font-size: 2.5rem;
+    // font-size: 2.5rem;
   }
 }
 .post__tags {
@@ -113,19 +113,19 @@ export default {
 .post__author {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  @media screen and (min-width: 375px) {
-    flex-direction: row;
-  }
+  flex-direction: row;
 }
 .post__author__img {
-  width: 88px;
+  max-width: 88px;
   img {
     border-radius: 50%;
     // set image height explicitly on the element
     // height: 100%;
     // width: 100%;
   }
+}
+.post__author__bio {
+  //
 }
 .frontmatter-markdown  {
     // text-align: left;
@@ -135,6 +135,14 @@ export default {
     }
     blockquote {
       margin-left: 1rem;
+      font-style: italic;
     }
-  }
+    p {
+      margin-bottom: 1rem;
+    }
+    ul, li {
+      margin: 1rem;
+      padding: 1rem;
+    }
+}
 </style>

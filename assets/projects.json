@@ -2,51 +2,25 @@
   "projects":
   [
     {
-      "name": "VUE CLIENT ADMIN",
-      "overview": "Vue SPA to manage clients billing with Stripe, show leads generated via the contact form and calls generated from Twilio.",
-      "live": "https://github.com/JDIZM/vue-client-admin",
-      "git": "https://github.com/JDIZM/vue-client-admin",
-      "img": "/laravel_and_vue.svg", 
-      "skills": ["VUE", "NUXT", "FIREBASE", "NODE", "EXPRESS", "API"]
-    },
-    {
-      "name": "VUE SPOTIFY NOW PLAYING",
-      "overview": "Now playing component built with vue and node/express on the backend",
-      "live": "https://github.com/JDIZM/vue-spotify",
-      "git": "https://github.com/JDIZM/vue-spotify",
-      "img": "/laravel_and_vue.svg", 
-      "skills": ["VUE", "NODE", "EXPRESS", "API"]
-    },
-    {
       "name": "VUE STORYBOOK UI",
       "overview": "Custom UI library built with storybook for Vue/Nuxt",
       "live": "https://vue-storybook-library.netlify.app",
       "git": "https://github.com/JDIZM/vue-storybook-library",
-      "img": "/laravel_and_vue.svg", 
+      "img": "storybook.png", 
       "skills": ["VUE", "JS", "SASS", "CSS"]
     },
     {
       "name": "VERTEX",
       "overview": "Nuxt based PWA, Custom UI with Firebase cloud functions.",
       "live": "https://vertexscaffolding.co.uk/",
-      "git": "https://github.com/JDIZM/vanilla-js-ecommerce",
-      "img": "/laravel_and_vue.svg", 
+      "img": "vertex.png", 
       "skills": ["VUE", "NUXT", "FIREBASE", "NODE", "EXPRESS"]
     },
     {
       "name": "NORTEC",
       "overview": "Nuxt based PWA, Custom UI with Firebase cloud functions.",
       "live": "https://nortecvisual.co.uk/",
-      "git": "https://nortecvisual.co.uk/",
-      "img": "/laravel_and_vue.svg",
-      "skills": ["VUE", "NUXT", "FIREBASE", "NODE", "EXPRESS"]
-    },
-    {
-      "name": "SIMPSONS",
-      "overview": "Nuxt based PWA, Custom UI with Firebase cloud functions.",
-      "live": "https://simpsonsremovalsmcr.co.uk/",
-      "git": "https://simpsonsremovalsmcr.co.uk/",
-      "img": "/laravel_and_vue.svg", 
+      "img": "nortec.png",
       "skills": ["VUE", "NUXT", "FIREBASE", "NODE", "EXPRESS"]
     }
   ]
