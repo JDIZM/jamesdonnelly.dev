@@ -1,0 +1,210 @@
+
+.container {
+  height: 100%;
+  // min-height: 80vh;
+  max-width: 1600px; // set max breakpoint for content
+  width: 90%; // 5% margin
+  margin: 0 auto;
+  // flex and center
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+h1 {
+  font-size: 3.125rem;
+  font-weight: 700;
+}
+h2 {
+  font-size: 2.125rem;
+  font-weight: 300;
+}
+h3 {
+  font-size: 2rem;
+  font-weight: 300;
+}
+h4 {
+  // font-size: 1.75rem;
+  // font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+h5 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+// responsive sizing
+@media screen and (min-width: 768px) {
+  //
+  h1 {
+    font-size: 6rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 3.75rem;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+  h4 {
+    // font-size: 2.125rem;
+    // font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  h5 {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+};
+@media screen and (min-width: 992px) {
+  //
+  h1 {
+    font-size: 6rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 3.75rem;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+  h4 {
+    // font-size: 2.125rem;
+    // font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  h5 {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+};
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 6rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 3.75rem;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+  h4 {
+    // font-size: 2.125rem;
+    // font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  h5 {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+};
+
+// typography elements
+.overline {
+  font-size: 1.5rem;
+  font-weight: 300;
+  // font-family: 'Source Sans Pro', sans-serif;
+}
+.material-icons {
+  vertical-align: middle;
+}
+// type modifiers
+
+// patters / backgrounds
+
+// animations
+.fadein {
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+
+// animation
+@keyframes fadein {
+  from {
+    // bottom: -300px;
+    opacity: 0;
+  }
+  to {
+    // top: 0;
+    opacity: 1;
+  }
+}
+
+// error class
+// FIXME can't use this in the component file because vars wont work
+// TODO create class colours vs using sass variables if they wont import.
+// creating classes to control the state and primary / secondary colours.
+// .--error, .--error:focus {
+//   border-bottom: 2px solid $error;
+// }
+
+// FIXME directly applying to the element, vs the parent form field.
+.--error-input {
+  color: black;
+}
+.--error-input:focus {
+  border-bottom: 2px solid $error;
+}
+.--error-input::placeholder {
+  color: rgba(0,0,0, 0.4);
+}
+// applied to the form field and child elements.
+.--error {
+  input {
+    // background: rgba( $error, 0.2 ) !important;
+    // background: var(--error-100) !important;
+    background: $error-100;
+    color: black;
+  }
+  input:focus {
+    border-bottom: 2px solid $error;
+  }
+  input::placeholder {
+    color: rgba(0,0,0, 0.4);
+  }
+  span {
+    color: rgba(0,0,0, 0.4);
+  }
+  span.material-icons {
+    color: rgba(0,0,0, 1);
+  }
+}
+
+// TODO global BUTTON
+button, .btn {
+  background: var(--primary-100);
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin: 0.5rem auto;
+  user-select: none;
+  text-shadow: none;
+  text-indent: 0px;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-rendering: auto;
+  border: 1px solid transparent;
+}
+
+// TODO to style nuxt links
+.--active {
+  color: white;
+  margin-left: 2rem;
+  background: var(--primary);
+}

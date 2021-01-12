@@ -55,21 +55,15 @@ export default {
       experience: [
         {
           date: "April 2019 - Now",
-          location: "Freelance",
-          position: "Web Developer",
+          location: "Baked Digital",
+          position: "Freelance Web Developer",
           info: "Building user interfaces, websites and web applications that humans love to use"
         },
         {
           date: "2014 - 2019",
           location: "Baked Media",
-          position: "Web Developer",
+          position: "Digital Marketing",
           info: "Design and build lead generation websites for SMB's mainly with WordPress. Setup and manage servers and hosting for clients websites. Provided digital marketing services for lead generation such as Paid Ads, Organic Search."
-        },
-        {
-          date: "2011 - 2014",
-          location: "Fluid IMS",
-          position: "Paid Ads",
-          info: "The management, setup and audit of Pay Per Click media strategies for clients with Google Ads, Facebook Ads. From initial research, campaign creation, website audit through to conversion tracking and optimisation using Google Analytics, Tag Manager, Optimise, Hotjar and more."
         }
       ]
     }
