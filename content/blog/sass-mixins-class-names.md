@@ -1,6 +1,6 @@
 ---
 title: SASS Mixins to generate class names for utility classes
-date: "2020-06-06"
+date: "2021-01-06"
 excerpt: Use SASS Mixins to generate class names for utility classes
 tags:
   - SASS

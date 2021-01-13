@@ -1,29 +1,33 @@
 
 .container {
   height: 100%;
-  // min-height: 80vh;
-  max-width: 1200px; // set max breakpoint for content
+  max-width: 980px; // set max breakpoint for content
   width: 90%; // 5% margin
   margin: 0 auto;
   // flex and center
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: left;
+  text-align: center;
   flex-direction: column;
-  padding-bottom: 2rem;
+  // padding-bottom: 2rem;
+  @media screen and (min-width: $breakpoint-md) {
+    // 
+    text-align: left;
+  }
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 400;
+  margin-bottom: 1.5rem;
 }
 h3 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 400;
 }
 h4 {
@@ -35,96 +39,37 @@ h5 {
   font-weight: 700;
 }
 p {
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 // responsive sizing
-// @media screen and (min-width: 768px) {
-//   //
-//   h1 {
-//     font-size: 3rem;
-//     font-weight: 700;
-//   }
-//   h2 {
-//     font-size: 3.75rem;
-//     font-weight: 300;
-//   }
-//   h3 {
-//     font-size: 3rem;
-//     font-weight: 300;
-//   }
-//   h4 {
-//     // font-size: 2.125rem;
-//     // font-weight: 700;
-//     font-size: 1.5rem;
-//     font-weight: 300;
-//   }
-//   h5 {
-//     font-size: 1.5rem;
-//     font-weight: 300;
-//   }
-// };
-// @media screen and (min-width: 992px) {
-//   //
-//   h1 {
-//     font-size: 6rem;
-//     font-weight: 700;
-//   }
-//   h2 {
-//     font-size: 3.75rem;
-//     font-weight: 300;
-//   }
-//   h3 {
-//     font-size: 3rem;
-//     font-weight: 300;
-//   }
-//   h4 {
-//     // font-size: 2.125rem;
-//     // font-weight: 700;
-//     font-size: 1.5rem;
-//     font-weight: 300;
-//   }
-//   h5 {
-//     font-size: 1.5rem;
-//     font-weight: 300;
-//   }
-// };
-// @media screen and (min-width: 1200px) {
-//   h1 {
-//     font-size: 6rem;
-//     font-weight: 700;
-//   }
-//   h2 {
-//     font-size: 3.75rem;
-//     font-weight: 300;
-//   }
-//   h3 {
-//     font-size: 3rem;
-//     font-weight: 300;
-//   }
-//   h4 {
-//     // font-size: 2.125rem;
-//     // font-weight: 700;
-//     font-size: 1.5rem;
-//     font-weight: 300;
-//   }
-//   h5 {
-//     font-size: 1.5rem;
-//     font-weight: 300;
-//   }
-// };
+@media screen and (min-width: 1200px) {
+  //
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2.25rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1.5rem;
+  }
+};
 
 // typography elements
 .overline {
   font-size: 1.5rem;
   font-weight: 300;
-  // font-family: 'Source Sans Pro', sans-serif;
 }
 .material-icons {
   vertical-align: middle;
 }
-// type modifiers
-
-// patters / backgrounds
 
 // animations
 .fadein {
@@ -143,18 +88,6 @@ p {
     opacity: 1;
   }
 }
-
-// FIXME directly applying to the element, vs the parent form field.
-// .--error-input {
-//   color: black;
-// }
-// .--error-input:focus {
-//   border-bottom: 2px solid $error;
-// }
-// .--error-input::placeholder {
-//   color: rgba(0,0,0, 0.4);
-// }
-
 
 // TODO global BUTTON
 button, .btn {

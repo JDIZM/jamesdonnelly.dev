@@ -13,7 +13,7 @@
     </div>
     <div class="post__author mb--4">
       <div class="post__author__img">
-        <img class="mt--1" alt="author image" height="60px" width="60px" :srcset="profile">
+        <img alt="author image" height="60px" width="60px" :srcset="profile">
       </div>
       <div class="post__author__bio">
         <p class="m--1">
@@ -88,6 +88,7 @@ export default {
 // do not scope so the styles can target markdown post
 .post {
   text-align: left;
+  max-width: 900px;
 }
 .post__title {
   text-align: left;
@@ -117,15 +118,20 @@ export default {
 }
 .post__author__img {
   max-width: 88px;
+  flex: 0;
   img {
     border-radius: 50%;
     // set image height explicitly on the element
     // height: 100%;
     // width: 100%;
+    border: solid 1px var(--primary);
   }
 }
 .post__author__bio {
   //
+  p {
+    font-size: 1rem;
+  }
 }
 .frontmatter-markdown  {
     // text-align: left;
@@ -140,9 +146,9 @@ export default {
     p {
       margin-bottom: 1rem;
     }
-    ul, li {
+    ul, li, ol {
       margin: 1rem;
-      padding: 1rem;
+      // padding: 0.5rem;
     }
 }
 </style>

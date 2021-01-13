@@ -2,15 +2,21 @@
   <section class="skills">
     <h3>TECH STACK</h3>
     <p>
-      My current tech stack utilises Vue, Nuxt & Vuex.
+      My current tech stack utilises Vue, Nuxt &amp; Vuex.
     </p>
     <p>
       I’m a fan of JAMstack and take a serverless approach to development using
       Firebase as a backend with node based functions. My CSS is compiled with
       SASS and BEM using storybook to maintain my own UI library.
     </p>
+    <p>
+      I’m mainly client focused but I can handle all aspects of the development cycle from front-end development of user interfaces to back-end development of databases and server infrastructure.
+    </p>
+    <p>
+      I don’t believe in a one size fits all approach that’s why I treat each project differently.
+    </p>
     <div class="skills__grid">
-      <div v-for="(skill, i) in skills" :key="i" class="skills__item">
+      <div v-for="(skill, i) in skills" :key="i" class="skills__grid__item">
         <img :src="skill.img" :alt="skill.name" width="75px" height="75px">
         <!-- <p>{{ skill.name.toUpperCase() }}</p> -->
       </div>
@@ -45,16 +51,19 @@ export default {
   text-align: left;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  @media screen and (min-width: 768px) {
-    grid-template-columns: 1fr 1fr 1fr;
+  @media screen and (min-width: 680px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
   margin: 1rem 0;
 }
-.skills__item {
+.skills__grid__item {
   // flex: 1 1 auto;
   padding: 1rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+h3 {
+  margin-bottom: 1.5rem;
 }
 </style>

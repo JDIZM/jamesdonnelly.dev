@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>PROJECTS</h1>
-    <div v-for="(project, a) in projects" :key="a" class="project mb--2">
+    <div v-for="(project, a) in projects" :key="a" class="project mb--4">
       <div class="project__img">
         <img :src="imgSrc(project.img)" :alt="project.name">
       </div>
@@ -36,15 +36,18 @@
         </a>
       </div>
     </div>
+    <Callout />
   </div>
 </template>
 
 <script>
 import Button from '@/storybook/stories/atoms/Button.vue'
+import Callout from '@/components/Callout.vue'
 import json from '~/assets/projects.json'
 export default {
   components: {
     //
+    Callout,
     Button
   },
   data () {

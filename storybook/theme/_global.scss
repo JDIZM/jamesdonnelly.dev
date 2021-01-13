@@ -15,6 +15,11 @@ html, body {
   // height: 100%;
   // all children 100%
   // height set in container
+  // hide scrollbar for full width component
+  overflow-y: hidden;
+  @media screen and (min-width: 600px) {
+    overflow-y: auto
+  }
 }
 body {
   // https://web.dev/font-display/

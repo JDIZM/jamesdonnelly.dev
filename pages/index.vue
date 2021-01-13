@@ -1,27 +1,30 @@
 <template>
-  <div class="container">
-    <div>
-      <h1>FREELANCE WEB DEVELOPER</h1>
-      <h2>JAMES DONNELLY</h2>
+  <div class="container pb--4">
+    <section>
+      <h1>Hey! I'm James Donnelly</h1>
+      <h2>
+        A Manchester-based web developer who loves to build bespoke user interfaces, websites and web applications with JavaScript.
+      </h2>
+    </section>
+    <div class="intro-text">
+      <span class="mb--3">
+        Building systems and processes that add value to my clients' business is my passion.
+      </span>
     </div>
-    <div>
-      <p>
-        Hey, I'm <span class="text--highlight">James Donnelly.</span> A freelance web developer based in Manchester.
-      </p>
-      <p>
-        I build bespoke user interfaces, websites and web applications with JavaScript. Building systems and processes that add value to my clients businesses is my passion.
-      </p>
-      <div>
-        <nuxt-link to="/contact/">
-          <Button
-            type="submit"
-            label="GET IN TOUCH"
-            outline
-            @onClick="onClick"
-          />
-        </nuxt-link>
-      </div>
+    <div class="mb--3">
+      <nuxt-link to="/projects/">
+        <Button
+          type="submit"
+          label="SEE MY WORK"
+          outline
+          @onClick="onClick"
+        />
+      </nuxt-link>
     </div>
+    <Callout
+      class="mb--4"
+    />
+    <Services />
     <Skills />
     <Experience
       :experience="experience"
@@ -32,6 +35,8 @@
 
 <script>
 import Skills from '@/components/Skills'
+import Callout from '@/components/Callout'
+import Services from '@/components/Services'
 import Experience from '@/components/Experience'
 import Button from '@/storybook/stories/atoms/Button.vue'
 /* eslint-disable */ 
@@ -41,9 +46,11 @@ import Button from '@/storybook/stories/atoms/Button.vue'
 // console.log('***************')
 export default {
   components: {
+    Services,
+    Callout,
     Skills,
     Experience,
-    Button
+    Button,
   },
   data () {
     return {
@@ -90,6 +97,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /*  */
+.intro-text {
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
-    <h2 class="center">
+  <div class="container mb--4">
+    <h1 class="center">
       GET IN TOUCH?
-    </h2>
+    </h1>
     <p class="pb--2">
       If you need to reach me, then feel free to pop me a message.
     </p>

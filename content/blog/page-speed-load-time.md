@@ -1,7 +1,7 @@
 ---
 title: Page speed, Load Time & Conversions
-date: "2020-06-06"
-excerpt: Page speed, Load Time &amp; Conversions
+date: "2020-12-16"
+excerpt: Page speed, Load Time & Conversions
 tags:
   - web development
 thumbnail: fast_loading.svg
@@ -74,4 +74,4 @@ You should be using a content delivery network (also called content distribution
 
 ### Serve Static Files
 
-You can use a CDN to render static pages, there are also plugins for popular CMS like WordPress to create static HTML files. JAMstack static site generators such as Gatsby, Next.js, Hugo, Jekyll are becoming quite popular because they are easier to scale, maintain and have better performance than a dynamic setup like WordPress & MySQL/PHP.
+You can use a CDN to render static pages, there are also plugins for popular CMS like WordPress to create static HTML files. JAMstack static site generators such as Gatsby, Next.js, Hugo, Jekyll are becoming quite popular because they are easier to scale, maintain and have better performance than a traditional LAMP stack.

@@ -1,6 +1,12 @@
 <template>
   <div class="experience m--2">
     <h3>EXPERIENCE</h3>
+    <p>
+      I've been lucky enough to have access to a computer for the last 25 years. I wrote my first computer program in BASIC when I was about 9.
+    </p>
+    <p>
+      Since then I've mainly played computer games and acquired the use of glasses.
+    </p>
     <div v-for="(job, i) in experience" :key="i" class="experience__item mt--4">
       <div class="exp__date">
         <h4>{{ job.location }}</h4>
@@ -54,14 +60,14 @@ export default {
 .experience__item {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 2fr;
+  // grid-template-rows: 1fr 2fr 2fr;
   text-align: center;
   div {
       margin-bottom: 0.5rem;
   }
   // expand to large screen layout
-  @media screen and (min-width: 600px) {
-    grid-template-columns: 1fr 1fr 2fr;
+  @media screen and (min-width: 680px) {
+    grid-template-columns: 1fr 1fr 3fr;
     grid-template-rows: 1fr;
     text-align: left;
   }
@@ -113,9 +119,7 @@ export default {
   width: 100%;
 }
 
-// .exp__info {
-//   h5 {
-//     margin: 0;
-//   }
-// }
+h3 {
+  margin-bottom: 1.5rem;
+}
 </style>

@@ -66,7 +66,7 @@ export default {
 
 <style lang="scss">
 .nav__logo {
-  background: url('~assets/logo.png');
+  background: url('~assets/logo-blk.png');
   // background-origin: ce;
   background-origin: content-box;
   background-repeat: no-repeat;

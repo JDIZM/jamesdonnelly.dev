@@ -148,8 +148,8 @@ export default {
   },
   server: {
     port: 8000, // default: 3000
-    host: 'localhost'
-    // host: '0.0.0.0' // default: localhost
+    // host: 'localhost'
+    host: '0.0.0.0' // default: localhost
   },
   sitemap: {
     hostname: 'https://nuxt-portfolio-8d1bf.web.app/',

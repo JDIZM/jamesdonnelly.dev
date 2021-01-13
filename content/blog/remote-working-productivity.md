@@ -1,6 +1,6 @@
 ---
 title: Productivity Hacks For Managing Time When Working Remotely
-date: "2020-06-03"
+date: "2020-12-03"
 excerpt: Time management for remote developers is an important skill. Learn how I manage my time with these productivity hacks while working remotely.
 tags:
   - productivity
@@ -60,8 +60,8 @@ According to Csikszentmihályi, there are nine components to achieving a state o
 
 #### The Pomodoro Technique
 
-##### 1. What's a pomodoro?
-##### 2. Pros and cons
+##### What's a pomodoro?
+<!-- ##### 2. Pros and cons -->
 
 According to [wikipedia](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 

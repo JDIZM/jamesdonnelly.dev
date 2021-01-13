@@ -1,27 +1,36 @@
 <template>
-  <div class="blog container">
-    <h1>DEVELOPER BLOG</h1>
-    <h2>The daily struggle is real..</h2>
-    <p>The daily struggle is real..</p>
-    <PostPreview
-      v-for="(post, i) in sortPostsBydate"
-      :key="i"
-      :slug="post.slug"
-      :thumbnail="post.thumbnail"
-      :title="post.title.toUpperCase()"
-      :excerpt="post.excerpt"
-      :date="post.date"
-    />
+  <div class="blog">
+    <section class="bg--blue text--white blog__header mb--4">
+      <div>
+        <h1>DEVELOPER BLOG</h1>
+        <h2>Welcome to my corner of the internet, where I write about code, JavaScript and the general daily struggle of trying to get things to work.</h2>
+        <p>P.S. i'm working on it..</p>
+      </div>
+    </section>
+    <div class="container pb--4">
+      <PostPreview
+        v-for="(post, i) in sortPostsBydate"
+        :key="i"
+        :slug="post.slug"
+        :thumbnail="post.thumbnail"
+        :title="post.title.toUpperCase()"
+        :excerpt="post.excerpt"
+        :date="post.date"
+      />
+    </div>
+    <Callout />
   </div>
 </template>
 
 <script>
+import Callout from '@/components/Callout'
 import PostPreview from '@/components/blog/PostPreview'
 import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Blog',
   components: {
-    PostPreview
+    PostPreview,
+    Callout
   },
   data () {
     return {
@@ -99,6 +108,15 @@ export default {
   font-size: 1.5rem;
   @media screen and (min-width: 768px) {
     // font-size: 2.5rem;
+  }
+}
+
+.blog__header {
+  margin: auto;
+  div {
+    margin: auto;
+    max-width: 980px;
+    padding: 2rem 1rem;
   }
 }
 </style>
