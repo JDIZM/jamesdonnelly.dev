@@ -1,0 +1,72 @@
+// theme colours http://getbem.com/naming/
+// sass variables won't work inside component files unless we compile the sass files with the main.scss
+// can use global css variables or
+// use custom class names for styling like tailwind.
+// @nuxtjs/style-resources allows you to use global variables
+// global css vars available at component level
+:root {
+  --primary:  rgba(232,91,70, 1);
+  --secondary: #b0bec5;
+  --blue: rgb(26,26,29);
+  --primary-100: rgba(232,91,70, 0.07);
+  --charcoal: rgb(43, 41, 39);
+  --links: black;
+  --font-family: 'Montserrat', sans-serif;
+}
+
+// theme colours
+// map the variables with key:value pairs for mixins
+// https://sass-lang.com/documentation/values/maps
+// controlling colour https://thoughtbot.com/blog/controlling-color-with-sass-color-functions
+$colours: (
+  primary: rgba(232,91,70, 1),
+  primary-100: rgba(50,84,59, 0.07),
+  secondary: #b0bec5,
+  disabled: #b0bec5,
+  destruct:rgba(165, 10, 69, 0.9),
+  error:rgba(165, 10, 69, 0.9),
+  error-100: rgba(165, 10, 69, 0.2),
+  success:  #32543b,
+  pastelred: #f54d34,
+  charcoal: rgb(36,30,18),
+  blue: rgb(26,26,29),
+  white: rgb(255, 255, 255),
+  black: rgb(0, 0, 0),
+  light: rgb(255, 255, 255),
+  dark: rgb(48, 48, 48),
+  yellow: rgb(255, 200, 50),
+);
+// make the sass vars accessible to the other files with map-get
+// only gets the variable doesn't create the primary class name.
+// vars aren't accessible at component level unless made global.
+$primary: map-get($colours, primary);
+$secondary: map-get($colours, secondary);
+$error: map-get($colours, error);
+$error-100: map-get($colours, error-100);
+// debug
+// @debug map-get($colours, primary);
+// @debug map-get($colours, primary-100);
+// @debug map-get($colours, error);
+// @debug map-get($colours, error-100);
+// @debug var(--primary);
+
+// create spacing units for mixin
+// margin and paddings will be created with mixin
+$spacing: (
+  1: 0.5rem,
+  2: 1rem,
+  3: 1.5rem,
+  4: 2rem,
+  5: 2.5rem,
+  6: 3rem,
+  7: 3.5rem,
+  8: 4rem,
+);
+
+
+// breakpoints
+$breakpoint-xs: 320px;
+$breakpoint-sm: 600px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 960px; // was 1200px
+$breakpoint-xl: 1500px;

@@ -1,0 +1,98 @@
+footer {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  background: var(--primary);
+  h5 {
+    margin-top: 1rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+.footer {
+  width: 90%;
+  max-width: 1600px;
+}
+.footer__grid {
+  @media screen and (min-width: 992px) {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+}
+.footer__grid__item  {
+  flex: 1 1 auto;
+  padding: 1rem;
+  align-items: flex-start;
+}
+a, a:visited {
+  color: white
+}
+
+// BRAND
+.brand {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.brand__logo {
+  height: 60px;
+  width: 60px;
+  // background: url('~assets/img/logo-white.svg');
+  // background: url('~@/repo.svg');
+  // the brand logo is imported as a prop and displayed as an image
+  background-size: cover;
+  img {
+    height: 100%;
+  }
+}
+.brand__name {
+  display: block;
+  text-align: left;
+  margin-top: 0.25rem;
+}
+.brand__name__1 {
+  font-size: 2.125rem;
+  font-weight: 300;
+}
+.brand__name__2 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+// COPY
+.copy {
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  // color: grey;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255,255,255,.2);
+  p {
+    padding-top: 0;
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+// SOCIAL
+.social {
+  li {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+  i {
+     font-size: 1.5rem;
+   }
+}

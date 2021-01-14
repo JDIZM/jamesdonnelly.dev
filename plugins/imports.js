@@ -1,2 +1,3 @@
-// import normalize.css for default html styles
+// custom imports
+// eg import nomalize.css
 // import '~/node_modules/normalize.css/normalize.css'

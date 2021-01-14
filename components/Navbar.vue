@@ -4,23 +4,22 @@
     <div class="nav__menu__desktop">
       <ul class="">
         <li v-for="(link, i) in links" :key="i" class="">
-          <router-link :to="link.path" exact-active-class="">
+          <NuxtLink :to="link.path" exact-active-class="--active" class="btn">
             <div class="">
               {{ link.name.toUpperCase() }}
             </div>
-          </router-link>
+          </NuxtLink>
         </li>
       </ul>
     </div>
-    <!-- <h2 class="nav__title">NAV</h2> -->
-    <div class="nav__menu" @click="drawer = !drawer, toggleBodyClass()">
+    <div class="nav__menu" @click="drawer = !drawer">
       <i class="material-icons">
         menu
       </i>
     </div>
     <!-- desktop only -->
     <aside v-if="drawer" class="nav__drawer nav__drawer --full">
-      <div class="nav__menu" @click="drawer = !drawer, toggleBodyClass()">
+      <div class="nav__menu" @click="drawer = !drawer">
         <i class="material-icons">
           close
         </i>
@@ -28,11 +27,11 @@
       <div>
         <ul class="nav__menu__list">
           <li v-for="(link, i) in links" :key="i" class="nav__menu__list_item">
-            <router-link :to="link.path" exact-active-class="--active">
+            <NuxtLink :to="link.path" exact-active-class="--active" class="btn">
               <div class="nav__menu__wrapper">
                 {{ link.name }}
               </div>
-            </router-link>
+            </NuxtLink>
           </li>
         </ul>
       </div>
@@ -57,41 +56,17 @@ export default {
   },
   watch: {
     // watch the route and call method
-    '$route.fullPath': 'routeChange'
+    // '$route.fullPath': 'routeChange'
   },
   methods: {
-    routeChange () {
-      // react to route changes...
-      // close nav drawer
-      this.drawer = false
-      // TODO add transitions when route changes
-      this.toggleBodyClass()
-    },
-    toggleBodyClass () {
-      const el = document.body
-      // stop body having no class by giving default class
-      el.classList.add('body')
-      if (this.drawer) {
-        // if drawer is open toggle body scrolling class
-        el.classList.add('hide-scroll')
-      } else {
-        el.classList.remove('hide-scroll')
-      }
-    }
+    // TODO add transitions when route changes
   }
 }
 </script>
 
 <style lang="scss">
-// import component base styles
-// @import '@/assets/scss/_nav.scss';
-
-.hide-scroll {
-  overflow: hidden;
-}
-
 .nav__logo {
-  background: url('~assets/logo-wht.png');
+  background: url('~assets/logo-blk.png');
   // background-origin: ce;
   background-origin: content-box;
   background-repeat: no-repeat;

@@ -1,0 +1,2 @@
+/verify  https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/verify  200
+/send-mail https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/send-mail 200

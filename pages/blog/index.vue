@@ -1,8 +1,16 @@
 <template>
-  <div class="blog container">
-    <!-- <p>this is the blog index page /blog/</p> -->
-    <div v-for="(post, i) in posts" :key="i">
+  <div class="blog">
+    <section class="bg--blue text--white blog__header mb--4 pt--8">
+      <div>
+        <h1>DEVELOPER BLOG</h1>
+        <h2>Welcome to my corner of the internet, where I write about code, JavaScript and the general daily struggle of trying to get things to work.</h2>
+        <p>P.S. i'm working on it..</p>
+      </div>
+    </section>
+    <div class="container pb--4">
       <PostPreview
+        v-for="(post, i) in sortPostsBydate"
+        :key="i"
         :slug="post.slug"
         :thumbnail="post.thumbnail"
         :title="post.title.toUpperCase()"
@@ -10,58 +18,25 @@
         :date="post.date"
       />
     </div>
+    <Callout />
   </div>
 </template>
 
 <script>
+import Callout from '@/components/Callout'
 import PostPreview from '@/components/blog/PostPreview'
-import blogPosts from '@/content/blog/blogPosts.js'
+import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Blog',
   components: {
-    PostPreview
+    PostPreview,
+    Callout
   },
   data () {
     return {
       title: 'Frontend Development | Web Developer Blog | James Donnelly',
-      // add some sample blog posts data
-      // posts: [
-      //   { title: 'first post title', slug: 'first-post', thumbnail: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', excerpt: 'this is the first post' },
-      //   { title: 'second post title', slug: 'second-post', thumbnail: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', excerpt: 'this is the second post' }
-      // ]
-      posts: [] // pass the post data as props to the child component PostPreview
-    }
-  },
-  created () {
-    // get a list of blogs from markdown content
-    // import a list of blog posts from '@/content/blog/blogPosts.js'
-    blogPosts.forEach((blog) => {
-      // eslint-disable-next-line
-      console.log(blog)
-      // get the markdown post with blog post slug
-      const markdown = require(`@/content/blog/${blog}.md`) //
-      this.posts.push({
-        title: markdown.attributes.title,
-        thumbnail: markdown.attributes.thumbnail,
-        tags: markdown.attributes.tags,
-        slug: blog + '/', // blogPosts.js
-        excerpt: markdown.attributes.excerpt,
-        date: markdown.attributes.date // convert to JS date object
-      })
-    })
-    this.sortDates()
-  },
-  methods: {
-    sortDates () {
-      // get blog posts
-      this.posts.forEach((post) => {
-        // convert blog post date to date object
-        const date = new Date(post.date)
-        // update the post date with js date
-        post.timestamp = date
-      })
-      // sort posts by date
-      this.posts.sort((a, b) => b.timestamp - a.timestamp)
+      description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
+      posts: []
     }
   },
   head () {
@@ -69,20 +44,79 @@ export default {
       title: this.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.' },
+        { hid: 'description', name: 'description', content: this.description },
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.description },
         { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
         { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' }
       ]
     }
+    // TODO LOCAL SCHEMA
+  },
+  computed: {
+    // get post slugs from vuex store
+    // getPostSlugs () {
+    //   return this.$store.state.posts.posts
+    // },
+    ...mapState({
+      getPostSlugs: state => state.posts.posts,
+      postData: state => state.posts.postData
+    }),
+    ...mapGetters({
+      sortPostsBydate: 'posts/sortPostsBydate'
+    })
+  },
+  created () {
+    // get the blog urls
+    this.getPostSlugs.forEach((blog) => {
+      // get the markdown post content using blog post slug
+      const markdown = require(`@/content/blog/${blog}.md`) //
+      this.posts.push({
+        title: markdown.attributes.title,
+        thumbnail: markdown.attributes.thumbnail,
+        tags: markdown.attributes.tags,
+        slug: blog + '/',
+        excerpt: markdown.attributes.excerpt,
+        date: markdown.attributes.date // convert to JS date object in store
+      })
+    })
+    // sort posts by date and save new store state
+    this.sortDates(this.posts)
+  },
+  methods: {
+    ...mapActions({
+      sortDates: 'posts/sortDates'
+      // ...
+    })
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 /* applying an image in css with webpack */
 .blog {
   /* background: url('~assets/bg-img.jpeg') */
   /* padding: 1rem; */
-  margin-top: 1rem;
+  /* display: flex;
+  align-items: center;
+  flex-direction: column; */
+  // padding-top: 1rem;
+  text-align: left;
+}
+/* stop FOUT on post title */
+.post__title {
+  text-align: left;
+  font-size: 1.5rem;
+  @media screen and (min-width: 768px) {
+    // font-size: 2.5rem;
+  }
+}
+
+.blog__header {
+  margin: auto;
+  div {
+    margin: auto;
+    max-width: 980px;
+    padding: 2rem 1rem;
+  }
 }
 </style>

@@ -1,16 +1,16 @@
 ---
 title: Page speed, Load Time & Conversions
-date: "2020-06-06"
-excerpt: Page speed, Load Time &amp; Conversions
+date: "2020-12-16"
+excerpt: Page speed, Load Time & Conversions
 tags:
   - web development
-thumbnail: /fast_loading.svg
+thumbnail: fast_loading.svg
 ---
 
 With over 50% of all traffic on the internet coming from mobile devices, there’s no question that load time is important for people on the move. Time is valuable and modern life is fast, so your site should be too. Users care more about the load time than your fancy animations, ads or your 187 scripts loading in the background.
 
-![mobile page speed](/mobile-page-speed-new-industry-benchmarks-01-21.png "image")
-
+<!-- ![mobile page speed](/mobile-page-speed-new-industry-benchmarks-01-21.png "image") -->
+![mobile page speed](@/assets/blog/mobile-page-speed-new-industry-benchmarks-01-21.png "image")
 
 From a site owner’s perspective. You’re focused on generating revenue, adding functionality, tracking and improving conversions. I can understand that you need to keep the lights on and the bills paid.
 
@@ -74,4 +74,4 @@ You should be using a content delivery network (also called content distribution
 
 ### Serve Static Files
 
-You can use a CDN to render static pages, there are also plugins for popular CMS like WordPress to create static HTML files. JAMstack static site generators such as Gatsby, Next.js, Hugo, Jekyll are becoming quite popular because they are easier to scale, maintain and have better performance than a dynamic setup like WordPress & MySQL/PHP.
+You can use a CDN to render static pages, there are also plugins for popular CMS like WordPress to create static HTML files. JAMstack static site generators such as Gatsby, Next.js, Hugo, Jekyll are becoming quite popular because they are easier to scale, maintain and have better performance than a traditional LAMP stack.

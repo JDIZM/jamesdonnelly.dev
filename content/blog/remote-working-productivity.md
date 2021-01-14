@@ -1,13 +1,16 @@
 ---
 title: Productivity Hacks For Managing Time When Working Remotely
-date: "2020-06-03"
+date: "2020-12-03"
 excerpt: Time management for remote developers is an important skill. Learn how I manage my time with these productivity hacks while working remotely.
 tags:
   - productivity
-thumbnail: /time_management.svg
+thumbnail: time_management.svg
 ---
 
-![Digital Nomad](/digital_nomad.svg)
+<!-- without webpack -->
+<!-- ![Digital Nomad](/digital_nomad.svg) -->
+<!-- with webpack -->
+![Digital Nomad](@/assets/blog/digital_nomad.svg "image")
 
 Remote working has its benefits. Less traveling (usually) and being able to work in your underwear being the two obvious ones. Whether your working from home, at a coffee shop or in a co-working space it’s easy to get side-tracked from what needs doing. It requires discipline to stay focused and remain productive when you're in full control.
 
@@ -51,12 +54,14 @@ According to Csikszentmihályi, there are nine components to achieving a state o
 8. loss of self-consciousness
 9. autotelic experience (for self-benefit and experience of the task as the main goal, “I just want to do it, because I felt like it”)
 
-![Working Remotely](/working_remotely.svg)
+<!-- ![Working Remotely](/working_remotely.svg) -->
+<!-- with webpack -->
+![Working Remotely](@/assets/blog/working_remotely.svg "image")
 
 #### The Pomodoro Technique
 
-##### 1. What's a pomodoro?
-##### 2. Pros and cons
+##### What's a pomodoro?
+<!-- ##### 2. Pros and cons -->
 
 According to [wikipedia](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 

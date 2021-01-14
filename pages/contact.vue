@@ -1,95 +1,91 @@
 <template>
-  <div class="container">
-    <h2 class="center">
+  <div class="container mb--4 pt--8">
+    <h1 class="center">
       GET IN TOUCH?
-    </h2>
-    <p class="pb--2">If you need to reach me, then feel free to pop me a message.</p>
-    <div class="form">
-      <form @submit.prevent="sendMessage" @keydown.enter.prevent>
-        <div class="form__field">
-          <label for="name">name</label>
-          <input id="name" v-model="name" type="text" name="name">
-        </div>
-        <div class="form__field">
-          <label for="phone">phone</label>
-          <input id="phone" v-model="phone" type="number" name="phone">
-        </div>
-        <div class="form__field">
-          <label for="email">email</label>
-          <input id="email" v-model="email" type="email" name="email">
-        </div>
-        <div class="form__field">
-          <label for="message">message</label>
-          <textarea id="message" v-model="message" name="message" rows="4" cols="50"> Hello </textarea>
-        </div>
-        <p v-if="feedback" class="help err">
-          {{ feedback }}
-        </p>
-        <button class="btn btn--secondary">
-          submit
-        </button>
-      </form>
-    </div>
+    </h1>
+    <p class="pb--2">
+      If you need to reach me, then feel free to pop me a message.
+    </p>
+    <ContactForm
+      :show-error="false"
+      :show-success="false"
+      :inputs="inputs"
+      @onSubmit="onSubmit"
+      @onUpdate="onUpdate"
+      @error="onError('Make sure you fill in the form!')"
+    />
+    <Toast
+      :show="toast.show"
+      :msg="toast.msg"
+      :duration="toast.duration"
+      :icon="toast.icon"
+      @onTimeout="toast.show = false"
+    />
   </div>
 </template>
 
 <script>
-
+import ContactForm from '@/storybook/stories/organisms/contact-form/ContactForm.vue'
+import Toast from '@/storybook/stories/molecules/Toast.vue'
 export default {
+  components: {
+    ContactForm,
+    Toast
+  },
   data () {
     return {
-      title: 'contact!',
-      name: null,
-      phone: null,
-      email: null,
-      message: null,
-      feedback: null
-    }
-  },
-  methods: {
-    method () {
-      // eslint-disable-next-line
-      console.log('this is a method in nuxt.js')
-    },
-    sendMessage () {
-      // TODO build form request to post data with cloud functions
-      // get the form data with v-model
-      const data = {
-        name: this.name,
-        phone: this.phone,
-        email: this.email,
-        message: this.message
-      }
-      // need a better if clause..
-      if (this.name) {
-        // if name exists then check the rest of the form data
-        //
-        this.feedback = null
-        // do something with the form data
-        // eslint-disable-next-line
-        console.log(data)
-        // make a post request to the cloud mail function
-        const api = process.env.FIREBASE_FUNCTION_API
-        // eslint-disable-next-line
-        console.log(api)
-        // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
-        this.$axios.post(api, data) // without proxy
-          .then((response) => {
-            // we can do other things with the response and the data
-            // eslint-disable-next-line
-            console.log(response)
-            // what about slack, sms, other firebase functions
-            // TODO show success feedback
-          })
-          .catch((err) => {
-            // eslint-disable-next-line
-            console.log(err)
-          })
-      } else {
-        // do something else
-        // handle UI feedback classes
-        this.feedback = 'you need to enter something'
-      }
+      title: 'Get In Touch | Web Developer Manchester',
+      description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
+      submission: null, // submitted form values
+      sent: false, // only send once
+      toast: {
+        show: false,
+        duration: 4000,
+        icon: 'check_circle',
+        msg: 'Default toast msg'
+      },
+      inputs: [
+        // 0 - name
+        {
+          name: 'name',
+          type: 'text',
+          label: 'What\'s your name?',
+          placeholder: 'James',
+          icon: 'person',
+          showIcon: true,
+          showError: false
+        },
+        // 1 - email
+        {
+          name: 'email',
+          type: 'email',
+          label: 'What\'s your email?',
+          placeholder: 'hello@jamesdonnelly.dev',
+          icon: 'email',
+          showIcon: true,
+          showError: false
+        },
+        // 2 - phone
+        {
+          name: 'phone',
+          type: 'tel',
+          label: 'What\'s your phone number?',
+          placeholder: '0161 123 4567',
+          icon: 'phone',
+          showIcon: true,
+          showError: false
+        },
+        // 3 - message
+        {
+          name: 'message',
+          type: 'textarea',
+          label: 'Leave me a message',
+          placeholder: 'Enter a message',
+          icon: 'message',
+          showIcon: true,
+          showError: false
+        }
+      ]
     }
   },
   head () {
@@ -97,59 +93,131 @@ export default {
       title: this.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: 'Contact page description' },
+        { hid: 'description', name: 'description', content: 'Get in touch with a freelance web developer.' },
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: 'Get in touch with a freelance web developer.' },
         { hid: 'og:url', name: 'og:url', content: this.$route.path },
-        { hid: 'og:image', name: 'og:image', content: 'https://i.imgur.com/9lSpJi6.jpg' }
+        { hid: 'og:image', name: 'og:image', content: '/logo.png' }
       ]
+    }
+  },
+  async mounted () {
+    try {
+      await this.$recaptcha.init()
+    } catch (e) {
+      // TODO err
+      console.log(e)
+    }
+  },
+  // computed: {
+  //   validateEmail () {
+  //     // TODO can't validate form without access to the inputs.
+  //     return {
+  //       error: this.email === null || this.email === undefined || this.email === ''
+  //     }
+  //   }
+  // },
+  methods: {
+    async onSubmit (value) {
+      this.submission = value
+      // send form once
+      if (this.sent) {
+        this.onError('Form already sent')
+      } else {
+        // form should already be validated, this should be a success
+        try {
+          const response = await this.$recaptcha.execute('submit')
+          // verify the recaptcha token
+          this.verifyRecaptcha(response)
+          // https://developers.google.com/recaptcha/docs/verify
+        } catch (e) {
+          // eslint-dsiable-next-line
+          // TODO error
+          console.log(e)
+        }
+      }
+    },
+    onError (msg) {
+      this.toast.show = true
+      this.toast.msg = msg
+      this.toast.icon = 'alarm'
+    },
+    onUpdate (value) {
+      // console.log('update', value)
+    },
+    async sendMessage () {
+      // TODO show loading state.
+      // form request to post data with cloud functions
+      const data = {
+        name: this.submission[0],
+        phone: this.submission[1],
+        email: this.submission[2],
+        message: this.submission[3]
+      }
+      // make a post request to the cloud mail function
+      // const api = process.env.FIREBASE_FUNCTION_API
+      // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
+      await this.$axios.post('/send-mail', data, {
+        auth: {
+          username: 'admin',
+          password: process.env.PASS
+        }
+      }) // without proxy
+        .then((response) => {
+          // we can do other things with the response and the data
+          // what about slack, sms, other firebase functions
+          // show success feedback
+          this.toast.show = true
+          this.toast.msg = 'Your message has been sent!'
+          this.toast.icon = 'check_circle'
+          this.sent = true
+          // TODO redirect to a thank you page.
+          // TODO clear form
+        })
+        .catch((err) => {
+          // TODO err
+          console.log(err)
+        })
+    },
+    async verifyRecaptcha (response) {
+      // const api = 'http://localhost:4000/verify'
+      const api = '/verify'
+      // use proxy '/verify' to avoid cors issue
+      // const query = `?secret=${secret}&response=${response}`
+      // const res = await this.$axios.post('/verify' + query, {
+      const res = await this.$axios.post(api, { response }, {
+        auth: {
+          username: 'admin',
+          password: process.env.PASS
+        },
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
+        .then((res) => {
+          if (res.data.recaptcha.success === true && res.data.recaptcha.score <= 0.4) {
+            // low score
+          }
+          if (res.data.recaptcha.success === true && res.data.recaptcha.score >= 0.5) {
+            // successful captcha
+            this.sendMessage()
+          } else {
+            // handle failed captcha
+          }
+        })
+        .catch((err) => {
+          // TODO err
+          console.log(err)
+        })
+      //
+      return res
     }
   }
 }
 </script>
 
 <style scoped>
-/* .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-  margin-top: 0;
-  text-align: center;
-} */
-
-.form {
-  /* width: 80%;
-  max-width: 400px; */
-  /* margin: auto; */
+div {
+  text-align: left;
 }
-form {
-    display: flex;
-    /* justify-content: center;
-    align-items: center;
-    text-align: center; */
-    flex-direction: column;
-}
-label {
-    /* margin: 4px; */
-}
-input {
-    /* margin: 4px; */
-    /* height: 40px; */
-}
-button {
-    margin-top: 16px;
-    height: 60px;
-    font-size: 1.3em;
-}
-
-.help {
-    margin: 4px;
-    color: red;
-}
-.err {
-    color: red;
-}
-
 </style>

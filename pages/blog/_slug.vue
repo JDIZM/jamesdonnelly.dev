@@ -1,27 +1,30 @@
 <template>
-  <article class="container">
+  <article class="post container pb--4 pt--8">
     <div v-for="(tag, i) in tags" :key="i" class="post__tags text--primary">
       <li> - {{ tag.toUpperCase() }}</li>
     </div>
-    <h1 class="post__title mt--1 mb--1">
-      {{ title.toUpperCase() }}
-    </h1>
-    <div class="post__date mt--1">
+    <div>
+      <h1 class="post__title mt--1 mb--1">
+        {{ title.toUpperCase() }}
+      </h1>
+    </div>
+    <div class="post__date mb--2">
       - {{ date }}
     </div>
-    <div class="post__author">
+    <div class="post__author mb--4">
       <div class="post__author__img">
-        <img class="mt--1" alt="author image" srcset="https://placehold.it/150x150">
+        <img alt="author image" height="60px" width="60px" :srcset="profile">
       </div>
-      <div>
-        <p class="m--1 mt--2">James Donnelly</p>
-        <p class="m--1">Freelance Web Developer</p>
+      <div class="post__author__bio">
+        <p class="m--1">
+          James Donnelly
+        </p>
+        <p class="m--1">
+          Freelance Web Developer
+        </p>
       </div>
     </div>
-    <!-- <p> this is the blog post page </p>
-    <img src="@/assets/carbon-2.png" alt="">
-    <p>this component loads markdown files from '@/content/blog/${this.slug}.md which is passed as props through route params</p> -->
-    <!-- // FIXME https://github.com/nuxt/eslint-plugin-nuxt/issues/65 -->
+    <!-- <p>this component loads markdown files from '@/content/blog/${this.slug}.md which is passed as props through route params</p> -->
     <component :is="dynamicComponent" v-if="dynamicComponent" />
   </article>
 </template>
@@ -38,26 +41,13 @@ export default {
     return {
       title: null,
       thumbnail: null,
+      profile: process.env.PROFILE_URL,
       slug: this.$route.params.slug,
       tags: [],
       date: null,
       excerpt: null,
       dynamicComponent: null
     }
-  },
-  computed: {
-    //
-  },
-  created () {
-    // get the post data from markdown files based on the slug which matches the filename
-    const markdown = require(`@/content/blog/${this.slug}.md`) //
-    this.title = markdown.attributes.title
-    this.thumbnail = markdown.attributes.thumbnail
-    this.tags = markdown.attributes.tags
-    // this.date = Date.parse(markdown.attributes.date) // convert the date to JS
-    this.date = markdown.attributes.date // use computed value
-    this.dynamicComponent = markdown.vue.component
-    this.excerpt = markdown.attributes.excerpt
   },
   head () {
     return {
@@ -79,15 +69,32 @@ export default {
         }
       ]
     }
+  },
+  created () {
+    // get the post data from markdown files based on the slug which matches the filename
+    const markdown = require(`@/content/blog/${this.slug}.md`) //
+    this.title = markdown.attributes.title
+    this.thumbnail = markdown.attributes.thumbnail
+    this.tags = markdown.attributes.tags
+    // this.date = Date.parse(markdown.attributes.date) // convert the date to JS
+    this.date = markdown.attributes.date // use computed value
+    this.dynamicComponent = markdown.vue.component
+    this.excerpt = markdown.attributes.excerpt
   }
 }
 </script>
 
 <style lang="scss">
+// do not scope so the styles can target markdown post
+.post {
+  text-align: left;
+  max-width: 900px;
+}
 .post__title {
+  text-align: left;
   font-size: 1.5rem;
   @media screen and (min-width: 768px) {
-    font-size: 2.5rem;
+    // font-size: 2.5rem;
   }
 }
 .post__tags {
@@ -107,29 +114,41 @@ export default {
 .post__author {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  @media screen and (min-width: 375px) {
-    flex-direction: row;
-  }
+  flex-direction: row;
 }
 .post__author__img {
+  max-width: 88px;
+  flex: 0;
   img {
     border-radius: 50%;
-    height: 80px;
-    width: 80px;
+    // set image height explicitly on the element
+    // height: 100%;
+    // width: 100%;
+    border: solid 1px var(--primary);
   }
 }
-.container {
-  text-align: left;
+.post__author__bio {
+  //
+  p {
+    font-size: 1rem;
+  }
 }
 .frontmatter-markdown  {
-    text-align: left;
+    // text-align: left;
     img {
       height: 100%;
       width: 100%;
     }
     blockquote {
       margin-left: 1rem;
+      font-style: italic;
     }
-  }
+    p {
+      margin-bottom: 1rem;
+    }
+    ul, li, ol {
+      margin: 1rem;
+      // padding: 0.5rem;
+    }
+}
 </style>

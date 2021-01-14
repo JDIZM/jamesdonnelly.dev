@@ -6,7 +6,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+.cache
 # Runtime data
 pids
 *.pid
@@ -58,6 +58,8 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.production
+.env.staging
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -88,5 +90,6 @@ sw.*
 
 # Vim swap files
 *.swp
-.env
-plugins/firebase.js
+
+# storybook ui
+# storybook

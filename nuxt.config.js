@@ -2,7 +2,8 @@
 import FMMode from 'frontmatter-markdown-loader/mode'
 
 export default {
-  mode: 'universal',
+  // https://nuxtjs.org/blog/going-full-static
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -15,13 +16,22 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+      // TODO preload fonts
+      // TODO display default system font
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap' }
+    ],
+    script: [
+      { src: 'https://kit.fontawesome.com/3770b0f41c.js' }
     ]
   },
   // custom dot env variables client side
   // https://nuxtjs.org/api/configuration-env/
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    // WARNING baseURL and proxy cannot be used at the same time, so when the proxy option is in use, you need to define prefix instead of baseURL.
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    prefix: process.env.API_URL
   },
   /*
   ** Customize the progress-bar color
@@ -33,8 +43,9 @@ export default {
   ** Global CSS
   */
   css: [
-    'normalize.css/normalize.css',
-    '@/scss/main.scss'
+    // '@/scss/main.scss'
+    // import storybook theme
+    './storybook/theme/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -47,22 +58,17 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
-    // '@nuxtjs/vuetify'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources'
   ],
-  // vuetify: {
-  //   /* module options */
-  //   // customVariables: ['~/assets/variables.scss'],
-  //   theme: {
-  //     primary: '#ff9800',
-  //     secondary: '#ff5722',
-  //     accent: '#00bcd4',
-  //     error: '#e91e63',
-  //     warning: '#f44336',
-  //     info: '#ffeb3b',
-  //     success: '#4caf50'
-  //   }
-  // },
+  styleResources: {
+    // your settings here
+    scss: [
+      // '@/assets/scss/main.scss',
+      '@/storybook/theme/_vars.scss',
+      '@/storybook/theme/_mixins.scss'
+    ]
+  },
   // build: {
   //   loaders: {
   //     scss: {
@@ -70,44 +76,54 @@ export default {
   //     }
   //   }
   // },
-  // buildModules: [
-  //   // Doc: https://github.com/nuxt-community/eslint-module
-  //   '@nuxtjs/eslint-module',
-  //   ['@nuxtjs/vuetify', { /* module options */
-  //     customVariables: ['~/assets/variables.scss'],
-  //     theme: { light: { primary: '#FF5733' } } }]
-  // ],
-  // https://github.com/nuxt-community/vuetify-module
-  // https://vuetifyjs.com/en/getting-started/quick-start#nuxt-install
-  // TODO the options arent working!
-  // vuetify: {
-  //   optionsPath: './vuetify.options.js'
-  // },
-  // vuetify: {
-  //   /* module options */
-  //   customVariables: ['~/assets/variables.scss']
-  // },
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
+    '@nuxtjs/axios', // https://axios.nuxtjs.org/options
+    // FIXME is @nuxtjs/proxy needed vs axios?
+    '@nuxtjs/proxy', // // https://nuxtjs.org/faq/http-proxy/
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/recaptcha'
   ],
+  recaptcha: {
+    /* reCAPTCHA options */
+    hideBadge: true,
+    language: 'v3',
+    siteKey: process.env.SITEKEY,
+    version: 3,
+    size: 'normal'
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    // proxy: true // Can be also an object with default options
+    // use proxy
+    proxy: true,
+    // proxy will not work with your baseUrl, must have a prefix
+    // see https://axios.nuxtjs.org/options/
+    prefix: process.env.API_URL // eg api url before the proxy target
+    // https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api + /verify
+    // https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api + /send-mail
+    // can only have ONE api url as a prefix?
   },
-  // proxy: {
-  //   '/api/': 'https://us-central1-baked-digital.cloudfunctions.net/sendMail'
-  // },
+  proxy: {
+    // Note: In the proxy module, /api/ will be added to all requests to the API end point.
+    // If you need to remove it use the pathRewrite option
+    '/verify': {
+      target: 'https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/verify',
+      pathRewrite: { '^/verify': '' }
+    },
+    '/send-mail': {
+      target: 'https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/send-mail',
+      pathRewrite: { '^/send-mail': '' }
+    }
+  },
   /*
   ** Build configuration
   */
@@ -118,6 +134,11 @@ export default {
   //   extend (config, ctx) {
   //   }
   build: {
+    splitChunks: {
+      layouts: true,
+      pages: true,
+      commons: true
+    },
     extend (config, _ctx) {
       config.module.rules.push(
         {
@@ -132,22 +153,47 @@ export default {
   },
   server: {
     port: 8000, // default: 3000
+    // host: 'localhost'
     host: '0.0.0.0' // default: localhost
   },
   sitemap: {
-    hostname: 'https://jamesdonnelly.dev'
+    hostname: 'https://nuxt-portfolio-8d1bf.web.app/',
+    trailingSlash: true
+  },
+  pwa: {
+    meta: {
+      // https://pwa.nuxtjs.org/modules/meta.html#options
+      /* meta options */
+      theme_color: '#32543b'
+      // TODO meta
+    }
   },
   // https://nuxtjs.org/api/configuration-generate/
   generate: {
-    fallback: true,
-    // TODO add routes / create a function to generate
-    routes: [
-      '/blog/remote-working-productivity/',
-      '/blog/page-speed-load-time/'
-    ]
+    fallback: true
+    // crawler in v2.13 now generates routes for dynamic links
+    // routes: [
+    //   '/blog/remote-working-productivity/',
+    //   '/blog/page-speed-load-time/'
+    // ]
   },
   // https://nuxtjs.org/api/configuration-router/
   router: {
     trailingSlash: true
+  },
+  // TODO static assets cache policy
+  // https://stackoverflow.com/questions/61662857/serve-static-assets-with-an-efficient-cache-policy-nuxt-js-gae
+  // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-render#static
+  render: {
+    // Setting up cache for 'static' directory - a year in milliseconds
+    // https://web.dev/uses-long-cache-ttl
+    static: {
+      maxAge: 1000 * 60 * 60 * 24 * 30
+      // maxAge: '1y'
+    },
+    dist: {
+      // maxAge: '1y'
+      maxAge: 1000 * 60 * 60 * 24 * 30
+    }
   }
 }

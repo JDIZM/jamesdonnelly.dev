@@ -1,76 +1,92 @@
 <template>
   <div>
-    <Navbar />
+    <!-- <Navbar /> -->
+    <NavMain
+      :links="links"
+      phone=""
+      :logo-src="imgSrc"
+      :show-drawer="showDrawer"
+      :show-dropdown="showDropdown"
+      :dropdown-items="dropdownItems"
+      :show-buttons="false"
+      @onShowDrawer="showDrawer = !showDrawer"
+      @onDropdown="showDropdown = !showDropdown"
+      @onReset="showDropdown = false, showDrawer = false"
+      @onCloseDrawer="showDrawer = false"
+      @onEnquire="onEnquire"
+    />
     <nuxt />
-    <Footer />
+    <Footer
+      class="bg--blue text--white"
+      name="JDIZM"
+      :logo-src="imgSrc"
+      :address="['']"
+      :social="[
+        { name: 'twitter', path: 'https://twitter.com/JDIZM', iconClass: 'fab fa-twitter-square', aria: 'twitter'},
+        { name: 'linkedin', path: 'https://www.linkedin.com/in/james-donnelly-a52ab6a0/', iconClass: 'fab fa-linkedin', aria: 'linkedin'},
+        { name: 'github', path: 'https://github.com/JDIZM/', iconClass: 'fab fa-github', aria: 'github'}
+      ]"
+      :privacy="''"
+    />
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
-import Footer from '@/components/Footer.vue'
-import firebase from '@/plugins/firebase'
+import NavMain from '@/storybook/stories/organisms/nav/NavMain.vue'
+// import Navbar from '@/components/Navbar.vue'
+// import Footer from '@/components/Footer.vue'
+import Footer from '@/storybook/stories/organisms/Footer.vue'
+// import firebase from '@/plugins/firebase'
 export default {
+  name: 'Default',
   components: {
     // Logo
-    Navbar,
+    NavMain,
     Footer
   },
-  created () {
-    // https://nuxtjs.org/faq/window-document-undefined/
-    // load firebase analytics
-    if (process.client) {
-      firebase.analytics()
+  data () {
+    return {
+      imgSrc: require('~/assets/logo.png'),
+      showDrawer: false,
+      showDropdown: false,
+      dropdownItems: [],
+      links: [
+        { path: '/', name: 'Home' },
+        { path: '/projects/', name: 'Work' },
+        { path: '/blog/', name: 'Blog' },
+        { path: '/contact/', name: 'Contact' }
+        // { name: 'Dropdown'}
+      ]
     }
   },
   head () {
     return {
-      // title: this.title,
-      // meta: [
-      //   // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-      //   { hid: 'description', name: 'description', content: 'this is a default description' },
-      //   { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
-      //   { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' },
-      //   { hid: 'og:description', name: 'og:description', content: 'this is a default description' },
-      //   { hid: 'og:type', name: 'og:type', content: 'website' },
-      //   { hid: 'twitter:card', name: 'twitter:card', content: process.env.NUXT_HOST + this.thumbnail }
-      // ],
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.' },
+        { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
+        { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.png' }
+      ],
       link: [
         {
           rel: 'canonical',
           href: process.env.NUXT_HOST + this.$route.path
         }
       ]
-    //   script: [{
-    //     type: 'application/ld+json',
-    //     json: {
-    //       '@context': 'http://schema.org',
-    //       '@type': 'LocalBusiness',
-    //       'name': 'Baked Digital',
-    //       'image': 'https://baked.digital/logo.jpg',
-    //       '@id': '',
-    //       'url': 'https://baked.digital',
-    //       'telephone': '+441615190814',
-    //       'address': {
-    //         '@type': 'PostalAddress',
-    //         'streetAddress': 'Ziferblat, 23 Edge St',
-    //         'addressLocality': 'Manchester',
-    //         'postalCode': 'M4 1HW',
-    //         'addressCountry': 'GB'
-    //       },
-    //       'geo': {
-    //         '@type': 'GeoCoordinates',
-    //         'latitude': 53.48448,
-    //         'longitude': -2.2364689999999428
-    //       },
-    //       'sameAs': [
-    //         'https://www.facebook.com/baked.digital/',
-    //         'https://twitter.com/bakeddigital',
-    //         'https://www.instagram.com/baked.digital/',
-    //         'https://www.linkedin.com/company/baked-digital/'
-    //       ]
-    //     }
-    //   }]
+    }
+  },
+  created () {
+    // https://nuxtjs.org/faq/window-document-undefined/
+    // load firebase analytics
+    // if (process.client) {
+    //   firebase.analytics()
+    // }
+  },
+  methods: {
+    onEnquire () {
+      this.$router.push({
+        path: '/contact/'
+      })
     }
   }
 }
@@ -78,24 +94,8 @@ export default {
 
 <style lang="scss" scoped>
 
-/* html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-} */
-html {
-width: 100%;
-}
-/* *,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-} */
+// html {
+// width: 100%;
+// }
+
 </style>
