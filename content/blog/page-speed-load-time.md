@@ -20,6 +20,8 @@ Speed is now an important search ranking factor for [Google](https://developers.
 
 You can optimize the experience according to the user’s device. If you’re visiting from a desktop you’re more likely to have a much faster connection and can download higher-resolution files.
 
+![Fast Loading](@/assets/blog/fast_loading.svg "image")
+
 ## Steps to improve site performance, speed up web pages and reduce load time on mobile devices.
 
 ### Check Your Page Speed

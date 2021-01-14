@@ -3,9 +3,9 @@
     <h3>WHAT I CAN DO FOR YOU..</h3>
     <div class="services__grid pt--4">
       <div v-for="service in services" :key="service.name" class="mb--2">
-        <img :src="imgSrc(service.img)" alt="" :height="imgH" width="100%" draggable="false">
+        <img :src="imgSrc(service.img)" :alt="service.name" :height="imgH" draggable="false">
         <h4>{{ service.name }}</h4>
-        <p>{{ service.desc }}</p>
+        <p class="p--1">{{ service.desc }}</p>
         <!-- <ul v-if="service.items">
           <li v-for="item in service.items" :key="item">
             <span class="material-icons">chevron_right</span><span>{{ item }}</span>
@@ -47,9 +47,26 @@ section {
 .services__grid {
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 768px) {
+   @media screen and (min-width: 768px) {
     //
     flex-direction: row;
+    img {
+      max-width: 200px;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+  // TODO make the services smaller.. below ipad pro.. only col on mobile
+  @media screen and (min-width: 1024px) {
+    //
+    flex-direction: row;
+    img {
+      max-width: 250px;
+    }
+    p {
+      font-size: 1.25rem;
+    }
   }
 }
 h3 {

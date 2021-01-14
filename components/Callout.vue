@@ -39,7 +39,7 @@ section {
   // margin: auto;
   // margin-bottom: 2rem;
    text-align: center;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 1025px) {
     width: calc(100vw - 0.95rem);
   }
   h2 {

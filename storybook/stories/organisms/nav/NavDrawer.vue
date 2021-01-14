@@ -7,7 +7,7 @@
           <!-- logo -->
           <!-- <img :src="require('~/assets/img/' + logo)" :alt="logo"> -->
           <div class="nav__drawer__logo">
-            <img :src="logoSrc" draggable="false" />
+            <img :src="logoSrc" draggable="false" height="50px" width="50px" />
           <!-- logo -->
           <!-- <img :src="require('~/assets/img/' + logo)" :alt="logo"> -->
           </div>

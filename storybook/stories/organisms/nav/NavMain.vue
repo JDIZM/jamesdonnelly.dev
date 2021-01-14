@@ -45,7 +45,7 @@
     <div class="nav__mobile">
       <div class="nav__mobile__brand">
         <div class="nav__mobile__logo">
-          <img :src="logoSrc" draggable="false" alt="logo"/>
+          <img :src="logoSrc" draggable="false" alt="logo" height="50px" width="50px"/>
         </div>
       </div>
       <div class="nav__mobile__btns">

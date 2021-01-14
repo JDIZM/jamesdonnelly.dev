@@ -157,7 +157,7 @@ export default {
     host: '0.0.0.0' // default: localhost
   },
   sitemap: {
-    hostname: 'https://nuxt-portfolio-8d1bf.web.app/',
+    hostname: 'https://jamesdonnelly.dev/',
     trailingSlash: true
   },
   pwa: {
@@ -170,12 +170,13 @@ export default {
   },
   // https://nuxtjs.org/api/configuration-generate/
   generate: {
-    fallback: true
+    fallback: true,
     // crawler in v2.13 now generates routes for dynamic links
-    // routes: [
-    //   '/blog/remote-working-productivity/',
-    //   '/blog/page-speed-load-time/'
-    // ]
+    // TODO routes for sitemap
+    routes: [
+      '/blog/remote-working-productivity/',
+      '/blog/page-speed-load-time/'
+    ]
   },
   // https://nuxtjs.org/api/configuration-router/
   router: {

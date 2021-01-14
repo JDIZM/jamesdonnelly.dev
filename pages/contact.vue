@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb--4 pt--8">
+  <div class="container mb--4 pt--8 contact">
     <h1 class="center">
       GET IN TOUCH?
     </h1>
@@ -132,7 +132,7 @@ export default {
         } catch (e) {
           // eslint-dsiable-next-line
           // TODO error
-          console.log(e)
+          console.log('recaptcha failed', e)
         }
       }
     },
@@ -221,5 +221,9 @@ export default {
 <style scoped>
 div {
   text-align: left;
+}
+
+.contact {
+  min-height: 80vh;
 }
 </style>

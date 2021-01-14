@@ -24,7 +24,7 @@ html, body {
   // height set in container
   // hide scrollbar for full width component
   overflow-X: hidden;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 1025px) {
     overflow-X: auto
   }
 }

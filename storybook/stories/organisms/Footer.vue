@@ -4,7 +4,7 @@
       <div class="footer__grid">
         <div class="footer__grid__item brand">
           <div class="brand__logo">
-            <img :src="logoSrc" draggable="false" alt="logo" />
+            <img :src="logoSrc" draggable="false" alt="logo" height="60px" width="60px"/>
           </div>
         </div>
         <div class="footer__grid__item social">
