@@ -6,7 +6,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.cache
+*.cache
+.firebase
+
 # Runtime data
 pids
 *.pid
