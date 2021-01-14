@@ -13,7 +13,7 @@
     </div>
     <div class="post__author mb--4">
       <div class="post__author__img">
-        <img alt="author image" height="60px" width="60px" :srcset="profile">
+        <img alt="author image" height="60px" width="60px" :src="profile">
       </div>
       <div class="post__author__bio">
         <p class="m--1">
@@ -57,9 +57,7 @@ export default {
         { hid: 'title', name: 'og:title', property: 'og:title', content: this.title },
         { hid: 'description', name: 'description', content: this.excerpt },
         { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.excerpt },
-        { hid: 'og:url', name: 'og:url', property: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
-        { hid: 'og:image', name: 'og:image', property: 'og:image', content: process.env.NUXT_HOST + this.thumbnail },
-        { hid: 'og:type', name: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:image', name: 'og:image', property: 'og:image', content: process.env.NUXT_HOST + this.imgSrc },
         { hid: 'twitter:card', name: 'twitter:card', property: 'twitter:card', content: process.env.NUXT_HOST + this.thumbnail }
       ],
       link: [
@@ -68,6 +66,11 @@ export default {
           href: process.env.NUXT_HOST + this.$route.path
         }
       ]
+    }
+  },
+  computed: {
+    imgSrc () {
+      return require('~/assets/blog/' + this.thumbnail)
     }
   },
   created () {

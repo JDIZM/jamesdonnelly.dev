@@ -95,10 +95,9 @@ export default {
       title: this.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'title', name: 'og:title', property: 'og:title', content: this.title },
         { hid: 'description', name: 'description', content: 'Get in touch with a freelance web developer.' },
-        { hid: 'og:description', name: 'og:description', property: 'og:description', content: 'Get in touch with a freelance web developer.' },
-        { hid: 'og:url', name: 'og:url', content: this.$route.path },
-        { hid: 'og:image', name: 'og:image', content: '/logo.png' }
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: 'Get in touch with a freelance web developer.' }
       ]
     }
   },

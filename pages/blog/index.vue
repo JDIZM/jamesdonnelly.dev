@@ -44,10 +44,9 @@ export default {
       title: this.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'title', name: 'og:title', property: 'og:title', content: this.title },
         { hid: 'description', name: 'description', content: this.description },
-        { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.description },
-        { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
-        { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/logo.jpg' }
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.description }
       ]
     }
     // TODO LOCAL SCHEMA
