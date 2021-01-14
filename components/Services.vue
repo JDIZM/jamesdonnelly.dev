@@ -3,7 +3,7 @@
     <h3>WHAT I CAN DO FOR YOU..</h3>
     <div class="services__grid pt--4">
       <div v-for="service in services" :key="service.name" class="mb--2">
-        <img :src="imgSrc(service.img)" alt="" :height="imgH" width="100%" drggable="false">
+        <img :src="imgSrc(service.img)" alt="" :height="imgH" width="100%" draggable="false">
         <h4>{{ service.name }}</h4>
         <p>{{ service.desc }}</p>
         <!-- <ul v-if="service.items">
