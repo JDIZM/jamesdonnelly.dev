@@ -139,6 +139,7 @@ export default {
   }
   span {
     padding-right: 0.5rem;
+    vertical-align: middle;
   }
 }
 
