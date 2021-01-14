@@ -158,9 +158,10 @@ export default {
       // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
       await this.$axios.post('/send-mail', data, {
         withCredentials: true,
+        // FIXME netlify build doesn't send pass.
         auth: {
           username: 'admin',
-          password: process.env.PASS
+          password: process.env.AUTH_PASS
         }
       }) // without proxy
         .then((response) => {
@@ -189,7 +190,7 @@ export default {
         withCredentials: true,
         auth: {
           username: 'admin',
-          password: process.env.PASS
+          password: process.env.AUTH_PASS
         },
         headers: {
           'Content-Type': 'application/json'
