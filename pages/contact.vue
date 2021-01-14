@@ -157,6 +157,7 @@ export default {
       // const api = process.env.FIREBASE_FUNCTION_API
       // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
       await this.$axios.post('/send-mail', data, {
+        withCredentials: true,
         auth: {
           username: 'admin',
           password: process.env.PASS
@@ -185,6 +186,7 @@ export default {
       // const query = `?secret=${secret}&response=${response}`
       // const res = await this.$axios.post('/verify' + query, {
       const res = await this.$axios.post(api, { response }, {
+        withCredentials: true,
         auth: {
           username: 'admin',
           password: process.env.PASS
