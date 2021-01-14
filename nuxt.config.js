@@ -134,6 +134,11 @@ export default {
   //   extend (config, ctx) {
   //   }
   build: {
+    splitChunks: {
+      layouts: true,
+      pages: true,
+      commons: true
+    },
     extend (config, _ctx) {
       config.module.rules.push(
         {

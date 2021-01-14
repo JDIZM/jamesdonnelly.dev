@@ -1,5 +1,5 @@
 <template>
-  <article class="post container">
+  <article class="post container pb--4 pt--8">
     <div v-for="(tag, i) in tags" :key="i" class="post__tags text--primary">
       <li> - {{ tag.toUpperCase() }}</li>
     </div>

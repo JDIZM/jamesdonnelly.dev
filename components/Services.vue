@@ -1,16 +1,16 @@
 <template>
   <section class="services">
-    <!--  -->
-    <div>
-      <h3>WHAT I CAN DO FOR YOU..</h3>
-      <div v-for="service in services" :key="service.name">
+    <h3>WHAT I CAN DO FOR YOU..</h3>
+    <div class="services__grid pt--4">
+      <div v-for="service in services" :key="service.name" class="mb--2">
+        <img :src="imgSrc(service.img)" alt="" :height="imgH" width="100%" drggable="false">
         <h4>{{ service.name }}</h4>
         <p>{{ service.desc }}</p>
-        <ul>
+        <!-- <ul v-if="service.items">
           <li v-for="item in service.items" :key="item">
-            {{ item }}
+            <span class="material-icons">chevron_right</span><span>{{ item }}</span>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </section>
@@ -21,11 +21,18 @@ export default {
   name: 'Services',
   data () {
     return {
+      // imgW: '100px',
+      imgH: '150px',
       services: [
-        { name: 'UI/UX DESIGN', desc: 'Product Design that puts the user first.', items: ['Product Design that puts the user first.'] },
-        { name: 'WEBSITE DESIGN ', desc: 'Responsive websites designed for all screen sizes', items: ['Responsive websites designed for all screen sizes'] },
-        { name: 'WEB DEVELOPMENT', desc: 'Building user interfaces, websites and web applications that humans love to use', items: ['Single Page Applications', 'Databases', 'API\'s'] }
+        { name: 'UI/UX DESIGN', desc: 'Product Design that puts the user first.', img: 'wireframing.svg' },
+        { name: 'WEBSITE DESIGN ', desc: 'Responsive websites designed for all screen sizes', img: 'web_devices.svg' },
+        { name: 'WEB DEVELOPMENT', desc: 'Building user interfaces, websites and web applications that humans love to use', img: 'responsive.svg', items: ['Single Page Applications', 'Databases', 'API\'s'] }
       ]
+    }
+  },
+  methods: {
+    imgSrc (img) {
+      return require('@/assets/undraw/' + img)
     }
   }
 }
@@ -33,8 +40,17 @@ export default {
 
 <style lang="scss" scoped>
 section {
-  margin-bottom: 1.5rem;
+  // margin-bottom: 1.5rem;
   width: 100%;
+  text-align: center;
+}
+.services__grid {
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    //
+    flex-direction: row;
+  }
 }
 h3 {
   margin-bottom: 1.5rem;
@@ -43,12 +59,15 @@ h3 {
 ul {
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
+  // @media screen and (min-width: 768px) {
+  //   flex-direction: row;
+  // }
 }
 li {
-  margin: 1rem;
-  // list-style: none;
+  // margin: 1rem;
+  list-style: none;
+}
+span {
+  vertical-align: middle;
 }
 </style>

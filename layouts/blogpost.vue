@@ -1,8 +1,22 @@
 <template>
   <div>
-    <Navbar />
-    <!-- <h2> post layout </h2> -->
+    <!-- <Navbar /> -->
+    <NavMain
+      :links="links"
+      phone=""
+      :logo-src="imgSrc"
+      :show-drawer="showDrawer"
+      :show-dropdown="showDropdown"
+      :dropdown-items="dropdownItems"
+      :show-buttons="false"
+      @onShowDrawer="showDrawer = !showDrawer"
+      @onDropdown="showDropdown = !showDropdown"
+      @onReset="showDropdown = false, showDrawer = false"
+      @onCloseDrawer="showDrawer = false"
+      @onEnquire="onEnquire"
+    />
     <nuxt />
+    <Callout />
     <Footer
       class="bg--blue text--white"
       name="JDIZM"
@@ -19,20 +33,33 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+// import Navbar from '@/components/Navbar.vue'
+import NavMain from '@/storybook/stories/organisms/nav/NavMain.vue'
 import Footer from '@/storybook/stories/organisms/Footer.vue'
+import Callout from '@/components/Callout'
 // import firebase from '@/plugins/firebase'
 
 export default {
   name: 'BlogPost',
   components: {
     // Logo
-    Navbar,
-    Footer
+    NavMain,
+    Footer,
+    Callout
   },
   data () {
     return {
-      imgSrc: require('~/assets/logo.png')
+      imgSrc: require('~/assets/logo.png'),
+      showDrawer: false,
+      showDropdown: false,
+      dropdownItems: [],
+      links: [
+        { path: '/', name: 'Home' },
+        { path: '/projects/', name: 'Work' },
+        { path: '/blog/', name: 'Blog' },
+        { path: '/contact/', name: 'Contact' }
+        // { name: 'Dropdown'}
+      ]
     }
   },
   head () {
@@ -58,6 +85,13 @@ export default {
     // if (process.client) {
     //   firebase.analytics()
     // }
+  },
+  methods: {
+    onEnquire () {
+      this.$router.push({
+        path: '/contact/'
+      })
+    }
   }
 }
 </script>

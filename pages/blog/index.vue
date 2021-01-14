@@ -1,6 +1,6 @@
 <template>
   <div class="blog">
-    <section class="bg--blue text--white blog__header mb--4">
+    <section class="bg--blue text--white blog__header mb--4 pt--8">
       <div>
         <h1>DEVELOPER BLOG</h1>
         <h2>Welcome to my corner of the internet, where I write about code, JavaScript and the general daily struggle of trying to get things to work.</h2>
@@ -99,7 +99,7 @@ export default {
   /* display: flex;
   align-items: center;
   flex-direction: column; */
-  margin-top: 1rem;
+  // padding-top: 1rem;
   text-align: left;
 }
 /* stop FOUT on post title */

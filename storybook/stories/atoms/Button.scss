@@ -16,46 +16,44 @@
   letter-spacing: normal;
   word-spacing: normal;
   text-rendering: auto;
-  border: 1px solid transparent;
+  // border: 1px solid transparent;
 }
 
 .btn:focus {
+  // outline: solid 1px var(--blue);
   outline: none;
+  box-shadow: 0 0 8px var(--primary);
   // outline: -webkit-focus-ring-color auto 5px;
   // outline-style: auto;
   // outline-width: 5px;
 }
 
 .btn--primary {
-  color: white;
+  color: black;
   background-color: var(--primary);
   border: 1px solid var(--primary);
 }
 .btn--primary:hover {
-  color: white;
+  color: black;
   background-color: var(--primary);
   border: 1px solid var(--primary);
 }
-.btn--primary:focus {
-  outline-color: var(--primary);
-}
+// .btn--primary:focus {
+//   // outline-color: var(--primary);
+// }
 
 .btn--outline {
-  color: var(--primary);
+  color: var(--blue);
   background-color: white;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--blue);
 }
 .btn--outline:hover {
   color: white;
-  background-color: var(--primary);
-  border: 1px solid var(--primary);
+  background-color: var(--blue);
+  border: 1px solid var(--blue);
   a {
     color: white;
   }
-}
-.btn--outline:focus {
-  // FIXME outline not showing, had to include important class to override default
-  outline-color: var(--primary) !important;
 }
 .btn--disabled {
   cursor: not-allowed;
@@ -72,7 +70,3 @@
   display: block;
   width: 100%;
 }
-
-// TODO text link
-// nuxt anchor tags instead of buttons
-// need a text link version that styles a elements

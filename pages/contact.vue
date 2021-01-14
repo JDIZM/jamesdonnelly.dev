@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb--4">
+  <div class="container mb--4 pt--8">
     <h1 class="center">
       GET IN TOUCH?
     </h1>
@@ -34,7 +34,7 @@ export default {
   },
   data () {
     return {
-      title: 'contact!',
+      title: 'Get In Touch | Web Developer Manchester',
       description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       submission: null, // submitted form values
       sent: false, // only send once

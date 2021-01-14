@@ -1,6 +1,6 @@
 <template>
-  <div class="container pb--4">
-    <section>
+  <div class="container">
+    <section class="pt--8">
       <h1>Hey! I'm James Donnelly</h1>
       <h2>
         A Manchester-based web developer who loves to build bespoke user interfaces, websites and web applications with JavaScript.
@@ -21,15 +21,13 @@
         />
       </nuxt-link>
     </div>
-    <Callout
-      class="mb--4"
-    />
     <Services />
     <Skills />
     <Experience
       :experience="experience"
+      class="pb--4"
     />
-    <!-- TODO services -->
+    <Callout />
   </div>
 </template>
 
@@ -103,5 +101,9 @@ export default {
   font-size: 1.75rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
+  // @media screen and (min-width: 1200px) {
+  // //
+  //   font-size: 2.5rem;
+  // };
 }
 </style>

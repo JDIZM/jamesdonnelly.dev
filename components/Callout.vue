@@ -34,16 +34,13 @@ export default {
   color: var(--primary);
 }
 section {
-  // scrollbar is insivible on mobile
+  // scrollbar is invisible on mobile
   width: 100vw;
   // margin: auto;
   // margin-bottom: 2rem;
    text-align: center;
   @media screen and (min-width: 600px) {
     width: calc(100vw - 0.95rem);
-  }
-  @media screen and (min-width: 992px) {
-    text-align: left;
   }
   h2 {
     margin-bottom: 0;

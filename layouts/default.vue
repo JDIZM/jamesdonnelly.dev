@@ -1,6 +1,20 @@
 <template>
   <div>
-    <Navbar />
+    <!-- <Navbar /> -->
+    <NavMain
+      :links="links"
+      phone=""
+      :logo-src="imgSrc"
+      :show-drawer="showDrawer"
+      :show-dropdown="showDropdown"
+      :dropdown-items="dropdownItems"
+      :show-buttons="false"
+      @onShowDrawer="showDrawer = !showDrawer"
+      @onDropdown="showDropdown = !showDropdown"
+      @onReset="showDropdown = false, showDrawer = false"
+      @onCloseDrawer="showDrawer = false"
+      @onEnquire="onEnquire"
+    />
     <nuxt />
     <Footer
       class="bg--blue text--white"
@@ -18,7 +32,8 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import NavMain from '@/storybook/stories/organisms/nav/NavMain.vue'
+// import Navbar from '@/components/Navbar.vue'
 // import Footer from '@/components/Footer.vue'
 import Footer from '@/storybook/stories/organisms/Footer.vue'
 // import firebase from '@/plugins/firebase'
@@ -26,12 +41,22 @@ export default {
   name: 'Default',
   components: {
     // Logo
-    Navbar,
+    NavMain,
     Footer
   },
   data () {
     return {
-      imgSrc: require('~/assets/logo.png')
+      imgSrc: require('~/assets/logo.png'),
+      showDrawer: false,
+      showDropdown: false,
+      dropdownItems: [],
+      links: [
+        { path: '/', name: 'Home' },
+        { path: '/projects/', name: 'Work' },
+        { path: '/blog/', name: 'Blog' },
+        { path: '/contact/', name: 'Contact' }
+        // { name: 'Dropdown'}
+      ]
     }
   },
   head () {
@@ -56,6 +81,13 @@ export default {
     // if (process.client) {
     //   firebase.analytics()
     // }
+  },
+  methods: {
+    onEnquire () {
+      this.$router.push({
+        path: '/contact/'
+      })
+    }
   }
 }
 </script>

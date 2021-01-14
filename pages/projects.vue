@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container pt--8">
     <h1>PROJECTS</h1>
     <div v-for="(project, a) in projects" :key="a" class="project mb--4">
       <div class="project__img">
@@ -52,7 +52,7 @@ export default {
   },
   data () {
     return {
-      title: 'Projects!',
+      title: 'Projects | Freelance Web Developer Manchester',
       description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       url: this.$route.fullPath,
       projects: json.projects // imported json

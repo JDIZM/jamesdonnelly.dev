@@ -1,28 +1,20 @@
 <template>
   <nav class="nav">
-    <!--  -->
-    <!-- <NavDesktop
-      :links="links"
-    /> -->
+    <!--  desktop only -->
     <div class="nav__desktop">
       <div class="nav__desktop__brand">
         <div class="nav__desktop__logo">
-          <img :src="logoSrc" draggable="false" />
-        <!-- logo -->
-        <!-- <img :src="require('~/assets/img/' + logo)" :alt="logo"> -->
+          <img :src="logoSrc" draggable="false" alt="logo" height="50px" width="50px" />
         </div>
-        <!-- <span>COMPANY</span> -->
       </div>
-      <!--  -->
       <ul class="nav__desktop__list">
         <li v-for="link in links" :key="link.path">
-          <!-- // TODO nuxt-link // router-link -->
-          <a v-if="link.path" :to="link.path" exact-active-class="--active">
+          <nuxt-link v-if="link.path" :to="link.path" exact-active-class="--active">
             <div class="nav__desktop__list__item">
               <span v-if="link.icon" class="material-icons">{{ link.icon }}</span>
               <span v-if="link.name">{{ link.name.toUpperCase() }}</span>
             </div>
-          </a>
+          </nuxt-link>
           <a
             v-else
             @click.prevent="onDropdown"
@@ -39,49 +31,35 @@
         </li>
       </ul>
       <div class="nav__desktop__btns">
-        <a :href="'tel:' + phone" class="nav__desktop__btn btn--outline">
-          CALL
-        </a>
-        <div
-          @click.prevent="onEnquire"
+        <Button
+          @onClick="onEnquire"
           @keydown.enter.prevent="onEnquire"
-          class="nav__desktop__btn btn--primary"
-          role="button"
-          aria-pressed="false"
-          tabindex="0"
-        >
-          ENQUIRE
-        </div>
+          type="submit"
+          label="HIRE ME"
+          primary
+          class="nav__desktop__btn"
+        />
       </div>
     </div>
     <!-- only show nav toggle on mobile -->
     <div class="nav__mobile">
       <div class="nav__mobile__brand">
-        <!-- logo -->
-        <!-- <img :src="require('~/assets/img/' + logo)" :alt="logo"> -->
         <div class="nav__mobile__logo">
-          <img :src="logoSrc" draggable="false" />
-        <!-- logo -->
-        <!-- <img :src="require('~/assets/img/' + logo)" :alt="logo"> -->
+          <img :src="logoSrc" draggable="false" alt="logo"/>
         </div>
-        <!-- <span>COMPANY</span> -->
       </div>
       <div class="nav__mobile__btns">
-        <a class="nav__mobile__btn btn--outline" :href="'tel:' + phone">
-          CALL
-        </a>
-        <button
-          @click.prevent="onEnquire"
+        <Button
+          @onClick="onEnquire"
           @keydown.enter.prevent="onEnquire"
-          class="nav__mobile__btn btn--primary"
-          role="button"
-          aria-pressed="true"
-          tabindex="0"
-        >
-          ENQUIRE
-        </button>
+          type="submit"
+          label="HIRE ME"
+          primary
+          class="nav__mobile__btn"
+        />
       </div>
     </div>
+    <!-- toggle hidden on desktop with display:none -->
     <div
       @click="onShowDrawer"
       class="nav__toggle"
@@ -91,7 +69,6 @@
     >
       <i class="material-icons">menu</i>
     </div>
-    <!-- <button @click="showDrawer = !showDrawer" class="nav__toggle btn btn--outline">TOGGLE</button> -->
     <NavDrawer
       :links="links"
       :showDrawer="showDrawer"
@@ -109,13 +86,14 @@
 </template>
 
 <script>
-// import NavDesktop from '@/components/Nav/NavDesktop'
 import NavDrawer from './NavDrawer'
 import NavDropdown from './NavDropdown'
+import Button from '../../atoms/Button'
 export default {
   name: 'NavMain',
   components: {
     // NavDesktop,
+    Button,
     NavDrawer,
     NavDropdown
   },
@@ -148,23 +126,6 @@ export default {
   data () {
     return {
       //
-      // showDrawer: false,
-      // showDropdown: false,
-      // showEnquire: false,
-      // drawer: false,
-      // phone: process.env.CONTACT_PHONE,
-      // dropdownItems: [
-      //   { name: 'Domestic', path: '/domestic-scaffolding/' },
-      //   { name: 'Commercial', path: '/commercial-scaffolding/' },
-      //   { name: 'Industrial', path: '/industrial-scaffolding/' }
-      // ],
-      // links: [
-      //   { name: 'Home', path: '/' },
-      //   { name: 'About', path: '/about/' },
-      //   { name: 'Services' },
-      //   { name: 'Contact', path: '/contact/' }
-      //   // { name: 'Blog', path: '/blog', icon: '' }
-      // ]
     }
   },
   watch: {
@@ -174,29 +135,19 @@ export default {
   methods: {
     //
     onDropdown () {
-      // FIXME avoid mutating prop
-      // this.showDropdown = !this.showDropdown
       this.$emit('onDropdown')
     },
     onEnquire () {
-      // TODO showEnquire
-      // console.log('clicked')
       this.$emit('onEnquire');
-      // this.$router.push({ path: '/contact/' })
     },
     onRouteChange () {
       // react to route changes...
-      // TODO emit events instead of mutating props
-      this.showDrawer = false
-      this.showDropdown = false
+      this.$emit('onReset')
     },
     onShowDrawer () {
-      // TODO show nav drawer, avoid prop mutation
       this.$emit('onShowDrawer')
     },
     onCloseDrawer () {
-      // TODO onCloseDrawer nav drawer, avoid mutating prop.
-      // @onCloseDrawer="onCloseDrawer"
       this.$emit('onCloseDrawer')
     }
   }

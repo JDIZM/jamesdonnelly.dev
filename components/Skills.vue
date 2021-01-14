@@ -2,18 +2,14 @@
   <section class="skills">
     <h3>TECH STACK</h3>
     <p>
-      My current tech stack utilises Vue, Nuxt &amp; Vuex.
+      My current tech stack utilises Vue, Nuxt &amp; Vuex. However I don’t believe in a one size fits all approach that’s why I treat each project differently.
     </p>
     <p>
-      I’m a fan of JAMstack and take a serverless approach to development using
-      Firebase as a backend with node based functions. My CSS is compiled with
+      With a penchant for JAMstack and the serverless approach to development. Lately I've been using node based cloud functions to handle my backend. My CSS is compiled with
       SASS and BEM using storybook to maintain my own UI library.
     </p>
     <p>
       I’m mainly client focused but I can handle all aspects of the development cycle from front-end development of user interfaces to back-end development of databases and server infrastructure.
-    </p>
-    <p>
-      I don’t believe in a one size fits all approach that’s why I treat each project differently.
     </p>
     <div class="skills__grid">
       <div v-for="(skill, i) in skills" :key="i" class="skills__grid__item">

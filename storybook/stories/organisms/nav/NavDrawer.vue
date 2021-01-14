@@ -16,7 +16,7 @@
         <!-- <div class="nav__drawer__brand"></div> -->
         <div
           @click="$emit('close')"
-          class="btn"
+          class="btn bg--blue text--white"
           role="button"
           aria-pressed="false"
           tabindex="0"
@@ -27,12 +27,12 @@
       <ul class="nav__drawer__list">
         <li v-for="link in links" :key="link.path">
           <!-- // TODO nuxt-link // router-link -->
-          <a v-if="link.path" :to="link.path" exact-active-class="--active">
+          <nuxt-link v-if="link.path" :to="link.path" exact-active-class="--active">
             <div class="nav__menu__wrapper">
               <span v-if="link.icon" class="material-icons">{{ link.icon }}</span>
               <span>{{ link.name }}</span>
             </div>
-          </a>
+          </nuxt-link>
           <a
             v-else
             @click.prevent="onDropdown"
@@ -45,15 +45,15 @@
               <span v-if="link.icon" class="material-icons">{{ link.icon }}</span>
               <span>{{ link.name }}</span>
             </div>
-            <ul v-if="showDropdown" class="nav__drawer__dropdown">
+          </a>
+           <ul v-if="showDropdown" class="nav__drawer__dropdown">
               <li v-for="item in dropdownItems" :key="item.name">
                 <!-- // TODO nuxt-link // router-link -->
                 <a v-if="item.path" :to="item.path" exact-active-class="--active">
                   <div class="nav__drawer__dropdown">{{ item.name }}</div>
                 </a>
               </li>
-          </ul>
-          </a>
+            </ul>
         </li>
       </ul>
     </div>
@@ -88,8 +88,7 @@ export default {
   },
   data () {
     return {
-      // phone: process.env.CONTACT_PHONE,
-      // showDropdown: true
+      // 
     }
   },
   methods: {
