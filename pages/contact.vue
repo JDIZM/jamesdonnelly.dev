@@ -38,6 +38,10 @@ export default {
       description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       submission: null, // submitted form values
       sent: false, // only send once
+      auth: {
+        username: 'admin',
+        password: process.env.AUTH_PASS
+      },
       toast: {
         show: false,
         duration: 4000,
@@ -160,8 +164,8 @@ export default {
         withCredentials: true,
         // FIXME netlify build doesn't send pass.
         auth: {
-          username: 'admin',
-          password: process.env.AUTH_PASS
+          username: this.auth.username,
+          password: this.auth.password
         }
       }) // without proxy
         .then((response) => {
@@ -189,8 +193,8 @@ export default {
       const res = await this.$axios.post(api, { response }, {
         withCredentials: true,
         auth: {
-          username: 'admin',
-          password: process.env.AUTH_PASS
+          username: this.auth.username,
+          password: this.auth.password
         },
         headers: {
           'Content-Type': 'application/json'
