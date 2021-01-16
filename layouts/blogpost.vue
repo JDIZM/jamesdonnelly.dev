@@ -70,7 +70,7 @@ export default {
         { hid: 'description', name: 'description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.' },
         { hid: 'og:description', name: 'og:description', property: 'og:description', content: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.' },
         { hid: 'og:url', name: 'og:url', content: process.env.NUXT_HOST + this.$route.path },
-        { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + 'laravel_and_vue.svg' },
+        { hid: 'og:image', name: 'og:image', content: process.env.NUXT_HOST + '/laravel_and_vue.svg' },
         { hid: 'og:type', name: 'og:type', property: 'og:type', content: 'article' }
       ],
       link: [

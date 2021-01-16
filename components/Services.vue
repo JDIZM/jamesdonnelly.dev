@@ -5,7 +5,9 @@
       <div v-for="service in services" :key="service.name" class="mb--2">
         <img :src="imgSrc(service.img)" :alt="service.name" :height="imgH" draggable="false">
         <h4>{{ service.name }}</h4>
-        <p class="p--1">{{ service.desc }}</p>
+        <p class="p--1">
+          {{ service.desc }}
+        </p>
         <!-- <ul v-if="service.items">
           <li v-for="item in service.items" :key="item">
             <span class="material-icons">chevron_right</span><span>{{ item }}</span>

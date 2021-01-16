@@ -6,7 +6,7 @@ tags:
   - SASS
   - CSS
   - FRONTEND
-thumbnail: sass.svg
+thumbnail: /sass.svg
 ---
 ## This post needs finishing! Sorry
 
