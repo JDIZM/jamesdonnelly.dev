@@ -5,14 +5,24 @@
         <!-- using the JS CSS syntax to dynamically set background image / thumbnail -->
         <!-- <div :style="{ backgroundImage: 'url(' + thumbnail + ')' }" class="post__thumb" /> -->
         <div class="img-wrapper">
-          <img :src="imgSrc" :alt="title" draggable="false" width="100%" height="100%">
+          <img
+            :src="imgSrc"
+            :alt="title"
+            draggable="false"
+            width="100%"
+            height="100%"
+          >
         </div>
         <div class="post__content">
           <h2 class="post__title">
             {{ title }}
           </h2>
-          <p class="mb--2">{{ excerpt }}</p>
-          <p class="mb--2">{{ date }}</p>
+          <p class="mb--2">
+            {{ excerpt }}
+          </p>
+          <p class="mb--2">
+            {{ date }}
+          </p>
         </div>
       </article>
     </nuxt-link>
@@ -46,9 +56,19 @@ export default {
   },
   data () {
     return {
-      imgSrc: require('~/assets/blog/' + this.thumbnail)
+      imgSrc: require('@/assets/blog' + this.thumbnail)
     }
   }
+  // computed: {
+  //   imgSource1 () {
+  //     return require('@/assets/blog' + this.thumbnail)
+  //   }
+  // },
+  // methods: {
+  //   imgSource2 (img) {
+  //     return require('@/assets/blog' + img)
+  //   }
+  // }
 }
 </script>
 
@@ -72,7 +92,7 @@ export default {
 }
 
 .img-wrapper {
-  width:100%;
+  width: 100%;
   height: 300px;
   filter: grayscale(0.9);
 }

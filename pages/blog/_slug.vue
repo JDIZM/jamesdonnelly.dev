@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     imgSrc () {
-      return require('~/assets/blog/' + this.thumbnail)
+      return require('~/assets/blog' + this.thumbnail)
     }
   },
   created () {
@@ -124,9 +124,6 @@ export default {
   flex: 0;
   img {
     border-radius: 50%;
-    // set image height explicitly on the element
-    // height: 100%;
-    // width: 100%;
     border: solid 1px var(--primary);
   }
 }
