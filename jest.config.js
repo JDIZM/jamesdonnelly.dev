@@ -1,6 +1,5 @@
 module.exports = {
-  // TODO jest setup
-  // globalSetup: '<rootDir>/jest.setup.js',
+  globalSetup: '<rootDir>/jest.setup.js',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
@@ -9,7 +8,8 @@ module.exports = {
   moduleFileExtensions: ['js', 'vue', 'json'],
   transform: {
     '^.+\\.js$': 'babel-jest',
-    '.*\\.(vue)$': 'vue-jest'
+    '.*\\.(vue)$': 'vue-jest',
+    '^.+\\.svg$': '<rootDir>/test/svgTransform.js'
   },
   collectCoverage: true,
   collectCoverageFrom: [

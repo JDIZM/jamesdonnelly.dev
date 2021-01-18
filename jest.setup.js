@@ -32,7 +32,7 @@ const resetConfig = {
 }
 
 const config = Object.assign({}, nuxtConfig, resetConfig, {
-  mode: 'spa',
+  ssr: true,
   srcDir: nuxtConfig.srcDir,
   ignore: ['**/components/**/*', '**/layouts/**/*', '**/pages/**/*']
 })
@@ -45,6 +45,5 @@ const buildNuxt = async () => {
 
 module.exports = async () => {
   const nuxt = await buildNuxt()
-
   process.env.buildDir = nuxt.options.buildDir
 }

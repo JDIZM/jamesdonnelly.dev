@@ -56,9 +56,19 @@ export default {
   },
   data () {
     return {
-      imgSrc: require('~/assets/blog' + this.thumbnail)
+      imgSrc: require('@/assets/blog' + this.thumbnail)
     }
   }
+  // computed: {
+  //   imgSource1 () {
+  //     return require('@/assets/blog' + this.thumbnail)
+  //   }
+  // },
+  // methods: {
+  //   imgSource2 (img) {
+  //     return require('@/assets/blog' + img)
+  //   }
+  // }
 }
 </script>
 

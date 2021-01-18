@@ -5,6 +5,13 @@
 1. storybook > https://github.com/JDIZM/vue-storybook-library
 2. functions > https://github.com/JDIZM/firebase-functions-express-api
 
+** note ** 
+trailing slash urls
+full path 
+
+NUXT_HOST=https://jamesdonnelly.dev
+without the slash.. 
+
 ## Build Setup
 
 ``` bash
