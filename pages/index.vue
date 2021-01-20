@@ -17,7 +17,6 @@
           type="submit"
           label="SEE MY WORK"
           outline
-          @onClick="onClick"
         />
       </nuxt-link>
     </div>
@@ -37,18 +36,13 @@ import Callout from '@/components/Callout'
 import Services from '@/components/Services'
 import Experience from '@/components/Experience'
 import Button from '@/storybook/stories/atoms/Button.vue'
-/* eslint-disable */ 
-// eslint-disable-next-line
-// console.log('***************')
-// console.log('built by @JDIZM')
-// console.log('***************')
 export default {
   components: {
     Services,
     Callout,
     Skills,
     Experience,
-    Button,
+    Button
   },
   data () {
     return {
@@ -56,16 +50,16 @@ export default {
       description: 'Freelance web developer based in Manchester. Experienced with building bespoke user interfaces, websites and web applications.',
       experience: [
         {
-          date: "2019 - Now",
-          location: "Freelance",
-          position: "Web Developer",
-          info: "Building user interfaces, websites and web applications that humans love to use",
+          date: '2019 - Now',
+          location: 'Freelance',
+          position: 'Web Developer',
+          info: 'Building user interfaces, websites and web applications that humans love to use',
           time: '2 years'
         },
         {
-          date: "2014 - 2019",
-          location: "Baked Digital",
-          position: "Digital Marketing",
+          date: '2014 - 2019',
+          location: 'Baked Digital',
+          position: 'Digital Marketing',
           info: "Paid Ads, Organic Search. Lead generation with WordPress based websites for SMB's",
           time: '5 years'
         }
@@ -83,26 +77,14 @@ export default {
         { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.description }
       ]
     }
-  // TODO LOCAL SCHEMA 
-  },
-  methods: {
-    onClick() {
-      // 
-      console.log('click')
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-/*  */
 .intro-text {
   font-size: 1.75rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
-  // @media screen and (min-width: 1200px) {
-  // //
-  //   font-size: 2.5rem;
-  // };
 }
 </style>

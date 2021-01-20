@@ -5,7 +5,6 @@ import 'firebase/analytics'
 // if (process.client) {
 //   require('firebase/app')
 // }
-// TODO env vars for firebase
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.FB_API_KEY,

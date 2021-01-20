@@ -1,12 +1,6 @@
 <template>
   <div class="experience m--2">
     <h3>EXPERIENCE</h3>
-    <p>
-      I've been lucky enough to have access to a computer for the last 25 years. I wrote my first computer program in BASIC when I was about 9.
-    </p>
-    <p>
-      Since then I've mainly played computer games and acquired the use of glasses. All jokes aside I've been designing and building websites for well over 10 years.
-    </p>
     <p>Here's a snapshot of the last few roles i've worked in..</p>
     <div v-for="(job, i) in experience" :key="i" class="experience__item mt--4">
       <div class="exp__date">
@@ -16,7 +10,6 @@
       <div class="exp__time__wrapper">
         <div class="exp__time">
           <div class="exp__time__inner">
-            <!-- TODO .. experience -->
             <div>
               <!-- <img v-if="job.logo" :src="imgSrc(job.logo)" alt=""> -->
               <span v-if="job.time">{{ job.time }}</span>

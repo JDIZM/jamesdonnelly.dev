@@ -58,7 +58,6 @@ export default {
         { path: '/projects/', name: 'Work' },
         { path: '/blog/', name: 'Blog' },
         { path: '/contact/', name: 'Contact' }
-        // { name: 'Dropdown'}
       ]
     }
   },

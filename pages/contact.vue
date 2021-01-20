@@ -106,17 +106,10 @@ export default {
       await this.$recaptcha.init()
     } catch (e) {
       // TODO err
+      // eslint-disable-next-line
       console.log(e)
     }
   },
-  // computed: {
-  //   validateEmail () {
-  //     // TODO can't validate form without access to the inputs.
-  //     return {
-  //       error: this.email === null || this.email === undefined || this.email === ''
-  //     }
-  //   }
-  // },
   methods: {
     async onSubmit (value) {
       this.submission = value
@@ -130,10 +123,9 @@ export default {
           // verify the recaptcha token
           this.verifyRecaptcha(response)
           // https://developers.google.com/recaptcha/docs/verify
-        } catch (e) {
-          // eslint-dsiable-next-line
-          // TODO error
-          console.log('recaptcha failed', e)
+        } catch {
+          this.onError('recaptcha failed')
+          // console.log('recaptcha failed', e)
         }
       }
     },
@@ -154,9 +146,6 @@ export default {
         email: this.submission[2],
         message: this.submission[3]
       }
-      // make a post request to the cloud mail function
-      // const api = process.env.FIREBASE_FUNCTION_API
-      // this.$axios.post('/api/', data) // use nuxt.config.js axios proxy
       await this.$axios.post('/send-mail', data, {
         withCredentials: true,
         // FIXME netlify build doesn't send pass.
@@ -173,20 +162,18 @@ export default {
           this.toast.msg = 'Your message has been sent!'
           this.toast.icon = 'check_circle'
           this.sent = true
+          // clear form
+          this.submission = null
           // TODO redirect to a thank you page.
-          // TODO clear form
         })
-        .catch((err) => {
-          // TODO err
-          console.log(err)
+        .catch(() => {
+          this.onError('failed to send')
+          // console.log(err)
         })
     },
     async verifyRecaptcha (response) {
-      // const api = 'http://localhost:4000/verify'
       const api = '/verify'
       // use proxy '/verify' to avoid cors issue
-      // const query = `?secret=${secret}&response=${response}`
-      // const res = await this.$axios.post('/verify' + query, {
       const res = await this.$axios.post(api, { response }, {
         withCredentials: true,
         auth: {
@@ -201,17 +188,19 @@ export default {
         .then((res) => {
           if (res.data.recaptcha.success === true && res.data.recaptcha.score <= 0.4) {
             // low score
+            this.onError('low recaptcha score, sorry!')
           }
           if (res.data.recaptcha.success === true && res.data.recaptcha.score >= 0.5) {
             // successful captcha
             this.sendMessage()
           } else {
             // handle failed captcha
+            this.onError('failed to verify recaptcha')
           }
         })
-        .catch((err) => {
-          // TODO err
-          console.log(err)
+        .catch(() => {
+          this.onError('failed to verify recaptcha')
+          // console.log(err)
         })
       //
       return res

@@ -68,7 +68,6 @@ export default {
         { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.description }
       ]
     }
-    // TODO LOCAL SCHEMA
   },
   methods: {
     imgSrc (img) {

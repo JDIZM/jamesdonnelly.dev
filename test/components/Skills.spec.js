@@ -5,12 +5,12 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
 
 // The component to test
-import Callout from '@/components/Callout.vue'
+import Skills from '@/components/Skills.vue'
 
-describe('Callout', () => {
-  test('callout component loads with data', () => {
+describe('Skills', () => {
+  test('skills component loads with data', () => {
     // wrap the vue component
-    const wrapper = mount(Callout, {
+    const wrapper = mount(Skills, {
       stubs: {
         NuxtLink: RouterLinkStub
       }

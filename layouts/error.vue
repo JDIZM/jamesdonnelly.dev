@@ -21,9 +21,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .container {
-//     min-height: 80vh;
-// }
 .img-wrapper, img {
   width: 300px;
   height: 300px;

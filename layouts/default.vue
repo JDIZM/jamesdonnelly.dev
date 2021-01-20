@@ -76,6 +76,7 @@ export default {
           href: process.env.NUXT_HOST + this.$route.path
         }
       ]
+      // TODO LOCAL SCHEMA
     }
   },
   created () {
@@ -96,9 +97,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-// html {
-// width: 100%;
-// }
-
+//
 </style>

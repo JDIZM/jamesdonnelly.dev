@@ -4,13 +4,15 @@ import { mount, RouterLinkStub } from '@vue/test-utils'
 // The component to test
 import Home from '@/pages/index.vue'
 
-test('show post', () => {
-  // wrap the vue component
-  const wrapper = mount(Home, {
-    stubs: {
-      NuxtLink: RouterLinkStub
-    }
+describe('Home', () => {
+  test('home page loads with data', () => {
+    // wrap the vue component
+    const wrapper = mount(Home, {
+      stubs: {
+        NuxtLink: RouterLinkStub
+      }
+    })
+    // expect it exists
+    expect(wrapper.exists()).toBe(true)
   })
-  // expect it exists
-  expect(wrapper.exists()).toBe(true)
 })
