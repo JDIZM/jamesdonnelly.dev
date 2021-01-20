@@ -29,7 +29,8 @@ export default {
   env: {
     // WARNING baseURL and proxy cannot be used at the same time, so when the proxy option is in use, you need to define prefix instead of baseURL.
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    prefix: process.env.API_URL
+    prefix: process.env.API_URL,
+    AUTH_PASS: process.env.AUTH_PASS
   },
   /*
   ** Customize the progress-bar color
