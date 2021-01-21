@@ -105,9 +105,7 @@ export default {
     try {
       await this.$recaptcha.init()
     } catch (e) {
-      // TODO err
-      // eslint-disable-next-line
-      console.log(e)
+      // Fail quietly
     }
   },
   methods: {
