@@ -24,8 +24,9 @@ export default {
       { src: 'https://kit.fontawesome.com/3770b0f41c.js' }
     ]
   },
-  // custom dot env variables client side
+  // custom dot env variables available client side
   // https://nuxtjs.org/api/configuration-env/
+  // Nuxt.js lets you create environment variables client side, also to be shared from server side.
   env: {
     // WARNING baseURL and proxy cannot be used at the same time, so when the proxy option is in use, you need to define prefix instead of baseURL.
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
@@ -33,11 +34,9 @@ export default {
     AUTH_PASS: process.env.AUTH_PASS
   },
   /*
-  ** Customize the progress-bar color
+  ** Customize the progress-bar
   */
   loading: { color: '#e85b46', height: '4px', throttle: 0 },
-  // loading: { color: '#e85b46' }, // FIXME page loads so fast we don't see it?
-  // loading indicator
   /*
   ** Global CSS
   */
@@ -58,7 +57,8 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/style-resources'
+    // Doc: https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv'
   ],
   styleResources: {
     // your settings here
@@ -79,15 +79,12 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios', // https://axios.nuxtjs.org/options
-    // FIXME is @nuxtjs/proxy needed vs axios?
-    '@nuxtjs/proxy', // // https://nuxtjs.org/faq/http-proxy/
+    '@nuxtjs/proxy', // https://nuxtjs.org/faq/http-proxy/
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
     '@nuxtjs/sitemap',
-    '@nuxtjs/recaptcha'
+    '@nuxtjs/recaptcha',
+    '@nuxtjs/style-resources'
   ],
   recaptcha: {
     /* reCAPTCHA options */

@@ -54,10 +54,16 @@ export default {
       title: this.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'title', name: 'og:title', property: 'og:title', content: this.title },
+        { hid: 'title', name: 'title', content: this.title },
+        { hid: 'og:title', property: 'og:title', content: this.title },
         { hid: 'description', name: 'description', content: this.excerpt },
-        { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.excerpt },
-        { hid: 'og:image', name: 'og:image', property: 'og:image', content: process.env.NUXT_HOST + this.imgSrc },
+        { hid: 'og:description', property: 'og:description', content: this.excerpt },
+        { hid: 'og:image', property: 'og:image', content: process.env.NUXT_HOST + this.imgSrc },
+        {
+          hid: 'og:image:secure_url',
+          property: 'og:image:secure_url',
+          content: process.env.NUXT_HOST + this.imgSrc
+        },
         { hid: 'twitter:card', name: 'twitter:card', property: 'twitter:card', content: process.env.NUXT_HOST + this.thumbnail }
       ],
       link: [

@@ -95,7 +95,8 @@ export default {
       title: this.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'title', name: 'og:title', property: 'og:title', content: this.title },
+        { hid: 'title', name: 'title', content: this.title },
+        { hid: 'og:title', property: 'og:title', content: this.title },
         { hid: 'description', name: 'description', content: 'Get in touch with a freelance web developer.' },
         { hid: 'og:description', name: 'og:description', property: 'og:description', content: 'Get in touch with a freelance web developer.' }
       ]
@@ -145,8 +146,6 @@ export default {
         message: this.submission[3]
       }
       await this.$axios.post('/send-mail', data, {
-        withCredentials: true,
-        // FIXME netlify build doesn't send pass.
         auth: {
           username: this.auth_user,
           password: this.auth_pass
@@ -173,7 +172,6 @@ export default {
       const api = '/verify'
       // use proxy '/verify' to avoid cors issue
       const res = await this.$axios.post(api, { response }, {
-        withCredentials: true,
         auth: {
           username: this.auth_user,
           password: this.auth_pass
