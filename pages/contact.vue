@@ -110,8 +110,8 @@ export default {
     }
   },
   methods: {
-    async onSubmit (value) {
-      this.submission = value
+    async onSubmit (data) {
+      this.submission = data
       // send form once
       if (this.sent) {
         this.onError('Form already sent')
