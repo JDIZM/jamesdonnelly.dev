@@ -14,7 +14,7 @@
 // localVue.use(Vuex)
 
 // added so the test passes
-describe('Blog Page', () => {
+describe('Blog Index', () => {
   test.todo('please pass')
 })
 
