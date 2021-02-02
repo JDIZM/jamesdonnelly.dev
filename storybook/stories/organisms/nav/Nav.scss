@@ -6,7 +6,7 @@
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background: var(--blue);
+  background: map-get($colours, blue);
 }
 .nav__toggle {
   width: 56px;
@@ -133,7 +133,7 @@
   max-width: 150px;
 }
 a.--active.nuxt-link-active {
-  color: var(--primary);
+  color: $primary;
   text-decoration: underline;
 }
 
@@ -156,7 +156,7 @@ a.--active.nuxt-link-active {
   left: 0;
   width: 250px;
   height: 100%;
-  background: var(--blue);
+  background: map-get($colours, blue);
 }
 .nav__drawer {
   // removed due to z-index stacking order of parent/child
@@ -218,7 +218,7 @@ a.--active.nuxt-link-active {
     margin: auto;
 }
 a.--active.nuxt-link-active {
-  color: var(--primary);
+  color: map-get($colours, primary);
   text-decoration: underline;
 }
 .nav__drawer__dropdown {

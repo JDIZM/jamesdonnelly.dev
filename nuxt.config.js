@@ -7,6 +7,7 @@ export default {
   /*
   ** Headers of the page
   */
+  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -38,19 +39,23 @@ export default {
   */
   loading: { color: '#e85b46', height: '4px', throttle: 0 },
   /*
-  ** Global CSS
+  **  Global CSS: https://go.nuxtjs.dev/config-css
   */
   css: [
-    // '@/scss/main.scss'
     // import storybook theme
-    './storybook/theme/main.scss'
+    '@/storybook/theme/_global.scss',
+    '@/storybook/theme/_theme.scss'
+    // use style-resources to load vars and mixins
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
+
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/imports.js'
+    // TODO firebase
+    // '@/plugins/firebase.js'
   ],
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
   /*
   ** Nuxt.js dev-modules
   */
@@ -60,32 +65,25 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
-  styleResources: {
-    // your settings here
-    scss: [
-      // '@/assets/scss/main.scss',
-      '@/storybook/theme/_vars.scss',
-      '@/storybook/theme/_mixins.scss'
-    ]
-  },
-  // build: {
-  //   loaders: {
-  //     scss: {
-  //       prependData: '@import "~@/assets/variables.scss";'
-  //     }
-  //   }
-  // },
-  /*
-  ** Nuxt.js modules
-  */
+
+  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios', // https://axios.nuxtjs.org/options
     '@nuxtjs/proxy', // https://nuxtjs.org/faq/http-proxy/
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/recaptcha',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources' // https://www.npmjs.com/package/@nuxtjs/style-resources
   ],
+
+  styleResources: {
+    // your settings here
+    scss: [
+      '@/storybook/theme/_vars.scss',
+      '@/storybook/theme/_mixins.scss'
+    ]
+  },
+
   recaptcha: {
     /* reCAPTCHA options */
     hideBadge: true,
@@ -94,19 +92,15 @@ export default {
     version: 3,
     size: 'normal'
   },
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // use proxy
     proxy: true,
-    // proxy will not work with your baseUrl, must have a prefix
+    // WARNING: baseURL and proxy cannot be used at the same time, so when the proxy option is in use,
+    // you need to define prefix instead of baseURL.
     // see https://axios.nuxtjs.org/options/
-    prefix: process.env.API_URL // eg api url before the proxy target
-    // https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api + /verify
-    // https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api + /send-mail
-    // can only have ONE api url as a prefix?
+    // Environment variable API_URL can be used to override baseURL.
+    prefix: process.env.API_URL
   },
   proxy: {
     // Note: In the proxy module, /api/ will be added to all requests to the API end point.
@@ -160,8 +154,7 @@ export default {
     meta: {
       // https://pwa.nuxtjs.org/modules/meta.html#options
       /* meta options */
-      theme_color: '#32543b'
-      // TODO meta
+      theme_color: '#e85b46'
     }
   },
   // https://nuxtjs.org/api/configuration-generate/

@@ -4,15 +4,18 @@
 // use custom class names for styling like tailwind.
 // @nuxtjs/style-resources allows you to use global variables
 // global css vars available at component level
-:root {
-  --primary:  rgba(232,91,70, 1);
-  --secondary: #b0bec5;
-  --blue: rgb(26,26,29);
-  --primary-100: rgba(232,91,70, 0.07);
-  --charcoal: rgb(43, 41, 39);
-  --links: black;
-  --font-family: 'Montserrat', sans-serif;
-}
+// :root {
+//   --primary:  rgba(232,91,70, 1);
+//   --secondary: #b0bec5;
+//   --blue: rgb(26,26,29);
+//   --primary-100: rgba(232,91,70, 0.07);
+//   --charcoal: rgb(43, 41, 39);
+//   --links: black;
+//   --font-family: 'Montserrat', sans-serif;
+// }
+
+$links: black;
+$font-family: 'Montserrat', sans-serif;
 
 // theme colours
 // map the variables with key:value pairs for mixins

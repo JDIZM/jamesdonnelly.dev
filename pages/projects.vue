@@ -79,10 +79,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .project {
-//  background: url('~assets/img.jpeg')
-// }
-
 .project {
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
@@ -144,8 +140,6 @@ export default {
 
 .skill__list__item {
   flex: 1 1 auto;
-  // padding-left: 0.5rem;
-  // list-style: square;
 }
 
 </style>

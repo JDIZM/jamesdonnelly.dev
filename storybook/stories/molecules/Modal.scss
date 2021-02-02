@@ -19,12 +19,7 @@
 .modal-content {
   position: relative;
   z-index: 1000;
-  // 
-  // padding: map-get($spacing, 1);
   padding: 1rem;
-  // background: white;
-  // max-width: 400px;
-  // margin: auto;
   h4 {
     margin: 0;
   }
@@ -33,11 +28,10 @@
 .modal-footer {
   position: relative;
   z-index: 1000;
-  // padding: map-get($spacing, 1);
   padding: 1rem;
 }
 
-// TODO display the modal overlay when the trigger is clicked
+// display the modal overlay when the trigger is clicked
 .modal-overlay {
   position: fixed;
   z-index: 999;

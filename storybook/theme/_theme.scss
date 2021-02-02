@@ -89,9 +89,9 @@ p {
   }
 }
 
-// TODO global BUTTON
+// global BUTTON
 button, .btn {
-  background: var(--primary);
+  background: $primary;
   cursor: pointer;
   display: inline-block;
   border-radius: 4px;
@@ -108,15 +108,15 @@ button, .btn {
   border: 1px solid transparent;
 }
 
-// TODO to style nuxt links
+// style nuxt links
 .--active {
   color: white;
-  background: var(--primary);
+  background: $primary;
 }
 .text--highlight {
   color: map-get($colours, black);
   background: map-get($colours, yellow);
 }
 li:focus {
-  border: solid 1px var(--primary);
+  border: solid 1px $primary;
 }
