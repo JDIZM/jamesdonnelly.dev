@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <Navbar /> -->
     <NavMain
       :links="links"
       phone=""
@@ -33,8 +32,6 @@
 
 <script>
 import NavMain from '@/storybook/stories/organisms/nav/NavMain.vue'
-// import Navbar from '@/components/Navbar.vue'
-// import Footer from '@/components/Footer.vue'
 import Footer from '@/storybook/stories/organisms/Footer.vue'
 // import firebase from '@/plugins/firebase'
 export default {

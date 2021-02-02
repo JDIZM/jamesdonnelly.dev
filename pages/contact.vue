@@ -97,8 +97,8 @@ export default {
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         { hid: 'title', name: 'title', content: this.title },
         { hid: 'og:title', property: 'og:title', content: this.title },
-        { hid: 'description', name: 'description', content: 'Get in touch with a freelance web developer.' },
-        { hid: 'og:description', name: 'og:description', property: 'og:description', content: 'Get in touch with a freelance web developer.' }
+        { hid: 'description', name: 'description', content: this.description },
+        { hid: 'og:description', name: 'og:description', property: 'og:description', content: this.description }
       ]
     }
   },

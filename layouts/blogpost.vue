@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <Navbar /> -->
     <NavMain
       :links="links"
       phone=""
@@ -33,7 +32,6 @@
 </template>
 
 <script>
-// import Navbar from '@/components/Navbar.vue'
 import NavMain from '@/storybook/stories/organisms/nav/NavMain.vue'
 import Footer from '@/storybook/stories/organisms/Footer.vue'
 import Callout from '@/components/Callout'
