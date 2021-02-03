@@ -24,8 +24,10 @@
         </p>
       </div>
     </div>
+    <img :src="require(`~/assets/blog${article.thumbnail}`)" :alt="article.title">
     <!-- <p>this component loads markdown files from '@/content/blog/${this.slug}.md which is passed as props through route params</p> -->
-    <component :is="dynamicComponent" v-if="dynamicComponent" />
+    <!-- <component :is="dynamicComponent" v-if="dynamicComponent" /> -->
+    <nuxt-content :document="article" />
   </article>
 </template>
 
@@ -37,6 +39,11 @@
 export default {
   name: 'BlogPost',
   layout: 'blogpost', // use custom layout
+  async asyncData ({ $content, params }) {
+    // fetch our article here
+    const article = await $content('blog', params.slug).fetch()
+    return { article }
+  },
   data () {
     return {
       title: null,
@@ -89,6 +96,12 @@ export default {
     this.date = markdown.attributes.date // use computed value
     this.dynamicComponent = markdown.vue.component
     this.excerpt = markdown.attributes.excerpt
+  },
+  methods: {
+    formatDate (date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
+    }
   }
 }
 </script>
@@ -98,7 +111,21 @@ export default {
 .post {
   text-align: left;
   max-width: 900px;
+  img {
+      height: 100%;
+      width: 100%;
+    }
 }
+// .nuxt-content {
+//   img {
+//     width: 100%;
+//     height: 100%;
+//     max-width: 288px;
+//     max-height: 188px;
+//     margin: auto;
+//     object-fit: contain;
+//   }
+// }
 .post__title {
   text-align: left;
   font-size: 1.5rem;

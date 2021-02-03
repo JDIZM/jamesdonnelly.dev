@@ -1,7 +1,7 @@
 <template>
   <picture class="image">
     <img
-      :srcset="imgSrc"
+      :src="imgSrc"
       alt="image"
       draggable="false"
     >
@@ -11,9 +11,13 @@
 <script>
 // TODO dynamic image component with optimised sizes
 export default {
-  name: 'DynamicImage',
+  name: 'VImg',
   props: {
-    img: {
+    src: {
+      type: String,
+      required: true
+    },
+    alt: {
       type: String,
       required: true
     }
@@ -21,31 +25,30 @@ export default {
   data () {
     return {
       //
-      imgSrc: require('~/assets/' + this.img)
+      // imgSrc: require('~/assets/blog/' + this.img)
     }
   },
   computed: {
-    // getImg () {
-    //   //
-    //   const path = this.img
-    //   const i = require(`../assets${path}`)
-    //   return i // the module request
-    // }
+    imgSrc () {
+      return require(`~/assets/blog/${this.src}`)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 picture {
-  width: 288px;
-  height: 188px;
+  // width: 288px;
+  // height: 188px;
+  width: 100%;
+  height: 100%;
   margin: auto;
   display: flex;
   img {
     width: 100%;
     height: 100%;
-    max-width: 288px;
-    max-height: 188px;
+    // max-width: 288px;
+    // max-height: 188px;
     margin: auto;
     object-fit: contain;
   }

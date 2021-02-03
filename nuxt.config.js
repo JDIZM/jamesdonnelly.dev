@@ -50,7 +50,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/imports.js'
+    '@/plugins/imports.js',
+    '@/plugins/vimg.js'
     // TODO firebase
     // '@/plugins/firebase.js'
   ],
@@ -70,14 +71,14 @@ export default {
   modules: [
     '@nuxtjs/axios', // https://axios.nuxtjs.org/options
     '@nuxtjs/proxy', // https://nuxtjs.org/faq/http-proxy/
-    '@nuxtjs/pwa',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/recaptcha',
-    '@nuxtjs/style-resources' // https://www.npmjs.com/package/@nuxtjs/style-resources
+    '@nuxtjs/pwa', // https://pwa.nuxtjs.org/
+    '@nuxtjs/sitemap', // https://www.npmjs.com/package/@nuxtjs/sitemap
+    '@nuxtjs/recaptcha', // https://www.npmjs.com/package/@nuxtjs/recaptcha
+    '@nuxtjs/style-resources', // https://www.npmjs.com/package/@nuxtjs/style-resources
+    '@nuxt/content' // https://content.nuxtjs.org/
   ],
 
   styleResources: {
-    // your settings here
     scss: [
       '@/storybook/theme/_vars.scss',
       '@/storybook/theme/_mixins.scss'
@@ -85,7 +86,6 @@ export default {
   },
 
   recaptcha: {
-    /* reCAPTCHA options */
     hideBadge: true,
     language: 'v3',
     siteKey: process.env.SITEKEY,
@@ -114,15 +114,9 @@ export default {
       pathRewrite: { '^/send-mail': '' }
     }
   },
-  /*
-  ** Build configuration
-  */
-  // build: {
-  //   /*
-  //   ** You can extend webpack config here
-  //   */
-  //   extend (config, ctx) {
-  //   }
+  //
+  // Build configuration
+  //
   build: {
     splitChunks: {
       layouts: true,
@@ -142,21 +136,27 @@ export default {
     }
   },
   server: {
-    port: 8000, // default: 3000
-    // host: 'localhost'
-    host: '0.0.0.0' // default: localhost
+    port: 8000,
+    host: '0.0.0.0'
   },
   sitemap: {
     hostname: 'https://jamesdonnelly.dev/',
     trailingSlash: true
   },
   pwa: {
+    manifest: {
+      lang: 'en'
+    },
     meta: {
       // https://pwa.nuxtjs.org/modules/meta.html#options
       /* meta options */
-      theme_color: '#e85b46'
+      theme_color: '#e85b46',
+      ogHost: 'https://jamesdonnelly.dev/', // required for ogImage
+      twitterCreator: '@JDIZM'
     }
   },
+  // Content module configuration: https://go.nuxtjs.dev/config-content
+  content: {},
   // https://nuxtjs.org/api/configuration-generate/
   generate: {
     fallback: true,

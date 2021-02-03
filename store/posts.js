@@ -9,11 +9,6 @@ export const state = () => ({
   postData: [
     //
   ]
-  // posts: [
-  //   { slug: 'remote-working-productivity', date: '2020-06-03' },
-  //   { slug: 'sass-mixins-class-names', date: '2020-06-06' },
-  //   { slug: 'page-speed-load-time', date: '2020-06-06' }
-  // ]
 })
 export const getters = {
   sortPostsBydate (state) {

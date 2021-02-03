@@ -45,6 +45,8 @@ export default {
     Footer,
     Callout
   },
+  scrollToTop: true,
+  transition: 'fade',
   data () {
     return {
       imgSrc: require('~/assets/logo.png'),
@@ -100,5 +102,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.fade-enter-active,
+.fade-leave-active { transition: opacity 0.5s; }
+.fade-enter,
+.fade-leave-active { opacity: 0; }
 </style>

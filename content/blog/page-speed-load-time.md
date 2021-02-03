@@ -10,7 +10,9 @@ thumbnail: /fast_loading.svg
 With over 50% of all traffic on the internet coming from mobile devices, there’s no question that load time is important for people on the move. Time is valuable and modern life is fast, so your site should be too. Users care more about the load time than your fancy animations, ads or your 187 scripts loading in the background.
 
 <!-- ![mobile page speed](/mobile-page-speed-new-industry-benchmarks-01-21.png "image") -->
-![mobile page speed](@/assets/blog/mobile-page-speed-new-industry-benchmarks-01-21.png "image")
+<!-- ![mobile page speed](@/assets/blog/mobile-page-speed-new-industry-benchmarks-01-21.png "image") -->
+
+<v-img src="mobile-page-speed-new-industry-benchmarks-01-21.png" alt="Alt text"></v-img>
 
 From a site owner’s perspective. You’re focused on generating revenue, adding functionality, tracking and improving conversions. I can understand that you need to keep the lights on and the bills paid.
 
@@ -20,7 +22,8 @@ Speed is now an important search ranking factor for [Google](https://developers.
 
 You can optimize the experience according to the user’s device. If you’re visiting from a desktop you’re more likely to have a much faster connection and can download higher-resolution files.
 
-![Fast Loading](@/assets/blog/fast_loading.svg "image")
+<!-- ![Fast Loading](@/assets/blog/fast_loading.svg "image") -->
+<v-img src="fast_loading.svg" alt="Fast loading"></v-img>
 
 ## Steps to improve site performance, speed up web pages and reduce load time on mobile devices.
 
@@ -28,7 +31,6 @@ You can optimize the experience according to the user’s device. If you’re vi
 
 Test your page speed using [page speed insights](https://developers.google.com/speed/pagespeed/insights/)
 You can also run an audit on your homepage with [lighthouse](https://developers.google.com/web/tools/lighthouse/) in chrome developer tools where you can test each page separately and you’ll be provided with a score and a detailed checklist of things that need improving. 
-
 
 ### Mobile-First Design
 
@@ -39,6 +41,7 @@ We used to build websites for desktops then using CSS media queries we would shr
 Build a PWA with a framework like [Gatsby](https://www.gatsbyjs.org/) or [Nuxt](https://nuxtjs.org/) and provide app-like features that make the website installable to the home screen and available offline with service workers to name a few.
 
 To classify as a progressive web app it must:
+
 * It must run under HTTPS.
 * It must include a Web App Manifest.
 * It must implement a service worker.
@@ -49,7 +52,7 @@ Use an asset bundler like webpack to minify your files. This will make them unre
 
 ### Reduce HTTP requests and page redirects 
 
-Improve page load time by reducing the number of requests made. The browser needs to make a new HTTP request for every file that needs to be loaded. Reduce the number of files by bundling assets with [webpack](https://webpack.js.org/). All your styles and scripts can be bundled into one CSS and JS file. 
+Improve page load time by reducing the number of requests made. The browser needs to make a new HTTP request for every file that needs to be loaded. Reduce the number of files by bundling assets with [webpack](https://webpack.js.org/). All your styles and scripts can be bundled into one CSS and JS file.
 
 ### Optimizing images
 
@@ -59,7 +62,7 @@ Improve page load time by reducing the number of requests made. The browser need
 
 **Image Compression**
 
-* Optimize images with imageoptim 
+* Optimize images with imageoptim
 * Using image-webpack-loader with webpack
 
 ### Enable file compression

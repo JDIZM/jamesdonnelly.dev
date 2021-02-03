@@ -1,7 +1,7 @@
 {
   "name": "jamesdonnelly.dev",
-  "version": "2021.0.1",
-  "description": "My perfect Nuxt.js project",
+  "version": "1.0.1",
+  "description": "Nuxt.js static portfolio site with Storybook UI, Firebase functions and markdown blog",
   "author": "JDIZM",
   "private": true,
   "scripts": {
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.4",
+    "@nuxt/content": "^1.12.0",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/proxy": "2.1.0",
     "@nuxtjs/pwa": "^3.3.3",

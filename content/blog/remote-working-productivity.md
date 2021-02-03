@@ -10,7 +10,7 @@ thumbnail: /time_management.svg
 <!-- without webpack -->
 <!-- ![Digital Nomad](/digital_nomad.svg) -->
 <!-- with webpack -->
-![Digital Nomad](@/assets/blog/digital_nomad.svg "image")
+<!-- ![Digital Nomad](@/assets/blog/digital_nomad.svg "image") -->
 
 Remote working has its benefits. Less traveling (usually) and being able to work in your underwear being the two obvious ones. Whether your working from home, at a coffee shop or in a co-working space it’s easy to get side-tracked from what needs doing. It requires discipline to stay focused and remain productive when you're in full control.
 
@@ -56,7 +56,8 @@ According to Csikszentmihályi, there are nine components to achieving a state o
 
 <!-- ![Working Remotely](/working_remotely.svg) -->
 <!-- with webpack -->
-![Working Remotely](@/assets/blog/working_remotely.svg "image")
+<!-- ![Working Remotely](@/assets/blog/working_remotely.svg "image") -->
+<v-img src="working_remotely.svg" alt="Working Remotely"></v-img>
 
 #### The Pomodoro Technique
 
