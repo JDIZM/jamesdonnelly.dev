@@ -24,7 +24,7 @@
         </p>
       </div>
     </div>
-    <img :src="require(`~/assets/blog${article.thumbnail}`)" :alt="article.title">
+    <img class="post__thumb" :src="require(`~/assets/blog${article.thumbnail}`)" :alt="article.title">
     <!-- <p>this component loads markdown files from '@/content/blog/${this.slug}.md which is passed as props through route params</p> -->
     <!-- <component :is="dynamicComponent" v-if="dynamicComponent" /> -->
     <nuxt-content :document="article" />
@@ -111,10 +111,10 @@ export default {
 .post {
   text-align: left;
   max-width: 900px;
-  img {
-      height: 100%;
-      width: 100%;
-    }
+}
+.post__thumb {
+  height: 100%;
+  width: 100%;
 }
 // .nuxt-content {
 //   img {
