@@ -1,15 +1,15 @@
 <template>
   <article class="post container pb--4 pt--8">
-    <div v-for="(tag, i) in tags" :key="i" class="post__tags text--primary">
+    <div v-for="(tag, i) in article.tags" :key="i" class="post__tags text--primary">
       <li> - {{ tag.toUpperCase() }}</li>
     </div>
     <div>
       <h1 class="post__title mt--1 mb--1">
-        {{ title.toUpperCase() }}
+        {{ article.title.toUpperCase() }}
       </h1>
     </div>
-    <div class="post__date mb--2">
-      - {{ date }}
+    <div v-if="article" class="post__date mb--2">
+      Last updated: {{ formatDate(article.updatedAt) }}
     </div>
     <div class="post__author mb--4">
       <div class="post__author__img">
@@ -24,18 +24,13 @@
         </p>
       </div>
     </div>
-    <img class="post__thumb" :src="require(`~/assets/blog${article.thumbnail}`)" :alt="article.title">
-    <!-- <p>this component loads markdown files from '@/content/blog/${this.slug}.md which is passed as props through route params</p> -->
-    <!-- <component :is="dynamicComponent" v-if="dynamicComponent" /> -->
+    <img v-if="article" class="post__thumb" :src="require(`~/assets/blog${article.thumbnail}`)" :alt="article.title">
     <nuxt-content :document="article" />
   </article>
 </template>
 
 <script>
 // this page needs to fetch markdown content based on the slug
-// https://www.npmjs.com/package/frontmatter-markdown-loader
-// https://hmsk.github.io/frontmatter-markdown-loader/vue.html
-// this is loaded in nuxt config
 export default {
   name: 'BlogPost',
   layout: 'blogpost', // use custom layout
@@ -46,32 +41,32 @@ export default {
   },
   data () {
     return {
-      title: null,
-      thumbnail: null,
+      // title: null,
+      // thumbnail: null,
       profile: process.env.PROFILE_URL,
-      slug: this.$route.params.slug,
-      tags: [],
-      date: null,
-      excerpt: null,
-      dynamicComponent: null
+      slug: this.$route.params.slug
+      // tags: [],
+      // date: null,
+      // excerpt: null,
+      // dynamicComponent: null
     }
   },
   head () {
     return {
-      title: this.title,
+      title: this.article.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'title', name: 'title', content: this.title },
-        { hid: 'og:title', property: 'og:title', content: this.title },
-        { hid: 'description', name: 'description', content: this.excerpt },
-        { hid: 'og:description', property: 'og:description', content: this.excerpt },
+        { hid: 'title', name: 'title', content: this.article.title },
+        { hid: 'og:title', property: 'og:title', content: this.article.title },
+        { hid: 'description', name: 'description', content: this.article.excerpt },
+        { hid: 'og:description', property: 'og:description', content: this.article.excerpt },
         { hid: 'og:image', property: 'og:image', content: process.env.NUXT_HOST + this.imgSrc },
         {
           hid: 'og:image:secure_url',
           property: 'og:image:secure_url',
           content: process.env.NUXT_HOST + this.imgSrc
         },
-        { hid: 'twitter:card', name: 'twitter:card', property: 'twitter:card', content: process.env.NUXT_HOST + this.thumbnail }
+        { hid: 'twitter:card', name: 'twitter:card', property: 'twitter:card', content: process.env.NUXT_HOST + this.imgSrc }
       ],
       link: [
         {
@@ -83,19 +78,8 @@ export default {
   },
   computed: {
     imgSrc () {
-      return require('~/assets/blog' + this.thumbnail)
+      return require('~/assets/blog' + this.article.thumbnail)
     }
-  },
-  created () {
-    // get the post data from markdown files based on the slug which matches the filename
-    const markdown = require(`@/content/blog/${this.slug}.md`) //
-    this.title = markdown.attributes.title
-    this.thumbnail = markdown.attributes.thumbnail
-    this.tags = markdown.attributes.tags
-    // this.date = Date.parse(markdown.attributes.date) // convert the date to JS
-    this.date = markdown.attributes.date // use computed value
-    this.dynamicComponent = markdown.vue.component
-    this.excerpt = markdown.attributes.excerpt
   },
   methods: {
     formatDate (date) {
@@ -116,16 +100,23 @@ export default {
   height: 100%;
   width: 100%;
 }
-// .nuxt-content {
-//   img {
-//     width: 100%;
-//     height: 100%;
-//     max-width: 288px;
-//     max-height: 188px;
-//     margin: auto;
-//     object-fit: contain;
-//   }
-// }
+.nuxt-content {
+    img {
+      height: 100%;
+      width: 100%;
+    }
+    blockquote {
+      margin-left: 1rem;
+      font-style: italic;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    ul, li, ol {
+      margin: 1rem;
+      // padding: 0.5rem;
+    }
+}
 .post__title {
   text-align: left;
   font-size: 1.5rem;
@@ -165,23 +156,5 @@ export default {
   p {
     font-size: 1rem;
   }
-}
-.frontmatter-markdown  {
-    // text-align: left;
-    img {
-      height: 100%;
-      width: 100%;
-    }
-    blockquote {
-      margin-left: 1rem;
-      font-style: italic;
-    }
-    p {
-      margin-bottom: 1rem;
-    }
-    ul, li, ol {
-      margin: 1rem;
-      // padding: 0.5rem;
-    }
 }
 </style>
