@@ -51,6 +51,7 @@ picture {
     // max-height: 188px;
     margin: auto;
     object-fit: contain;
+    padding-bottom: 1rem;
   }
 }
 </style>
