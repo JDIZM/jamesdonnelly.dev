@@ -27,15 +27,11 @@ html, body {
 }
 body {
   // https://web.dev/font-display/
-  // font-family: "system";
   font-family: $font-family;
   font-display: swap;
   // assume default browser font size of 16px unless set in root
   font-size: 1rem; // rem is relative to the font-size of the root element
   line-height: 1.4; // unitless vertical rhythm
-  // // hide horizontal scroll on full width
-  // overflow: auto;
-  // overflow-x: hidden; 
 }
 
 div {

@@ -2,17 +2,7 @@
 // sass variables won't work inside component files unless we compile the sass files with the main.scss
 // can use global css variables or
 // use custom class names for styling like tailwind.
-// @nuxtjs/style-resources allows you to use global variables
-// global css vars available at component level
-// :root {
-//   --primary:  rgba(232,91,70, 1);
-//   --secondary: #b0bec5;
-//   --blue: rgb(26,26,29);
-//   --primary-100: rgba(232,91,70, 0.07);
-//   --charcoal: rgb(43, 41, 39);
-//   --links: black;
-//   --font-family: 'Montserrat', sans-serif;
-// }
+// @nuxtjs/style-resources allows you to use global sass variables inside components
 
 $links: black;
 $font-family: 'Montserrat', sans-serif;
@@ -48,10 +38,6 @@ $error: map-get($colours, error);
 $error-100: map-get($colours, error-100);
 // debug
 // @debug map-get($colours, primary);
-// @debug map-get($colours, primary-100);
-// @debug map-get($colours, error);
-// @debug map-get($colours, error-100);
-// @debug var(--primary);
 
 // create spacing units for mixin
 // margin and paddings will be created with mixin
