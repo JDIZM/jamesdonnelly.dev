@@ -26,29 +26,53 @@
     </div>
     <img v-if="article" class="post__thumb" :src="require(`~/assets/blog${article.thumbnail}`)" :alt="article.title">
     <nuxt-content :document="article" />
+    <div class="prev-next">
+      <h3>A FEW MORE POSTS..</h3>
+      <PostPreview
+        v-if="next"
+        :slug="next.slug"
+        :thumbnail="next.thumbnail"
+        :title="next.title.toUpperCase()"
+        :description="next.description"
+        :date="formatDate(next.createdAt)"
+      />
+      <PostPreview
+        v-if="prev"
+        :slug="prev.slug"
+        :thumbnail="prev.thumbnail"
+        :title="prev.title.toUpperCase()"
+        :description="prev.description"
+        :date="formatDate(prev.createdAt)"
+      />
+    </div>
   </article>
 </template>
 
 <script>
+import PostPreview from '@/components/blog/PostPreview'
 // this page needs to fetch markdown content based on the slug
 export default {
   name: 'BlogPost',
+  components: {
+    PostPreview
+  },
   layout: 'blogpost', // use custom layout
   async asyncData ({ $content, params }) {
     // fetch our article here
     const article = await $content('blog', params.slug).fetch()
-    return { article }
+    // const articles = await $content('blog').fetch()
+    const [prev, next] = await $content('blog')
+      // .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      // .where({ isArchived: false })
+      .surround(params.slug)
+      .fetch()
+    return { article, prev, next }
   },
   data () {
     return {
-      // title: null,
-      // thumbnail: null,
       profile: process.env.PROFILE_URL,
       slug: this.$route.params.slug
-      // tags: [],
-      // date: null,
-      // excerpt: null,
-      // dynamicComponent: null
     }
   },
   head () {
@@ -81,17 +105,36 @@ export default {
       return require('~/assets/blog' + this.article.thumbnail)
     }
   },
+  created () {
+    //
+  },
   methods: {
     formatDate (date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString('en', options)
     }
+    // async getMoreArticles () {
+    //   const [prev, next] = await this.$content('blog')
+    //     .only(['title', 'path'])
+    //     .sortBy('date')
+    //     .where({ isArchived: false })
+    //     .surround(this.article.slug)
+    //     .fetch()
+    //   return { prev, next }
+    // this.prev = prev
+    // this.next = next
+    // }
   }
 }
 </script>
 
 <style lang="scss">
 // do not scope so the styles can target markdown post
+.prev-next {
+  padding-top: 1rem;
+  border-top: 2px solid black;
+  font-size: 1.25rem;
+}
 .post {
   text-align: left;
   max-width: 900px;
@@ -115,6 +158,9 @@ export default {
     ul, li, ol {
       margin: 1rem;
       // padding: 0.5rem;
+    }
+    a {
+      color: $primary;
     }
 }
 .post__title {

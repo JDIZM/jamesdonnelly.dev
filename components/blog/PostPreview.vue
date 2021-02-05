@@ -1,6 +1,6 @@
 <template>
   <div class="post card m--1">
-    <nuxt-link :to="'/blog/' + slug">
+    <nuxt-link :to="'/blog/' + slug + '/'">
       <article>
         <!-- using the JS CSS syntax to dynamically set background image / thumbnail -->
         <!-- <div :style="{ backgroundImage: 'url(' + thumbnail + ')' }" class="post__thumb" /> -->
@@ -18,7 +18,7 @@
             {{ title }}
           </h2>
           <p class="mb--2">
-            {{ excerpt }}
+            {{ description }}
           </p>
           <p class="mb--2">
             {{ date }}
@@ -41,7 +41,7 @@ export default {
       type: String,
       required: true
     },
-    excerpt: {
+    description: {
       type: String,
       required: true
     },
@@ -59,16 +59,6 @@ export default {
       imgSrc: require('@/assets/blog' + this.thumbnail)
     }
   }
-  // computed: {
-  //   imgSource1 () {
-  //     return require('@/assets/blog' + this.thumbnail)
-  //   }
-  // },
-  // methods: {
-  //   imgSource2 (img) {
-  //     return require('@/assets/blog' + img)
-  //   }
-  // }
 }
 </script>
 

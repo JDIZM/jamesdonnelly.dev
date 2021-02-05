@@ -1,7 +1,7 @@
 ---
 title: SASS Mixins to generate class names for utility classes
-date: "2021-01-06"
-excerpt: Use SASS Mixins to generate class names for utility classes
+description: Use SASS Mixins to generate class names for utility classes
+createdAt: "2021-01-06"
 tags:
   - SASS
   - CSS
@@ -35,8 +35,7 @@ eg
 }
 ```
 
-![alt text](@/assets/blog/sass-mixins.png "image")
-
+<!-- ![alt text](@/assets/blog/sass-mixins.png "image") -->
 
 ```scss
 // map the variables with key:value pairs

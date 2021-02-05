@@ -4,11 +4,10 @@
       <div>
         <h1>DEVELOPER BLOG</h1>
         <h2>Welcome to my corner of the internet, where I write about code, JavaScript and the general daily struggle of trying to get things to work.</h2>
-        <p>P.S. i'm working on it..</p>
       </div>
     </section>
     <div class="container pb--4">
-      <PostPreview
+      <!-- <PostPreview
         v-for="(post, i) in sortPostsBydate"
         :key="i"
         :slug="post.slug"
@@ -16,6 +15,15 @@
         :title="post.title.toUpperCase()"
         :excerpt="post.excerpt"
         :date="post.date"
+      /> -->
+      <PostPreview
+        v-for="(post, i) in articles"
+        :key="i"
+        :slug="post.slug"
+        :thumbnail="post.thumbnail"
+        :title="post.title.toUpperCase()"
+        :description="post.description"
+        :date="formatDate(post.createdAt)"
       />
     </div>
     <Callout />
@@ -31,6 +39,13 @@ export default {
   components: {
     PostPreview,
     Callout
+  },
+  async asyncData ({ $content, params }) {
+    // fetch our article here
+    const articles = await $content('blog')
+      .sortBy('createdAt', 'desc')
+      .fetch()
+    return { articles }
   },
   data () {
     return {
@@ -86,7 +101,11 @@ export default {
     ...mapActions({
       sortDates: 'posts/sortDates'
       // ...
-    })
+    }),
+    formatDate (date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
+    }
   }
 }
 </script>

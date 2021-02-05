@@ -1,7 +1,7 @@
 ---
 title: Serverless Contact Form With Firebase & Mailgun
-date: "2020-06-06"
-excerpt: Serverless Contact Form With Firebase & Mailgun
+description: Serverless Contact Form With Firebase & Mailgun
+createdAt: "2021-01-21"
 tags:
   - FIREBASE
   - SERVERLESS
@@ -14,7 +14,6 @@ some lorem ipsum would do.
 
 * bullet one
 * bullet two
-
 
 ## SECTION TWO
 

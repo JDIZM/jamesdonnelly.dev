@@ -1,7 +1,7 @@
 ---
 title: Productivity Hacks For Managing Time When Working Remotely
-date: "2020-12-03"
-excerpt: Time management for remote developers is an important skill. Learn how I manage my time with these productivity hacks while working remotely.
+description: Time management for remote developers is an important skill. Learn how I manage my time with these productivity hacks while working remotely
+createdAt: "2020-12-03"
 tags:
   - productivity
 thumbnail: /time_management.svg
