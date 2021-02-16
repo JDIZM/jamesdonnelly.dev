@@ -5,14 +5,11 @@
 ## Built With
 
 * Nuxt
-* markdown blog using <https://www.npmjs.com/package/frontmatter-markdown-loader>
-* storybook ui
-* sass theme, utils, mixins
-* firebase cloud functions
-* netlify hosting
-
-1. storybook > https://github.com/JDIZM/vue-storybook-library
-2. functions > https://github.com/JDIZM/firebase-functions-express-api
+* @nuxt/content <https://content.nuxtjs.org/>
+* Storybook UI
+* SASS theme, utils, mixins
+* Firebase Cloud Functions
+* Netlify hosting
 
 Note: trailing slash urls are enabled to avoid duplicate url issues, the canonical url will be set to the trailing slash version.
 
@@ -91,22 +88,39 @@ import Toast from '@/storybook/stories/molecules/Toast.vue'
 
 ## FUNCTIONS
 
-Functions are imported in their own repo to avoid linting issues
+express api with endpoints to handle backend logic, built with firebase functions
 
-see <https://github.com/JDIZM/firebase-functions-express-api/>
+endpoints:
+
+* verify recaptcha /verify
+* send mail /send-mail
+
+commands:
+
+* lint `cd functions` then `npm run lint`
+* deploy from project root `firebase deploy --only functions`
+
+NOTE: Linting issue. eslint conflicts with the root nuxt config.
+
+<https://eslint.org/docs/user-guide/configuring/configuration-files#cascading-and-hierarchy>
+
+"By default, ESLint will look for configuration files in all parent folders up to the root directory. This can be useful if you want all of your projects to follow a certain convention, but can sometimes lead to unexpected results."
+
+To limit ESLint to a specific project, place "root": true inside the .eslintrc.* file
 
 ### BLOG
 
-Content will be stored in the /content folder and markdown will be loaded based on the folder name, which will create the slug
+Content will be stored in the /content folder and markdown will be loaded based on the folder name, which will create the slug for the post pages.
 
-import dynamically <https://hmsk.github.io/frontmatter-markdown-loader/vue.html>
-
-Note: having issues writing tests with the current frontmatter markdown loader, going to look into using @nuxt/content module <https://content.nuxtjs.org/>
+see: <https://content.nuxtjs.org/>
 
 ## NETLIFY
 
+make sure netlify cli is installed `npm i -g netlify-cli` to handle deployment with netlify.
+
 * add the proxy urls and external redirects to the `_redirects` file
 * `_redirects` is added to the /static folder so it is built every time.
+* you can also modify the netliy.toml file
 
 _redirects
 

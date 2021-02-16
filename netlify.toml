@@ -1,0 +1,25 @@
+# example netlify.toml
+[build]
+  command = "yarn generate"
+  publish = "dist"
+  # functions = "functions"
+
+  ## Uncomment to use this redirect for Single Page Applications like create-react-app.
+  ## Not needed for static site generators.
+  [[redirects]]
+   from = "/verify"
+   to = "https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/verify"
+   status = 200
+  [[redirects]]
+   from = "/send-mail"
+   to = "https://us-central1-nuxt-portfolio-8d1bf.cloudfunctions.net/api/send-mail"
+   status = 200
+
+  ## (optional) Settings for Netlify Dev
+  ## https://github.com/netlify/cli/blob/master/docs/netlify-dev.md#project-detection
+  #[dev]
+  #  command = "yarn start" # Command to start your dev server
+  #  port = 3000 # Port that the dev server will be listening on
+  #  publish = "dist" # Folder with the static content for _redirect file
+
+  ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/

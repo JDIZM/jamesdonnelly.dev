@@ -95,3 +95,6 @@ sw.*
 
 # storybook ui
 # storybook
+
+# Local Netlify folder
+.netlify
