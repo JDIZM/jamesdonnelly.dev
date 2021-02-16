@@ -1,7 +1,9 @@
 # FUNCTIONS
 
-moved to their own repo
+NOTE: Linting issue. eslint conflicts with the root nuxt config.
 
-(https://github.com/JDIZM/firebase-functions-express-api)
+<https://eslint.org/docs/user-guide/configuring/configuration-files#cascading-and-hierarchy>
 
-was having linting issues, the root lint config for nuxt was conflicting with firebase functions.
+"By default, ESLint will look for configuration files in all parent folders up to the root directory. This can be useful if you want all of your projects to follow a certain convention, but can sometimes lead to unexpected results."
+
+To limit ESLint to a specific project, place "root": true inside the .eslintrc.* file
