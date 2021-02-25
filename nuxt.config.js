@@ -75,9 +75,12 @@ export default {
     '@nuxtjs/sitemap', // https://www.npmjs.com/package/@nuxtjs/sitemap
     '@nuxtjs/recaptcha', // https://www.npmjs.com/package/@nuxtjs/recaptcha
     '@nuxtjs/style-resources', // https://www.npmjs.com/package/@nuxtjs/style-resources
-    '@nuxt/content' // https://content.nuxtjs.org/
+    '@nuxt/content', // https://content.nuxtjs.org/
+    '@nuxtjs/gtm' // https://github.com/nuxt-community/gtm-module
   ],
-
+  gtm: {
+    id: process.env.GTM_ID
+  },
   styleResources: {
     scss: [
       '@/storybook/theme/_vars.scss',
