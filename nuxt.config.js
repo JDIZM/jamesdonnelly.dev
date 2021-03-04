@@ -64,9 +64,14 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/google-analytics' // https://google-analytics.nuxtjs.org/setup
   ],
-
+  googleAnalytics: {
+    id: process.env.GA_ID, // Use as fallback if no runtime config is provided
+    checkDuplicatedScript: true,
+    disableScriptLoader: true
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios', // https://axios.nuxtjs.org/options
@@ -79,7 +84,17 @@ export default {
     '@nuxtjs/gtm' // https://github.com/nuxt-community/gtm-module
   ],
   gtm: {
+    enabled: true,
     id: process.env.GTM_ID
+  },
+  publicRuntimeConfig: {
+    gtm: {
+      id: process.env.GTM_ID
+    },
+    googleAnalytics: {
+      // Options
+      id: process.env.GA_ID
+    }
   },
   styleResources: {
     scss: [
