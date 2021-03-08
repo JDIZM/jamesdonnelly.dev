@@ -92,8 +92,8 @@ express api with endpoints to handle backend logic, built with firebase function
 
 endpoints:
 
-* verify recaptcha /verify
-* send mail /send-mail
+* verify recaptcha `/verify`
+* send mail `/send-mail`
 
 commands:
 
